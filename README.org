@@ -1,0 +1,7 @@
+#+TITLE: Desigualdade sob o /red scare/
+#+SUBTITLE: Um estudo dos condicionantes geopolíticos e institucionais da distribuição de renda nos países centrais durante a Guerra fria
+#+AUTHOR: Lorena Salces Dourado
+
+#+BEGIN_abstract
+[Inserir resumo]
+#+END_abstract
