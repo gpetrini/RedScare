@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="pt-pt" dir="ltr">
+<head>
+<title>Distância Washington, USA → Lisboa, PRT - Linha aérea, rota de condução, ponto intermédio</title>
+<meta charset="UTF-8">
+<meta name="title" content="Distância Washington, USA → Lisboa, PRT - Linha aérea, rota de condução, ponto intermédio"/>
+<meta name="description" content="Apresenta a distância em quilómetros entre Washington, USA e Lisboa, PRT, e apresenta a rota num mapa interativo. Calculador de distâncias mundiais com linha aérea, planeamento de rota, duração da viagem e distâncias de voo."/>
+<meta name="google-site-verification" content="cBNeN49dQhYdjpsikw5wfT2AlHhQEYl5s09e03JFNBc"/>
+<meta name='yandex-verification' content='564c495ac6e482b1'/>
+<meta name="msvalidate.01" content="653EBD0B2556DF12847562BE52D83D10"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"/>
+<link rel="apple-touch-icon" sizes="180x180" href="/xapple-touch-icon.png,qv=2bwaGzj3JR.pagespeed.ic.XxnbXrl3un.png">
+<link rel="icon" type="image/png" href="/xfavicon-32x32.png,qv=2bwaGzj3JR.pagespeed.ic.weQtu1nlYB.png" sizes="32x32">
+<link rel="icon" type="image/png" href="/xfavicon-16x16.png,qv=2bwaGzj3JR.pagespeed.ic.bx_aZ6KgJN.png" sizes="16x16">
+<link rel="manifest" href="/manifest.json?v=2bwaGzj3JR">
+<link rel="mask-icon" href="/safari-pinned-tab.svg?v=2bwaGzj3JR" color="#2d89ef">
+<link rel="shortcut icon" href="/favicon.ico?v=2bwaGzj3JR">
+<meta name="theme-color" content="#2d89ef">
+<meta name="apple-mobile-web-app-title" content="pt.distance.to">
+<meta name="application-name" content="pt.distance.to">
+<meta name="verification" content="993aeed467fd8ba6f840a68b8eb4603f"/>
+<meta property="og:title" content="Distância Washington, USA > Lisboa, PRT - Linha aérea, rota de condução, ponto intermédio"/>
+<meta property="og:type" content="website"/>
+<meta property="og:url" content="https://pt.distance.to/Washington,USA/Lisboa,PRT"/>
+<meta property="og:image" content="https://pt.distance.to/logo.png"/>
+<meta property="og:site_name" content="pt.distance.to"/>
+<meta property="og:description" content="Apresenta a distância em quilómetros entre Washington, USA e Lisboa, PRT, e apresenta a rota num mapa interativo. Calculador de distâncias mundiais com linha aérea, planeamento de rota, duração da viagem e distâncias de voo."/>
+<meta name="twitter:card" content="summary" dochead="1"/>
+<meta name="twiter:site" content="@StephanGeorg" dochead="1"/>
+<meta name="twitter:tittle" content="Distância Washington, USA > Lisboa, PRT - Linha aérea, rota de condução, ponto intermédio"/>
+<meta name="twitter:description" content="Apresenta a distância em quilómetros entre Washington, USA e Lisboa, PRT, e apresenta a rota num mapa interativo. Calculador de distâncias mundiais com linha aérea, planeamento de rota, duração da viagem e distâncias de voo."/>
+<meta name="twitter:image" content="https://pt.distance.to/logo.png"/>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.7/jquery.min.js" type="text/psajs" data-pagespeed-orig-index="0"></script>
+<script data-pagespeed-orig-type="text/javascript" type="text/psajs" data-pagespeed-orig-index="1">!function(t){var e={};function n(r){if(e[r])return e[r].exports;var o=e[r]={i:r,l:!1,exports:{}};return t[r].call(o.exports,o,o.exports,n),o.l=!0,o.exports}n.m=t,n.c=e,n.d=function(t,e,r){n.o(t,e)||Object.defineProperty(t,e,{enumerable:!0,get:r})},n.r=function(t){"undefined"!=typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(t,Symbol.toStringTag,{value:"Module"}),Object.defineProperty(t,"__esModule",{value:!0})},n.t=function(t,e){if(1&e&&(t=n(t)),8&e)return t;if(4&e&&"object"==typeof t&&t&&t.__esModule)return t;var r=Object.create(null);if(n.r(r),Object.defineProperty(r,"default",{enumerable:!0,value:t}),2&e&&"string"!=typeof t)for(var o in t)n.d(r,o,function(e){return t[e]}.bind(null,o));return r},n.n=function(t){var e=t&&t.__esModule?function(){return t.default}:function(){return t};return n.d(e,"a",e),e},n.o=function(t,e){return Object.prototype.hasOwnProperty.call(t,e)},n.p="",n(n.s=3)}([function(t,e){t.exports=function(t){return"object"==typeof t?null!==t:"function"==typeof t}},function(t,e,n){t.exports=!n(2)(function(){return 7!=Object.defineProperty({},"a",{get:function(){return 7}}).a})},function(t,e){t.exports=function(t){try{return!!t()}catch(t){return!0}}},function(t,e,n){"use strict";n.r(e);n(4);!function(){if("function"!=typeof window.__tcfapi){var t,e=[],n=window,r=n.document;!n.__tcfapi&&function t(){var e=!!n.frames.__tcfapiLocator;if(!e)if(r.body){var o=r.createElement("iframe");o.style.cssText="display:none",o.name="__tcfapiLocator",r.body.appendChild(o)}else setTimeout(t,5);return!e}()&&(n.__tcfapi=function(){for(var n=arguments.length,r=new Array(n),o=0;o<n;o++)r[o]=arguments[o];if(!r.length)return e;if("setGdprApplies"===r[0])r.length>3&&2===parseInt(r[1],10)&&"boolean"==typeof r[3]&&(t=r[3],"function"==typeof r[2]&&r[2]("set",!0));else if("ping"===r[0]){var i={gdprApplies:t,cmpLoaded:!1,apiVersion:"2.0"};"function"==typeof r[2]&&r[2](i,!0)}else e.push(r)},n.addEventListener("message",function(t){var e="string"==typeof t.data,r={};try{r=e?JSON.parse(t.data):t.data}catch(t){}var o=r.__tcfapiCall;o&&n.__tcfapi(o.command,o.parameter,o.version,function(n,r){var i={__tcfapiReturn:{returnValue:n,success:r,callId:o.callId}};e&&(i=JSON.stringify(i)),t.source.postMessage(i,"*")})},!1))}}()},function(t,e,n){var r=n(5).f,o=Function.prototype,i=/^\s*function ([^ (]*)/;"name"in o||n(1)&&r(o,"name",{configurable:!0,get:function(){try{return(""+this).match(i)[1]}catch(t){return""}}})},function(t,e,n){var r=n(6),o=n(7),i=n(10),f=Object.defineProperty;e.f=n(1)?Object.defineProperty:function(t,e,n){if(r(t),e=i(e,!0),r(n),o)try{return f(t,e,n)}catch(t){}if("get"in n||"set"in n)throw TypeError("Accessors not supported!");return"value"in n&&(t[e]=n.value),t}},function(t,e,n){var r=n(0);t.exports=function(t){if(!r(t))throw TypeError(t+" is not an object!");return t}},function(t,e,n){t.exports=!n(1)&&!n(2)(function(){return 7!=Object.defineProperty(n(8)("div"),"a",{get:function(){return 7}}).a})},function(t,e,n){var r=n(0),o=n(9).document,i=r(o)&&r(o.createElement);t.exports=function(t){return i?o.createElement(t):{}}},function(t,e){var n=t.exports="undefined"!=typeof window&&window.Math==Math?window:"undefined"!=typeof self&&self.Math==Math?self:Function("return this")();"number"==typeof __g&&(__g=n)},function(t,e,n){var r=n(0);t.exports=function(t,e){if(!r(t))return t;var n,o;if(e&&"function"==typeof(n=t.toString)&&!r(o=n.call(t)))return o;if("function"==typeof(n=t.valueOf)&&!r(o=n.call(t)))return o;if(!e&&"function"==typeof(n=t.toString)&&!r(o=n.call(t)))return o;throw TypeError("Can't convert object to primitive value")}}]);</script>
+<script type="text/psajs" data-pagespeed-orig-index="2">window._sp_={config:{accountId:1061,wrapperAPIOrigin:"https://wrapper-api.sp-prod.net/tcfv2",mmsDomain:"https://consent.distance.to"}}</script><script src="https://gdpr-tcfv2.sp-prod.net/wrapperMessagingWithoutDetection.js" type="text/psajs" data-pagespeed-orig-index="3"></script>
+<script type="text/psajs" data-pagespeed-orig-index="4">(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-NLSQLW7');</script>
+<link rel="canonical" href="//pt.distance.to/Washington,USA/Lisboa,PRT"/>
+<link type="text/css" rel="stylesheet" href="/public/css/A.style.css+leaflet.css+mq.css,Mcc.2Up1dUMWOl.css.pagespeed.cf.1_R6xbL15T.css"/>
+<link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+<link href='https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.css' rel='stylesheet'/>
+<script data-pagespeed-orig-type="text/javascript" type="text/psajs" data-pagespeed-orig-index="5">var type='osm';var map;var markersArray=[];var mid=0;var lines=[];var directions;var unt='km';var sep='.';var decp=',';function formatMoney(value,decPlaces,thouSeparator,decSeparator){var n=value,decPlaces=isNaN(decPlaces=Math.abs(decPlaces))?2:decPlaces,decSeparator=decSeparator==undefined?".":decSeparator,thouSeparator=thouSeparator==undefined?",":thouSeparator,sign=n<0?"-":"",i=parseInt(n=Math.abs(+n||0).toFixed(decPlaces))+"",j=(j=i.length)>3?j%3:0;return sign+(j?i.substr(0,j)+thouSeparator:"")+i.substr(j).replace(/(\d{3})(?=\d)/g,"$1"+thouSeparator)+(decPlaces?decSeparator+Math.abs(n-i).toFixed(decPlaces).slice(2):"");};function initialize(){if(type==='google'){var bounds=new google.maps.LatLngBounds();var mapOptions={zoom:7,center:new google.maps.LatLng(39.3998720,-8.2244540),mapTypeId:google.maps.MapTypeId.ROADMAP,mapTypeControl:true,mapTypeControlOptions:{position:google.maps.ControlPosition.RIGHT_BOTTOM}}
+map=new google.maps.Map(document.getElementById("map"),mapOptions);}if(type==='osm'){var bounds=new L.latLngBounds([]);map=L.map('map',{zoomControl:false});var gl=L.mapboxGL({style:'https://tiles.distance.to/styles/klokantech-basic/style.json',attribution:'&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> - Testing Openmaptiles'}).addTo(map);new L.Control.Zoom({position:"bottomleft"}).addTo(map);map.on('click',function(e){var wrapped=map.wrapLatLng(e.latlng);var waypoint=L.circleMarker(wrapped,{radius:3,stroke:true,color:"#00ff00",weight:2,opacity:1,fillColor:"#105c17",fillOpacity:1});map.addLayer(waypoint);addWaypoint(null,'Destino ...',wrapped.lat+','+wrapped.lng);});}if(type==="google"){addMarker(new google.maps.LatLng(38.89511,-77.03637));bounds.extend(new google.maps.LatLng(38.89511,-77.03637));addMarker(new google.maps.LatLng(38.71667,-9.13333));bounds.extend(new google.maps.LatLng(38.71667,-9.13333));}else if(type==='osm'){addMarker(new L.LatLng(38.89511,-77.03637));bounds.extend(new L.LatLng(38.89511,-77.03637));var midpoint=L.circleMarker(L.latLng(44.112040792445,-43.036542385586),{radius:3,stroke:true,color:"#000",weight:1,opacity:1,fillColor:"#000",fillOpacity:1});map.addLayer(midpoint);addMarker(new L.LatLng(38.71667,-9.13333));bounds.extend(new L.LatLng(38.71667,-9.13333));}var thelines=[];if(type==='google'){thelines.push(new google.maps.LatLng(38.89511,-77.03637));}else if(type==='osm'){thelines.push(new L.LatLng(38.89511,-77.03637));}if(type==='google'){thelines.push(new google.maps.LatLng(38.71667,-9.13333));}else if(type==='osm'){thelines.push(new L.LatLng(38.71667,-9.13333));}var lines=[];if(type==='google'){lines[0]=new google.maps.Polyline({path:thelines,strokeColor:'#888888',strokeOpacity:0.4,strokeWeight:4});lines[1]=new google.maps.Polyline({path:thelines,strokeColor:'#000',strokeOpacity:1,strokeWeight:2,geodesic:1});lines[0].setMap(map);lines[1].setMap(map);}else if(type==='osm'){lines[0]=L.polyline(thelines,{color:'#888',opacity:0.4,weight:4});lines[1]=L.geodesic([thelines],{color:'#000',opacity:1,weight:2,steps:50});map.addLayer(lines[0]);map.addLayer(lines[1]);}directions=new Directions();map.fitBounds(bounds);var latlngtmp=new Array();var mmarker=new Array();var count=0;}function loadScript(){if(type==='google'){var script=document.createElement("script");script.type="text/javascript";script.src="https://maps.googleapis.com/maps/api/js?callback=initialize&key=AIzaSyA_NF1grEnPa_c-cW_P4yqv91rlCRuFwh4";document.body.appendChild(script);}else{initialize();}}function addMarker(location){if(type==='google'){marker=new google.maps.Marker({position:location,map:map,id:mid++});}else if(type==='osm'){marker=L.circleMarker(location,{radius:6,stroke:true,weight:1,color:'rgb(148, 39, 36)',opacity:1,fillOpacity:0.8,fillColor:'rgb(217, 83, 79)'});map.addLayer(marker);}markersArray.push(marker);return marker;}function startApp(){loadScript();}window.onload=startApp;</script>
+<script async src='/cdn-cgi/bm/cv/669835187/api.js'></script></head>
+<body><noscript><meta HTTP-EQUIV="refresh" content="0;url='https://pt.distance.to/Washington,USA/Lisboa,PRT?PageSpeed=noscript'" /><style><!--table,div,span,font,p{display:none} --></style><div style="display:block">Please click <a href="https://pt.distance.to/Washington,USA/Lisboa,PRT?PageSpeed=noscript">here</a> if you are not redirected within a few seconds.</div></noscript>
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NLSQLW7" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<div id="content" class="content ">
+<div class="toolbox">
+<div id="logo" class="logo">
+<span class="main-head">
+<a class="lang-select pt-PT local" href="#" title="Change Language!"></a>
+<a class="main-distance" href="/" title="Calculador de distâncias">Distância</a>
+<a class='main-route trip' href='/Washington,USA/Lisboa,PRT' title='Distância Washington, USA Lisboa, PRT'><span>Washington, USA</span> &rarr; <span>Lisboa, PRT</span></a> </span>
+<span class="main-distances">
+<div class="share-list">
+<a class="resp-sharing-button__link" onclick="track(this);" href="https://facebook.com/sharer/sharer.php?u=https%3A%2F%2Fpt.distance.to%2FWashington%2CUSA%2FLisboa%2CPRT" target="_blank" aria-label="">
+<div class="resp-sharing-button resp-sharing-button--facebook resp-sharing-button--small"><div aria-hidden="true" class="resp-sharing-button__icon resp-sharing-button__icon--solid">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18.77 7.46H14.5v-1.9c0-.9.6-1.1 1-1.1h3V.5h-4.33C10.24.5 9.5 3.44 9.5 5.32v2.15h-3v4h3v12h5v-12h3.85l.42-4z"/></svg>
+</div>
+</div>
+</a>
+<a class="resp-sharing-button__link" onclick="track(this);" href="https://twitter.com/intent/tweet/?url=https%3A%2F%2Fpt.distance.to%2FWashington%2CUSA%2FLisboa%2CPRT" target="_blank" aria-label="">
+<div class="resp-sharing-button resp-sharing-button--twitter resp-sharing-button--small"><div aria-hidden="true" class="resp-sharing-button__icon resp-sharing-button__icon--solid">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M23.44 4.83c-.8.37-1.5.38-2.22.02.93-.56.98-.96 1.32-2.02-.88.52-1.86.9-2.9 1.1-.82-.88-2-1.43-3.3-1.43-2.5 0-4.55 2.04-4.55 4.54 0 .36.03.7.1 1.04-3.77-.2-7.12-2-9.36-4.75-.4.67-.6 1.45-.6 2.3 0 1.56.8 2.95 2 3.77-.74-.03-1.44-.23-2.05-.57v.06c0 2.2 1.56 4.03 3.64 4.44-.67.2-1.37.2-2.06.08.58 1.8 2.26 3.12 4.25 3.16C5.78 18.1 3.37 18.74 1 18.46c2 1.3 4.4 2.04 6.97 2.04 8.35 0 12.92-6.92 12.92-12.93 0-.2 0-.4-.02-.6.9-.63 1.96-1.22 2.56-2.14z"/></svg>
+</div>
+</div>
+</a>
+<a class="resp-sharing-button__link" onclick="track(this);" href="https://reddit.com/submit/?url=https%3A%2F%2Fpt.distance.to%2FWashington%2CUSA%2FLisboa%2CPRT" target="_blank" aria-label="">
+<div class="resp-sharing-button resp-sharing-button--reddit resp-sharing-button--small"><div aria-hidden="true" class="resp-sharing-button__icon resp-sharing-button__icon--solid">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M24 11.5c0-1.65-1.35-3-3-3-.96 0-1.86.48-2.42 1.24-1.64-1-3.75-1.64-6.07-1.72.08-1.1.4-3.05 1.52-3.7.72-.4 1.73-.24 3 .5C17.2 6.3 18.46 7.5 20 7.5c1.65 0 3-1.35 3-3s-1.35-3-3-3c-1.38 0-2.54.94-2.88 2.22-1.43-.72-2.64-.8-3.6-.25-1.64.94-1.95 3.47-2 4.55-2.33.08-4.45.7-6.1 1.72C4.86 8.98 3.96 8.5 3 8.5c-1.65 0-3 1.35-3 3 0 1.32.84 2.44 2.05 2.84-.03.22-.05.44-.05.66 0 3.86 4.5 7 10 7s10-3.14 10-7c0-.22-.02-.44-.05-.66 1.2-.4 2.05-1.54 2.05-2.84zM2.3 13.37C1.5 13.07 1 12.35 1 11.5c0-1.1.9-2 2-2 .64 0 1.22.32 1.6.82-1.1.85-1.92 1.9-2.3 3.05zm3.7.13c0-1.1.9-2 2-2s2 .9 2 2-.9 2-2 2-2-.9-2-2zm9.8 4.8c-1.08.63-2.42.96-3.8.96-1.4 0-2.74-.34-3.8-.95-.24-.13-.32-.44-.2-.68.15-.24.46-.32.7-.18 1.83 1.06 4.76 1.06 6.6 0 .23-.13.53-.05.67.2.14.23.06.54-.18.67zm.2-2.8c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm5.7-2.13c-.38-1.16-1.2-2.2-2.3-3.05.38-.5.97-.82 1.6-.82 1.1 0 2 .9 2 2 0 .84-.53 1.57-1.3 1.87z"/></svg>
+</div>
+</div>
+</a>
+<a class="resp-sharing-button__link" onclick="track(this);" href="/cdn-cgi/l/email-protection#152a777a716c287d6161656630265430275330275365613b717c6661747b76703b617a3027534274667d7c7b72617a7b302756404654302753597c66777a74302756454741" target="_self" aria-label="">
+<div class="resp-sharing-button resp-sharing-button--email resp-sharing-button--small"><div aria-hidden="true" class="resp-sharing-button__icon resp-sharing-button__icon--solid">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M22 4H2C.9 4 0 4.9 0 6v12c0 1.1.9 2 2 2h20c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zM7.25 14.43l-3.5 2c-.08.05-.17.07-.25.07-.17 0-.34-.1-.43-.25-.14-.24-.06-.55.18-.68l3.5-2c.24-.14.55-.06.68.18.14.24.06.55-.18.68zm4.75.07c-.1 0-.2-.03-.27-.08l-8.5-5.5c-.23-.15-.3-.46-.15-.7.15-.22.46-.3.7-.14L12 13.4l8.23-5.32c.23-.15.54-.08.7.15.14.23.07.54-.16.7l-8.5 5.5c-.08.04-.17.07-.27.07zm8.93 1.75c-.1.16-.26.25-.43.25-.08 0-.17-.02-.25-.07l-3.5-2c-.24-.13-.32-.44-.18-.68s.44-.32.68-.18l3.5 2c.24.13.32.44.18.68z"/></svg>
+</div>
+</div>
+</a>
+</div>
+<span class="headerAirline">Distância: <span class='value km'>5.737,50</span> <span class='unit km'>km</span></span>
+<span class="headerRoute">Rota de condução: <span id="strck" class="directionsResult directionsResultTotal"> -- </span></span>
+</span>
+</div>
+<div id="sf">
+<div class="typeaheadOuter"><input type="text" value="Washington, USA" class="bd" placeholder="Iniciar ..."/></div> <a class="waves-effect btn" onclick="addWaypoint(this, 'Destino ...')">+</a><br/><div class="typeaheadOuter"><input type="text" value="Lisboa, PRT" class="bd" placeholder="Iniciar ..."/></div> <a class="waves-effect btn" onclick="addWaypoint(this, 'Destino ...')">+</a><br/> <input id="calcDistance" class="bt" type="button" value="Calcula distâncias!"/>
+<input id="openBatch" class="bt batchBtn" type="button" lang="pt" value="Bulk"> </div>
+<div id="language">
+<ul class="int">
+<li><a lang="pt-PT" class="pt-PT close" href="#" title="Calculador de distâncias"></a></li>
+<li><a lang="en" class="en-US" href="https://www.distance.to" title="Calculate distance!"></a></li>
+<li><a lang="de" class="de-DE" href="https://www.luftlinie.org" title="Entfernung berechnen"></a></li>
+<li><a lang="es" class="es-ES" href="https://es.distance.to" title="Calcule la distancia"></a></li>
+<li><a lang="fr" class="fr-FR" href="https://fr.distance.to" title="Calculer distance"></a></li>
+<li><a lang="il" class="il" href="https://he.distance.to"></a></li>
+<li><a lang="it" class="it-IT" href="https://it.distance.to" title="Calcolo distanze"></a></li>
+<li><a lang="pt" class="pt-PT" href="https://pt.distance.to" title="Calcule a distância!"></a></li>
+<li><a lang="nl" class="nl-NL" href="https://nl.distance.to" title="Afstand meten!"></a></li>
+<li><a lang="sv" class="sv-SE" href="https://sv.distance.to" title="Beräkna Avstånd"></a></li>
+<li><a lang="da" class="da-DK" href="https://da.distance.to" title="Afstandsberegning"></a></li>
+<li><a lang="ru" class="ru-RU" href="https://ru.distance.to" title="Рассчитать расстояние!"></a></li>
+<li><a lang="ro" class="ro-RO" href="https://ro.distance.to" title="Calculaţi distanta!"></a></li>
+<li><a lang="ar" class="ar" href="https://ar.distance.to" title="حاسبة المسافة"></a></li>
+<li><a lang="tr" class="tr-TR" href="https://tr.distance.to" title="şarj mesafe!"></a></li>
+<li><a lang="cs" class="cs-CZ" href="https://cs.distance.to" title="Kalkulačka vzdálenosti"></a></li>
+<li><a lang="pl" class="pl-PL" href="https://pl.distance.to" title="Oblicz odległość!"></a></li>
+</ul>
+</div>
+</div>
+<div id="map" class="map distance track">
+</div>
+<div class="banner distance track">
+<h1>Distância de Washington, USA a Lisboa, PRT</h1>
+<div id="rt" class="information-block">
+<span class='step'>#1 <span class='point name'><a href='/Washington,USA'>Washington, USA</a></span> <span class='latlng'>38.895110,-77.036370</span></span><span class='regions'>Washington, District of Columbia, United States of America</span></br><span class='regions regionsInt'>Washington, District of Columbia, United States of America</span><div class='distance-step-box'><span class='result airline'>Linha aérea: <span class='value'><span class='value km'>5.737,50</span> <span class='unit km'>km</span></span><br/><span class='result route'>Rota de condução: <span class='directionsResult directionsResult0'> -- </span> (<span class='directionsResultTime0'> - </span>)</span></div><span class='step'>#2 <span class='point name'><a href='/Lisboa,PRT'>Lisboa, PRT</a></span> <span class='latlng'>38.716670,-9.133330</span></span><span class='regions'>Santa Maria Maior, Lisboa, Área Metropolitana de Lisboa, Portugal</span></br><span class='regions regionsInt'>Santa Maria Maior, Lisbon, Área Metropolitana de Lisboa, Portugal</span><div class='distance-total-box'><span class='result airline'>Linha aérea: <span class='value km'>5.737,50</span> <span class='unit km'>km</span></span><br/><span class='result route'>Rota de condução: <span class='directionsResult directionsResultTotal'> -- </span> (<span class='directionsResultTimeTotal'> - </span>)</span></div></div>
+<div class='banner-outer banner-desktop banner-top banner-global'><div id="distance_mr_1"></div></div>
+<h2>Informação de rota detalhada</h2>
+<div class="extended-information information-block">
+<div class='extended-step step-0 first'><span class='step'>#1 <span class='point'><a href='/Washington,USA'>Washington, USA</a></span></span></br><span class='regionsInt prop'>Washington, District of Columbia, United States of America </span><span class='regions prop'>Washington, District of Columbia, United States of America </span><span class='coords lat prop'>Latitude: 38.89511 <span class='lighter dms'>38° 53' 42.396'' N</span></span><span class='coords lng prop'>Longitude: -77.03637 <span class='lighter dms'>-77° 2' 10.932'' E</span></span><span class='timezone prop'>Hora local: 19:54 (14.04.2021) : (America/New_York)</span><div class='distance-box-extended'><span class='label flight'>Rota do voo: <span class='value km'>5.748,42</span> <span class='unit km'>km</span> (7h 15min)</span><p class='extended-info'>A distância de voo entre os aeroportos mais próximos Washington, USA (<a href='/DCA'>DCA</a>) e Lisboa, PRT (<a href='/LIS'>LIS</a>) é <a href='/DCA/LIS' title='Flugentfernung und Flugstrecke DCA nach LIS'><span class='value km'>5.748,42</span> <span class='unit km'>km</span></a>. Isto corresponde a um tempo de voo aproximado de 7h 15min. Rotas de voo semelhantes: <a href='/DCA/FAO'>DCA → FAO</a> , <a href='/DCA/OPO'>DCA → OPO</a> , <a href='/DCA/AGP'>DCA → AGP</a> , <a href='/DCA/SCQ'>DCA → SCQ</a> , <a href='/IAD/LIS'>IAD → LIS</a> </p><span class='label bearing'>Rumo: 90,19° (E)</span><p class='extended-info'>O rumo inicial do percurso de Washington, USA a Lisboa, PRT é 90,19°, e a direção do compasso é E.</p><span class='label midpoint'>Ponto intermédio: <a href='/44.11204,-43.03654'>44.11204,-43.03654</a></span><p class='extended-info'>O <a href='http://www.geomidpoint.com/methods.html' target=”_new”>ponto intermédio geográfico</a> entre Washington, USA e Lisboa, PRT é em <span class='value km'>2.868,75</span> <span class='unit km'>km</span> a distância entre ambos os pontos num rumo de 90,19°.</p><span class='label distance'>Distância: <span class='value km'>5.737,50</span> <span class='unit km'>km</span></span><p class='extended-info'>A distância mais curta (linha aérea) entre Washington, USA e Lisboa, PRT é <span class='value km'>5.737,50</span> <span class='unit km'>km</span>.</p><span class='label driving'>Rota de condução: <span class='directionsResult directionsResult0'> -- </span> (<span class='directionsResultTime0'> - </span>)</span><p class='extended-info driving'>A distância mais curta entre Washington, USA e Lisboa, PRT é <span class='directionsResult0”></span>, de acordo com o planeamento de rota. O tempo de condução é aprox. <span class=' directionsResultTime0'></span>. Metade da viagem será alcançada em <span class='directionsResultMidpoint0'></span>.</p><span class='label time-difference'>Diferença horária: 5h</span><p class='extended-info'>A diferença horária entre Washington, USA (America/New_York) e Lisboa, PRT (Europe/Lisbon) são 5 horas. Isto significa que agora são 19:54 (14.04.2021) em Washington, USA e 00:54 (15.04.2021) em Lisboa, PRT.</p></div></div><div class='extended-step step-1 last'><span class='step'>#2 <span class='point'><a href='/Lisboa,PRT'>Lisboa, PRT</a></span></span></br><span class='regionsInt prop'>Santa Maria Maior, Lisbon, Lisbon, Grande Lisboa, Área Metropolitana de Lisboa, Portugal </span><span class='regions prop'>Santa Maria Maior, Lisboa, Lisboa, Grande Lisboa, Área Metropolitana de Lisboa, Portugal </span><span class='coords lat prop'>Latitude: 38.71667 <span class='lighter dms'>38° 43' 0.012'' N</span></span><span class='coords lng prop'>Longitude: -9.13333 <span class='lighter dms'>-9° 7' 59.988'' E</span></span><span class='timezone prop'>Hora local: 00:54 (15.04.2021) : (Europe/Lisbon)</span></div></div>
+<h3>Como é calculada a distância?</h3>
+<div class="howto information-block">
+<p>Para calcular a distância entre Washington, USA e Lisboa, PRT, os nomes dos locais são convertidos em coordenadas (latitude e longitude). O respetivo centro geográfico é utilizado para cidades, regiões e países. Para calcular a distância, é aplicada a <a href='https://pt.wikipedia.org/wiki/Fórmula_de_Haversine' target='_new'>fórmula de Haversine</a>.</p>
+</div>
+<h3>Rotas semelhantes:</h3>
+<div class="similar-routes information-block">
+<h5>Distância semelhante (± 0.5%)</h5><p> Lisboa, PRT fica à mesma distância de Washington, USA do que de Washington, USA a <a href="/Washington,USA/Lima">Lima</a> (5.664 km), <a href="/Washington,USA/London">London</a> (5.899 km), <a href="/Washington,USA/Birmingham">Birmingham</a> (5.750 km), <a href="/Washington,USA/São-Luís">São Luís</a> (5.695 km), <a href="/Washington,USA/Liverpool">Liverpool</a> (5.652 km), <a href="/Washington,USA/Callao">Callao</a> (5.666 km), <a href="/Washington,USA/Sheffield">Sheffield</a> (5.750 km), <a href="/Washington,USA/Bristol">Bristol</a> (5.737 km), <a href="/Washington,USA/Glasgow">Glasgow</a> (5.508 km), <a href="/Washington,USA/Lisbon">Lisbon</a> (5.737 km). </p><br><a href="/Washington,USA/Lisboa" title="Distância Washington, USA Lisboa">Washington, USA para Lisboa</a>, <a href="/Washington,USA/Porto" title="Distância Washington, USA Porto">Washington, USA para Porto</a>, <a href="/Washington,USA/Amadora" title="Distância Washington, USA Amadora">Washington, USA para Amadora</a>, <a href="/Washington,USA/Braga" title="Distância Washington, USA Braga">Washington, USA para Braga</a>, <a href="/Washington,USA/Zaragoza" title="Distância Washington, USA Zaragoza">Washington, USA para Zaragoza</a>, <a href="/Washington,USA/Setúbal" title="Distância Washington, USA Setúbal">Washington, USA para Setúbal</a>, <a href="/Washington,USA/Coimbra" title="Distância Washington, USA Coimbra">Washington, USA para Coimbra</a>, <a href="/Washington,USA/Funchal" title="Distância Washington, USA Funchal">Washington, USA para Funchal</a>, <a href="/Lisboa,PRT/Lisboa" title="Distância Lisboa, PRT Lisboa">Lisboa, PRT para Lisboa</a>, <a href="/Lisboa,PRT/Porto" title="Distância Lisboa, PRT Porto">Lisboa, PRT para Porto</a>, <a href="/Lisboa,PRT/Amadora" title="Distância Lisboa, PRT Amadora">Lisboa, PRT para Amadora</a>, <a href="/Lisboa,PRT/Braga" title="Distância Lisboa, PRT Braga">Lisboa, PRT para Braga</a>, <a href="/Lisboa,PRT/Zaragoza" title="Distância Lisboa, PRT Zaragoza">Lisboa, PRT para Zaragoza</a>, <a href="/Lisboa,PRT/Setúbal" title="Distância Lisboa, PRT Setúbal">Lisboa, PRT para Setúbal</a>, <a href="/Lisboa,PRT/Coimbra" title="Distância Lisboa, PRT Coimbra">Lisboa, PRT para Coimbra</a>, <a href="/Lisboa,PRT/Funchal" title="Distância Lisboa, PRT Funchal">Lisboa, PRT para Funchal</a>, </div>
+<h4>Idiomas</h4>
+<div class="information-block languages">
+<p class="contribute">
+Ajuda a tornar este serviço disponível a todos no mundo inteiro e traduz distance.to para outros idiomas. <a href='https://github.com/StephanGeorg/distance.to-i18n'> Traduz agora! </a> </p>
+<ul class="int">
+<li class="us"><a lang="en" href="https://www.distance.to" title="Calculate distances worldwide">Distance calculator</a></li>
+<li class="de"><a lang="de" href="https://www.luftlinie.org" title="Entfernung berechnen">Entfernungsrechner</a></li>
+<li class="da"><a lang="da" href="https://da.distance.to" title="Afstandsberegning">Afstandsberegning</a></li>
+<li class="cs"><a lang="cs" href="https://cs.distance.to" title="Afstandsberegning">Kalkulačka vzdálenosti</a></li>
+<li class="es"><a lang="es" href="https://es.distance.to" title="Calcule la distancia">Distancia entre ciudades</a></li>
+<li class="pt"><a lang="pt" href="https://pt.distance.to" title="Calcule a distância!">Distancia entre cidades</a></li>
+<li class="fr"><a lang="fr" href="https://fr.distance.to" title="Calculer distance">Distance entre deux villes</a></li>
+<li class="it"><a lang="it" href="https://it.distance.to" title="Distanza Calcolatrice">Distanze chilometriche</a></li>
+<li class="il"><a lang="il" href="https://he.distance.to" title="חשב מרחק!">מחשבון מרחק</a></li>
+<li class="nl"><a lang="nl" href="https://nl.distance.to" title="Afstand meten!">Afstand berekenen</a></li>
+<li class="se"><a lang="sv" href="https://sv.distance.to" title="Avstånd åtgärd!">Beräkna Avstånd</a></li>
+<li class="ru"><a lang="ru" href="https://ru.distance.to" title="Посчитать расстояние!">Калькулятор расстояний</a></li>
+<li class="ro"><a lang="ro" href="https://ro.distance.to" title="Calculaţi distanta!">Distanta de calculator</a></li>
+<li class="ar"><a lang="ar" href="https://ar.distance.to" title="">المسافة حاسبة</a></li>
+<li class="tr"><a lang="tr" href="https://tr.distance.to" title="şarj mesafe!">Mesafe hesaplama</a></li>
+<li class="pl"><a lang="pl" href="https://pl.distance.to" title="Oblicz odległość !">Kalkulator odległości</a></li>
+</ul>
+</div>
+<h5 id="Imprint">Impressão</h5>
+<div class="information-block imprint">
+<p>
+Stephan Georg<br/>
+c/o Luftlinie.org<br/>
+Twitter: <a href="//twitter.com/StephanGeorg" title="Twitter">Follow me!</a><br/>
+E-Mail: <a href="/cdn-cgi/l/email-protection#fe8d8a9b8e969f90999b918c99cdbe99939f9792d09d9193">Contact us!</a>
+</p>
+<h5>Copyrights</h5>
+<p>
+Maps and Geodata: © OpenStreetMap contributors
+</p>
+<p>
+Favicons: Icon made by <a title="Freepik" href="http://www.freepik.com">Freepik</a> from <a title="Flaticon" href="http://www.flaticon.com">www.flaticon.com</a><br/>
+</p>
+</div>
+<div id="Footer" class="footer">
+<a target="_new" href="/api" title="DistanceAPI">API</a> -
+<a target="_new" href="https://bulk.distance.to/" title="Excel distance calculation">Bulk</a> -
+<a target="_new" href="https://docs.distance.to" title="Help & Documentation">Help</a> -
+<a href="https://status.distance.to/" target="_new" title="System Status">Status</a> -
+<a href="/privacy">Privacy policy</a> -
+<a href="#" onClick="window._sp_.loadPrivacyManagerModal(207076)">Cookie settings</a>
+</div>
+</div>
+</div>
+<div id="consent" class="overlay consent">
+<div id="text" class="overlayContent consentContent">
+<p class="consentText consentCookie">
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-pagespeed-no-defer>(function(){for(var g="function"==typeof Object.defineProperties?Object.defineProperty:function(b,c,a){if(a.get||a.set)throw new TypeError("ES3 does not support getters and setters.");b!=Array.prototype&&b!=Object.prototype&&(b[c]=a.value)},h="undefined"!=typeof window&&window===this?this:"undefined"!=typeof global&&null!=global?global:this,k=["String","prototype","repeat"],l=0;l<k.length-1;l++){var m=k[l];m in h||(h[m]={});h=h[m]}var n=k[k.length-1],p=h[n],q=p?p:function(b){var c;if(null==this)throw new TypeError("The 'this' value for String.prototype.repeat must not be null or undefined");c=this+"";if(0>b||1342177279<b)throw new RangeError("Invalid count value");b|=0;for(var a="";b;)if(b&1&&(a+=c),b>>>=1)c+=c;return a};q!=p&&null!=q&&g(h,n,{configurable:!0,writable:!0,value:q});var t=this;function u(b,c){var a=b.split("."),d=t;a[0]in d||!d.execScript||d.execScript("var "+a[0]);for(var e;a.length&&(e=a.shift());)a.length||void 0===c?d[e]?d=d[e]:d=d[e]={}:d[e]=c};function v(b){var c=b.length;if(0<c){for(var a=Array(c),d=0;d<c;d++)a[d]=b[d];return a}return[]};function w(b){var c=window;if(c.addEventListener)c.addEventListener("load",b,!1);else if(c.attachEvent)c.attachEvent("onload",b);else{var a=c.onload;c.onload=function(){b.call(this);a&&a.call(this)}}};var x;function y(b,c,a,d,e){this.h=b;this.j=c;this.l=a;this.f=e;this.g={height:window.innerHeight||document.documentElement.clientHeight||document.body.clientHeight,width:window.innerWidth||document.documentElement.clientWidth||document.body.clientWidth};this.i=d;this.b={};this.a=[];this.c={}}function z(b,c){var a,d,e=c.getAttribute("data-pagespeed-url-hash");if(a=e&&!(e in b.c))if(0>=c.offsetWidth&&0>=c.offsetHeight)a=!1;else{d=c.getBoundingClientRect();var f=document.body;a=d.top+("pageYOffset"in window?window.pageYOffset:(document.documentElement||f.parentNode||f).scrollTop);d=d.left+("pageXOffset"in window?window.pageXOffset:(document.documentElement||f.parentNode||f).scrollLeft);f=a.toString()+","+d;b.b.hasOwnProperty(f)?a=!1:(b.b[f]=!0,a=a<=b.g.height&&d<=b.g.width)}a&&(b.a.push(e),b.c[e]=!0)}y.prototype.checkImageForCriticality=function(b){b.getBoundingClientRect&&z(this,b)};u("pagespeed.CriticalImages.checkImageForCriticality",function(b){x.checkImageForCriticality(b)});u("pagespeed.CriticalImages.checkCriticalImages",function(){A(x)});function A(b){b.b={};for(var c=["IMG","INPUT"],a=[],d=0;d<c.length;++d)a=a.concat(v(document.getElementsByTagName(c[d])));if(a.length&&a[0].getBoundingClientRect){for(d=0;c=a[d];++d)z(b,c);a="oh="+b.l;b.f&&(a+="&n="+b.f);if(c=!!b.a.length)for(a+="&ci="+encodeURIComponent(b.a[0]),d=1;d<b.a.length;++d){var e=","+encodeURIComponent(b.a[d]);131072>=a.length+e.length&&(a+=e)}b.i&&(e="&rd="+encodeURIComponent(JSON.stringify(B())),131072>=a.length+e.length&&(a+=e),c=!0);C=a;if(c){d=b.h;b=b.j;var f;if(window.XMLHttpRequest)f=new XMLHttpRequest;else if(window.ActiveXObject)try{f=new ActiveXObject("Msxml2.XMLHTTP")}catch(r){try{f=new ActiveXObject("Microsoft.XMLHTTP")}catch(D){}}f&&(f.open("POST",d+(-1==d.indexOf("?")?"?":"&")+"url="+encodeURIComponent(b)),f.setRequestHeader("Content-Type","application/x-www-form-urlencoded"),f.send(a))}}}function B(){var b={},c;c=document.getElementsByTagName("IMG");if(!c.length)return{};var a=c[0];if(!("naturalWidth"in a&&"naturalHeight"in a))return{};for(var d=0;a=c[d];++d){var e=a.getAttribute("data-pagespeed-url-hash");e&&(!(e in b)&&0<a.width&&0<a.height&&0<a.naturalWidth&&0<a.naturalHeight||e in b&&a.width>=b[e].o&&a.height>=b[e].m)&&(b[e]={rw:a.width,rh:a.height,ow:a.naturalWidth,oh:a.naturalHeight})}return b}var C="";u("pagespeed.CriticalImages.getBeaconData",function(){return C});u("pagespeed.CriticalImages.Run",function(b,c,a,d,e,f){var r=new y(b,c,a,e,f);x=r;d&&w(function(){window.setTimeout(function(){A(r)},0)})});})();pagespeed.CriticalImages.Run('/ngx_pagespeed_beacon','https://pt.distance.to/Washington,USA/Lisboa,PRT','dhiNV4cABz',true,false,'1HWG_BazFp4');</script><img src="https://www.distance.to/apple-touch-icon.png?v=2bwaGzj3JR" alt="Logo" data-pagespeed-url-hash="3937887874" data-pagespeed-onload="pagespeed.CriticalImages.checkImageForCriticality(this);" onload="var elem=this;if (this==window) elem=document.body;elem.setAttribute('data-pagespeed-loaded', 1)"/>
+<span class="consentHead">Declaração de privacidade</span>
+Este site usa cookies. Ao utilizar este site, você concorda com nossa <a href='/privacy'>política de privacidade</a>. </p>
+<p class="consentText consentPrivacy">
+Utilizamos cookies para personalizar conteúdo e anúncios e para analisar o tráfego para o nosso site. Também compartilhamos informações sobre o uso do nosso site com nossos parceiros de publicidade e análise. Nossas Afiliadas podem agregar essas informações a outras informações que você forneceu a elas ou que você coletou como parte de seu uso dos serviços. <a href='/privacy'>› Política de Privacidade</a> </p>
+<div class="consentBtns">
+<a id="consentDecline" class="consentBtn decline">recusar</a>
+<a id="consentAgree" class="consentBtn agree">aceitar</a>
+</div>
+</div>
+</div>
+<script src="//cdnjs.cloudflare.com/ajax/libs/leaflet/1.5.1/leaflet.js" type="text/psajs" data-pagespeed-orig-index="6"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery.devbridge-autocomplete/1.4.5/jquery.autocomplete.min.js" type="text/psajs" data-pagespeed-orig-index="7"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js" type="text/psajs" data-pagespeed-orig-index="8"></script>
+<script src='https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.js' type="text/psajs" data-pagespeed-orig-index="9"></script>
+<script src="/public/js/leaflet-mapbox-gl.js+lib,_leaflet.geodesic.min.js+lib,_leaflet.encoded.min.js+lib,_moment.js+directions.js+ui.js+tracking.js.pagespeed.jc.cfe1c7V7Xm.js" type="text/psajs" data-pagespeed-orig-index="10"></script><script type="text/psajs" data-pagespeed-orig-index="11">eval(mod_pagespeed__zSQxBRRfw);</script>
+<script type="text/psajs" data-pagespeed-orig-index="12">eval(mod_pagespeed_SIf1P2$56V);</script>
+<script type="text/psajs" data-pagespeed-orig-index="13">eval(mod_pagespeed_kMvAGQfBPN);</script>
+<script type="text/psajs" data-pagespeed-orig-index="14">eval(mod_pagespeed_b0npkCNvRG);</script>
+<script type="text/psajs" data-pagespeed-orig-index="15">eval(mod_pagespeed_ySukIVPsZR);</script>
+<script type="text/psajs" data-pagespeed-orig-index="16">eval(mod_pagespeed_U0cyffSM6o);</script>
+<script type="text/psajs" data-pagespeed-orig-index="17">eval(mod_pagespeed_71eZzH_9Bs);</script>
+<script type="text/javascript">(function(){window['__CF$cv$params']={r:'6400dc7eec3d428c',m:'8d34f4e6c8dd7268a73c78554bac1edef79838c6-1618444487-1800-ATMKOre4cAovSFyzLF9vUGLxiY6GfeWNNGRikP1nHyEGJpnmjF4veZYntypYAmB57zc27JUZpbOivL9WxAqT+TmIbIH0bnfVh9Yc5oB+729EdSEdPIDyjyfMKGq86MQr9FLsMF01wkwjQe4LVv6iSPg=',s:[0x3a01927ce3,0xa9cd789225],}})();</script></body>
+</html>
+<link rel="shortcut icon" type="image/x-icon" href="/xfavicon.png.pagespeed.ic.11XREkTB5Y.png"/>
+<script type="text/javascript" src="/pagespeed_static/js_defer.I4cHjq6EEP.js"></script>
