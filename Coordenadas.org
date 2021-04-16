@@ -1,0 +1,31 @@
+#+OPTIONS: num:nil
+#+TITLE:  Coordenadas
+#+AUTHOR: Gabriel Petrini
+#+PROPERTY:header-args R :results output drawer :eval never-export :exports both :session *coords*
+
+* Carregando pacotes e dados
+
+** Pacotes
+
+#+begin_src R
+library(tidyverse)
+library(tidygeocoder)
+#+end_src
+
+#+RESULTS:
+:results:
+:end:
+
+** Capitais
+
+#+begin_src R
+capitals <-maps::world.cities %>%
+  filter(capital == "1") %>%
+  select(country.etc, name) %>% # long and lat will be used in osm method
+  rename(pais = country.etc, capital = name) %>%
+  geocode(city = capital, country = pais, method = 'osm', lat = latitude, long = longitude) %>%
+  mutate(ISO3C = countrycode::countrycode(pais, origin ='country.name',destination ='iso3c', warn = FALSE))
+
+data.table::fwrite(capitals, file = "./clean/coord_capitais.csv")
+#+end_src
+
