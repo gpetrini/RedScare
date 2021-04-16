@@ -2,6 +2,7 @@
 #+TITLE:  Coordenadas
 #+AUTHOR: Gabriel Petrini
 #+PROPERTY:header-args R :results output drawer :eval never-export :exports both :session *coords*
+#+PROPERTY:header-args python :results output drawer :eval never-export :exports both :session *coords*
 
 * Carregando pacotes e dados
 
@@ -10,10 +11,20 @@
 #+begin_src R
 library(tidyverse)
 library(tidygeocoder)
+library(tabulizer)
+library(geodist)
 #+end_src
 
 #+RESULTS:
 :results:
+── [1mAttaching packages[22m ────────────────────────────────────────────────────────────────────────────────────────────── tidyverse 1.3.0 ──
+[32m✔[39m [34mggplot2[39m 3.3.3     [32m✔[39m [34mpurrr  [39m 0.3.4
+[32m✔[39m [34mtibble [39m 3.0.6     [32m✔[39m [34mdplyr  [39m 1.0.4
+[32m✔[39m [34mtidyr  [39m 1.1.2     [32m✔[39m [34mstringr[39m 1.4.0
+[32m✔[39m [34mreadr  [39m 1.4.0     [32m✔[39m [34mforcats[39m 0.5.1
+── [1mConflicts[22m ───────────────────────────────────────────────────────────────────────────────────────────────── tidyverse_conflicts() ──
+[31m✖[39m [34mdplyr[39m::[32mfilter()[39m masks [34mstats[39m::filter()
+[31m✖[39m [34mdplyr[39m::[32mlag()[39m    masks [34mstats[39m::lag()
 :end:
 
 ** Capitais
@@ -29,3 +40,170 @@ capitals <-maps::world.cities %>%
 data.table::fwrite(capitals, file = "./clean/coord_capitais.csv")
 #+end_src
 
+#+RESULTS:
+:results:
+:end:
+
+* Carregando dados dos conflitos
+
+** Tabela no texto (p. 366-7)
+#+CAPTION: Communist-led events
+#+NAME: communist
+|------+-----------------------+-------------|
+| 1945 | Poland                |             |
+| 1945 | Austria               |             |
+| 1946 | North Korea           | South Korea |
+| 1946 | China                 |             |
+| 1946 | Greece                |             |
+| 1947 | Bulgaria              |             |
+| 1948 | Czechoslovakia        | Prague      |
+| 1948 | East Germany          | Bonn        |
+| 1948 | East Germany          | Bonn        |
+| 1948 | China                 |             |
+| 1949 | China                 |             |
+| 1950 | South Korea           |             |
+| 1950 | China                 |             |
+| 1950 | North and South Korea |             |
+| 1953 | East Germany          | Bonn        |
+| 1954 | Vietinam              |             |
+| 1954 | Vietinam              |             |
+| 1955 | North and South Korea | South Korea |
+| 1956 | Poland                |             |
+| 1956 | Hungary               |             |
+| 1958 | Taiwan                |             |
+| 1959 | Cuba                  |             |
+| 1960 | East Germany          | Bonn        |
+| 1961 | East Germany          | Bonn        |
+| 1962 | Laos                  |             |
+| 1962 | Cuba                  |             |
+| 1968 | Vietinam              |             |
+| 1968 | Czechoslovakia        | Prague      |
+| 1969 | North Korea           | South Korea |
+| 1969 | Libya                 |             |
+| 1970 | Cambodia              |             |
+| 1975 | Cambodia              |             |
+| 1975 | Vietinam              |             |
+| 1975 | Laos                  |             |
+| 1978 | Afghanistan           |             |
+| 1979 | Nicaragua             |             |
+| 1979 | El Salvador           |             |
+| 1979 | Afghanistan           |             |
+| 1981 | Poland                |             |
+| 1989 | China                 |             |
+|------+-----------------------+-------------|
+
+** Importando dados
+
+
+*Importante:* Chescolováquia, Alemanha ocidental e "Coreia do norte do sul precisam ser alterados"
+
+#+begin_src R :var conflicts=communist
+
+capitais <- data.table::fread(file = "./clean/coord_capitais.csv")
+
+conflicts <- conflicts %>%
+  rename(Year = V1, Country = V2, Proxy = V3) %>%
+  mutate(ISO3C = countrycode::countrycode(Country, origin ='country.name',destination ='iso3c', warn = FALSE)) %>%
+  left_join(capitais) %>%
+  mutate(pais = # Keep countries not found in dataset
+           pais %>%
+             is.na %>%
+             ifelse(Country, pais) ) %>%
+  mutate(ISO3C = replace_na(ISO3C, "404"))
+
+proxies <-conflicts %>% filter(ISO3C == "404") %>%
+  mutate(capital = Proxy) %>% # Keep countries not found in dataset
+  select(-c(latitude, longitude)) %>%
+  geocode(city = capital, method = 'osm', lat = latitude, long = longitude)
+
+conflicts <- conflicts %>%
+  filter(ISO3C != "404") %>%
+  bind_rows(proxies) %>%
+  arrange(Year) %>%
+  mutate(
+    name = paste0(capital, "_", Year %>% as.character() %>% str_sub(start=-2))
+  ) %>%
+  mutate(name = str_replace_all(name, " ", ""))
+
+data.table::fwrite(conflicts, file = "./clean/coord_conflitos_capitais.csv")
+#+end_src
+
+#+RESULTS:
+:results:
+Joining, by = "ISO3C"
+:end:
+
+* Calculando distância
+
+** Criando dataframe vazio
+
+#+begin_src R
+capitais <- data.table::fread(file = "./clean/coord_capitais.csv") %>% arrange(ISO3C)
+conflitos <- data.table::fread(file = "./clean/coord_conflitos_capitais.csv") %>% arrange(ISO3C)
+
+df <- matrix(
+  nrow = capitais$longitude %>% length(),
+  ncol = conflitos$name %>% length
+) %>%
+  as.data.frame()
+
+names(df) <- conflitos$name
+df$ISO <- capitais$ISO3
+df <- df[,c("ISO", conflitos$name)] %>%
+  arrange(ISO)
+#+end_src
+
+#+RESULTS:
+:results:
+:end:
+
+
+
+** Função para calcular distância
+
+#+begin_src R
+distancia <- function(row_df = capitais, col_df = conflitos, units = "km", matrix_col, matrix_row) {
+  geodist::geodist(
+    x = row_df %>% filter(ISO3C == matrix_row) %>% select(latitude, longitude),
+    y = col_df %>% filter(name == matrix_col) %>% select(latitude, longitude),
+    measure = "geodesic"
+    ## Nfrom = col_df %>% filter(name == matrix_col) %>% select(latitude) %>% as.numeric(), # latitude of origin
+    ## Efrom = col_df %>% filter(name == matrix_col) %>% select(longitude) %>% as.numeric(), # latitude of origin
+    ## Nto = row_df %>% filter(ISO3C == matrix_row) %>% select(latitude) %>% as.numeric(), # latitude of origin
+    ## Eto = row_df %>% filter(ISO3C == matrix_row) %>% select(longitude) %>% as.numeric(), # latitude of origin
+    ## units = units
+  )[1]
+}
+#+end_src
+
+#+RESULTS:
+:results:
+:end:
+
+** Aplicando função
+
+#+begin_src R
+
+start <- sum(df$ISO == "") + 1
+for(i in start:nrow(df)){
+  for(j in 2:ncol(df)){
+    df[i,j] = distancia(
+      matrix_col = names(df)[j],
+      matrix_row = df$ISO[i]
+        )
+  }
+}
+#+end_src
+
+#+RESULTS:
+:results:
+:end:
+** Exportando
+
+#+begin_src R
+data.table::fwrite(df, file = "./raw/distancia_geodesica.csv")
+#+end_src
+
+#+RESULTS:
+:results:
+:end:
