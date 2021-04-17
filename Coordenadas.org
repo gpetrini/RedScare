@@ -111,6 +111,19 @@ conflicts <- conflicts %>%
              ifelse(Country, pais) ) %>%
   mutate(ISO3C = replace_na(ISO3C, "404"))
 
+# Pensei em algo nesse sentido para colocar ISO3 faltantes (não rodei ainda)
+## conflicts <- conflicts %>%
+##   mutate(ISO3C = case_when(
+##            pais == "East German" ~ "GERe",
+##            pais == "Czechoslovakia" ~ "oCZE",
+##            pais == "North and South Korea" ~ "South Korea",
+##            TRUE ~ ISO3C # Não sei se faz isso, mas a ideia dessa linha é manter todo o restante como antes
+##          ))
+
+# Acho que assim daria para substituir o valor das coordenadas da Koreia do Norte (não testei)
+## conflicts %>% filter(pais == "North Korea") %>% select(latitude) <- Val_Latitude
+## conflicts %>% filter(pais == "North Korea") %>% select(longitude) <- Val_Longitude
+    
 proxies <-conflicts %>% filter(ISO3C == "404") %>%
   mutate(capital = Proxy) %>% # Keep countries not found in dataset
   select(-c(latitude, longitude)) %>%
@@ -124,6 +137,7 @@ conflicts <- conflicts %>%
     name = paste0(capital, "_", Year %>% as.character() %>% str_sub(start=-2))
   ) %>%
   mutate(name = str_replace_all(name, " ", ""))
+    
 
 data.table::fwrite(conflicts, file = "./clean/coord_conflitos_capitais.csv")
 #+end_src
@@ -141,11 +155,14 @@ Joining, by = "ISO3C"
 capitais <- data.table::fread(file = "./clean/coord_capitais.csv") %>% arrange(ISO3C)
 conflitos <- data.table::fread(file = "./clean/coord_conflitos_capitais.csv") %>% arrange(ISO3C)
 
+repeticoes <- conflitos %>% group_by(name) %>% group_size() # Equivalente ao Cr do artigo (vezes que ocorreu)
+    
 df <- matrix(
   nrow = capitais$longitude %>% length(),
   ncol = conflitos$name %>% length
 ) %>%
   as.data.frame()
+
 
 names(df) <- conflitos$name
 df$ISO <- capitais$ISO3
