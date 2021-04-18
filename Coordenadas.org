@@ -13,6 +13,7 @@ library(tidyverse)
 library(tidygeocoder)
 library(tabulizer)
 library(geodist)
+library(data.table)
 #+end_src
 
 #+RESULTS:
@@ -25,6 +26,17 @@ library(geodist)
 ── [1mConflicts[22m ───────────────────────────────────────────────────────────────────────────────────────────────── tidyverse_conflicts() ──
 [31m✖[39m [34mdplyr[39m::[32mfilter()[39m masks [34mstats[39m::filter()
 [31m✖[39m [34mdplyr[39m::[32mlag()[39m    masks [34mstats[39m::lag()
+data.table 1.13.6 using 2 threads (see ?getDTthreads).  Latest news: r-datatable.com
+
+Attaching package: ‘data.table’
+
+The following objects are masked from ‘package:dplyr’:
+
+    between, first, last
+
+The following object is masked from ‘package:purrr’:
+
+    transpose
 :end:
 
 ** Capitais
@@ -156,18 +168,19 @@ capitais <- data.table::fread(file = "./clean/coord_capitais.csv") %>% arrange(I
 conflitos <- data.table::fread(file = "./clean/coord_conflitos_capitais.csv") %>% arrange(ISO3C)
 
 repeticoes <- conflitos %>% group_by(name) %>% group_size() # Equivalente ao Cr do artigo (vezes que ocorreu)
-    
+
 df <- matrix(
   nrow = capitais$longitude %>% length(),
-  ncol = conflitos$name %>% length
+  ncol = conflitos$name %>% unique() %>% length()
 ) %>%
   as.data.frame()
 
 
-names(df) <- conflitos$name
+names(df) <- conflitos$name %>% unique()
 df$ISO <- capitais$ISO3
 df <- df[,c("ISO", conflitos$name)] %>%
   arrange(ISO)
+df <- df %>% pivot_longer(!ISO,names_to = "Origem")
 #+end_src
 
 #+RESULTS:
@@ -176,14 +189,15 @@ df <- df[,c("ISO", conflitos$name)] %>%
 
 
 
+
 ** Função para calcular distância
 
 #+begin_src R
-distancia <- function(row_df = capitais, col_df = conflitos, units = "km", matrix_col, matrix_row) {
+distancia <- function(method = "geodesic", Destino, Origem) {
   geodist::geodist(
-    x = row_df %>% filter(ISO3C == matrix_row) %>% select(latitude, longitude),
-    y = col_df %>% filter(name == matrix_col) %>% select(latitude, longitude),
-    measure = "geodesic"
+    x = capitais %>% filter(ISO3C == Destino) %>% select(latitude, longitude),
+    y = conflitos %>% filter(name == Origem) %>% select(latitude, longitude),
+    measure = method
     ## Nfrom = col_df %>% filter(name == matrix_col) %>% select(latitude) %>% as.numeric(), # latitude of origin
     ## Efrom = col_df %>% filter(name == matrix_col) %>% select(longitude) %>% as.numeric(), # latitude of origin
     ## Nto = row_df %>% filter(ISO3C == matrix_row) %>% select(latitude) %>% as.numeric(), # latitude of origin
@@ -201,26 +215,48 @@ distancia <- function(row_df = capitais, col_df = conflitos, units = "km", matri
 
 #+begin_src R
 
-start <- sum(df$ISO == "") + 1
-for(i in start:nrow(df)){
-  for(j in 2:ncol(df)){
-    df[i,j] = distancia(
-      matrix_col = names(df)[j],
-      matrix_row = df$ISO[i]
-        )
-  }
-}
+## start <- sum(df$ISO == "") + 1
+## for(i in start:nrow(df)){
+##   for(j in 2:ncol(df)){
+##     df[i,j] = distancia(
+##       matrix_col = names(df)[j],
+##       matrix_row = df$ISO[i]
+##         )
+##   }
+## }
+
+df <- data.table(df)
+df[, Distancia := distancia(Origem = Origem, Destino = ISO), by = 1:nrow(df)]
+df <- df %>% as.data.frame()
 #+end_src
 
 #+RESULTS:
 :results:
 :end:
+
 ** Exportando
 
 #+begin_src R
+
+df <- df %>% distinct() %>% pivot_wider(names_from = Origem, values_from = Distancia)
+    
 data.table::fwrite(df, file = "./raw/distancia_geodesica.csv")
 #+end_src
 
 #+RESULTS:
 :results:
 :end:
+
+* Selecionando países
+
+* TODO
+
+- [ ] Criar ISO para países que deixaram de existir
+  + Alemanha ocidental
+  + Checoslovakia
+  + "Koreia do sul e do norte"
+- [ ] Adicionar coordenadas geográficas da Koreia do Norte
+- [ ] Elimininar NAs
+- [ ] Selecionar países
+- [ ] Associar distâncias ao resultado de interesse
+  + Como incluir distribuição aos países que deixaram de existir?
