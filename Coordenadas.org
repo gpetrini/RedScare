@@ -1,14 +1,14 @@
 #+OPTIONS: num:nil
 #+TITLE:  Coordenadas
 #+AUTHOR: Gabriel Petrini
-#+PROPERTY:header-args R :results output drawer :eval never-export :exports both :session *coords*
+#+PROPERTY:header-args R :results output drawer :eval never-export :exports both :session *coords* :tangle ./coordenadas.R
 #+PROPERTY:header-args python :results output drawer :eval never-export :exports both :session *coords*
 
 * Carregando pacotes e dados
 
 ** Pacotes
 
-#+begin_src R
+#+begin_src R  :tangle ./coordenadas.R
 library(tidyverse)
 library(tidygeocoder)
 library(tabulizer)
@@ -41,7 +41,7 @@ The following object is masked from ‘package:purrr’:
 
 ** Capitais
 
-#+begin_src R
+#+begin_src R :tangle ./coordenadas.R
 capitals <-maps::world.cities %>%
   filter(capital == "1") %>%
   select(country.etc, name) %>% # long and lat will be used in osm method
@@ -104,12 +104,19 @@ data.table::fwrite(capitals, file = "./clean/coord_capitais.csv")
 | 1989 | China                 |             |
 |------+-----------------------+-------------|
 
+
+#+name: foo-csv
+#+BEGIN_SRC elisp :var x=communist :wrap example
+(orgtbl-to-csv x nil)
+#+END_SRC
+
+
 ** Importando dados
 
 
 *Importante:* Chescolováquia, Alemanha ocidental e "Coreia do norte do sul precisam ser alterados"
 
-#+begin_src R :var conflicts=communist
+#+begin_src R :var conflicts=communist  :tangle ./coordenadas.R
 
 capitais <- data.table::fread(file = "./clean/coord_capitais.csv")
 
@@ -163,7 +170,7 @@ Joining, by = "ISO3C"
 
 ** Criando dataframe vazio
 
-#+begin_src R
+#+begin_src R  :tangle ./coordenadas.R
 capitais <- data.table::fread(file = "./clean/coord_capitais.csv") %>% arrange(ISO3C)
 conflitos <- data.table::fread(file = "./clean/coord_conflitos_capitais.csv") %>% arrange(ISO3C)
 
@@ -192,7 +199,7 @@ df <- df %>% pivot_longer(!ISO,names_to = "Origem")
 
 ** Função para calcular distância
 
-#+begin_src R
+#+begin_src R  :tangle ./coordenadas.R
 distancia <- function(method = "geodesic", Destino, Origem) {
   geodist::geodist(
     x = capitais %>% filter(ISO3C == Destino) %>% select(latitude, longitude),
@@ -213,7 +220,7 @@ distancia <- function(method = "geodesic", Destino, Origem) {
 
 ** Aplicando função
 
-#+begin_src R
+#+begin_src R  :tangle ./coordenadas.R
 
 ## start <- sum(df$ISO == "") + 1
 ## for(i in start:nrow(df)){
@@ -236,7 +243,7 @@ df <- df %>% as.data.frame()
 
 ** Exportando
 
-#+begin_src R
+#+begin_src R :tangle ./coordenadas.R
 
 df <- df %>% distinct() %>% pivot_wider(names_from = Origem, values_from = Distancia)
     
