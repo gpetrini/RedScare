@@ -271,7 +271,7 @@ data.table::fwrite(df, file = "./raw/distancia_geodesica.csv")
 
 ** Agrupando por regiões
 
-#+begin_src R
+#+begin_src R :tangle ./coordenadas.R
 df <- data.table::fread("./raw/distancia_geodesica.csv") %>% select(!c(value))
 df <- df %>% # Remove colunas que contêm apenas NA
   select(
@@ -310,7 +310,7 @@ df <- df %>% select(ISO, all_of(subset)) %>%
 
 ** Exportando
 
-#+begin_src R
+#+begin_src R  :tangle ./coordenadas.R
 data.table::fwrite(df, file = "./clean/conflitos_violentos_continentes.csv")
 #+end_src
 
@@ -484,7 +484,7 @@ data.table::fwrite(df, file = "./raw/distancia_geodesica_naoviolentos.csv")
 
 ** Agrupando por regiões
 
-#+begin_src R
+#+begin_src R :tangle ./coordenadas.R
 df <- data.table::fread("./raw/distancia_geodesica_naoviolentos.csv") %>% select(!c(value))
 df <- df %>% # Remove colunas que contêm apenas NA
   select(
@@ -523,7 +523,7 @@ df <- df %>% select(ISO, all_of(subset)) %>%
 
 ** Exportando
 
-#+begin_src R
+#+begin_src R  :tangle ./coordenadas.R
 data.table::fwrite(df, file = "./clean/conflitos_naoviolentos_continentes.csv")
 #+end_src
 
@@ -535,7 +535,7 @@ data.table::fwrite(df, file = "./clean/conflitos_naoviolentos_continentes.csv")
 
 ** Importando e combinando dataframes
 
-#+begin_src R
+#+begin_src R :tangle ./coordenadas.R
 data.table::fread("./clean/conflitos_violentos_continentes.csv") -> violentos
 data.table::fread("./clean/conflitos_naoviolentos_continentes.csv") -> naoviolentos
 
@@ -553,7 +553,7 @@ Joining, by = "ISO"
 ** Filtrando países (Tabela A.1)
 
 
-#+begin_src R
+#+begin_src R :tangle ./coordenadas.R
 paises <- c(
   "Australia",
   "Canada",
@@ -596,7 +596,7 @@ df <- df %>%
 
 ** Exportando
 
-#+begin_src R
+#+begin_src R :tangle ./coordenadas.R
 data.table::fwrite(df, file = "./clean/conflitos_filtrados_n_violentos_continentes.csv")
 #+end_src
 
@@ -622,7 +622,7 @@ W_{j} = dist^{-2}
 
 em que dist é medido em quilometros.
 
-#+begin_src R
+#+begin_src R :tangle ./coordenadas.R
 
 data.table::fread("./clean/conflitos_filtrados_n_violentos_continentes.csv") -> df
 
@@ -636,12 +636,7 @@ df <- df %>%
 data.table::fwrite(df, file = "./clean/coldwar_inv2_n_violentos_selecionados.csv")
 #+end_src
 
-#+RESULTS:
-:results:
-:end:
-
 * TODO
 
-- [ ] Associar distâncias ao resultado de interesse
+- [ ] Associar distâncias ao resultado de interesse (base piketty)
   + Como incluir distribuição aos países que deixaram de existir?
-- [ ] Calcular inverso da distância
