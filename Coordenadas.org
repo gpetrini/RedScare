@@ -636,6 +636,32 @@ df <- df %>%
 data.table::fwrite(df, file = "./clean/coldwar_inv2_n_violentos_selecionados.csv")
 #+end_src
 
+* Incluindo dados de distribuição
+
+** Script Lorena
+
+#+begin_src R
+one_percent_income <- read.csv2("./raw/WID_Data_11042021-185939.csv")
+
+# subseting
+year <- one_percent_income[, 1, drop = FALSE]
+income <- one_percent_income[, 2:19]
+
+# cleaning data
+# gsub() or nchar() as additional options
+colnames(income) <- substring(colnames(income), 52)
+
+# transforming in ISO3
+colnames(income) <- countrycode(colnames(income), origin = "country.name", destination = "iso3c")
+
+# joining subsets again
+income_concentration <- cbind(year, income)
+
+# exporting to csv
+write.csv(income_concentration, "./clean/income_concentration.csv")
+#+end_src
+
+
 * TODO
 
 - [ ] Associar distâncias ao resultado de interesse (base piketty)
