@@ -640,7 +640,7 @@ data.table::fwrite(df, file = "./clean/coldwar_inv2_n_violentos_selecionados.csv
 
 ** Script Lorena
 
-#+begin_src R
+#+begin_src R :tangle ./coordenadas.R
 one_percent_income <- read.csv2("./raw/WID_Data_11042021-185939.csv")
 
 # subseting
@@ -664,7 +664,7 @@ write.csv(income_concentration, "./clean/income_concentration.csv")
 
 ** Renomeando países para ISO
 
-#+begin_src R
+#+begin_src R :tangle ./coordenadas.R
 
 inicio <- "1945"
 fim <- "1989"
@@ -699,7 +699,7 @@ data.table::fwrite(df, paste0("./clean/diff_concentracao_", fim, "_", inicio, ".
 
 ** Unindo com distâncias
 
-#+begin_src R
+#+begin_src R :tangle ./coordenadas.R
 data.table::fread(paste0("./clean/diff_concentracao_", fim, "_", inicio, ".csv")) -> concentracao
 data.table::fread("./clean/coldwar_inv2_n_violentos_selecionados.csv") -> coldwar
 
@@ -714,7 +714,9 @@ data.table::fwrite(df, paste0("./clean/coldwar_concentracao_", fim, "_", inicio,
 Joining, by = "ISO"
 :end:
 
+
+* Unindo com dados do artigo de referência
+
 * TODO
 
-- [ ] Associar distâncias ao resultado de interesse (base piketty)
-  + Como incluir distribuição aos países que deixaram de existir?
+** WAIT Unir aos dados a serem passados pelos autores

@@ -411,3 +411,53 @@ df <- df %>%
   mutate(across(where(is.numeric), ~inv_dist2(.x)))
 
 data.table::fwrite(df, file = "./clean/coldwar_inv2_n_violentos_selecionados.csv")
+
+one_percent_income <- read.csv2("./raw/WID_Data_11042021-185939.csv")
+
+# subseting
+year <- one_percent_income[, 1, drop = FALSE]
+income <- one_percent_income[, 2:19]
+
+# cleaning data
+# gsub() or nchar() as additional options
+colnames(income) <- substring(colnames(income), 52)
+
+# transforming in ISO3
+colnames(income) <- countrycode(colnames(income), origin = "country.name", destination = "iso3c")
+
+# joining subsets again
+income_concentration <- cbind(year, income)
+
+# exporting to csv
+write.csv(income_concentration, "./clean/income_concentration.csv")
+
+inicio <- "1945"
+fim <- "1989"
+    
+df <- data.table::fread(
+                    './clean/income_concentration.csv',
+                    header=TRUE
+                    ) %>%
+  select(-c(V1)) %>%
+  mutate(Year = lubridate::ymd(Year, truncated = 2L)) %>%
+  rename(UK = United.Kingdom, `New Zealand` = New.Zealand) %>%
+  pivot_longer(!Year, names_to = "pais", values_to = "concentracao") %>% 
+  mutate(ISO = countrycode::countrycode(pais, origin ='country.name',destination ='iso3c', warn = FALSE)) %>%
+  select(-c(pais)) %>%
+  pivot_wider(names_from = ISO, values_from = concentracao) %>% # Preenchendo NAs para selecionar os primeiros
+  fill(everything(), .direction = "updown") %>% # Transpondo para criar primeiro e último valor
+  pivot_longer(-Year) %>%
+  pivot_wider(names_from = Year, values_from = value) %>%
+  select(name, starts_with(fim), starts_with(inicio)) %>%
+  setNames(c("ISO", "Fim", "Inicio")) %>%
+  mutate(Diff = Fim - Inicio)
+
+data.table::fwrite(df, paste0("./clean/diff_concentracao_", fim, "_", inicio, ".csv"))
+
+data.table::fread(paste0("./clean/diff_concentracao_", fim, "_", inicio, ".csv")) -> concentracao
+data.table::fread("./clean/coldwar_inv2_n_violentos_selecionados.csv") -> coldwar
+
+df <- coldwar %>%
+  left_join(concentracao)
+
+data.table::fwrite(df, paste0("./clean/coldwar_concentracao_", fim, "_", inicio, ".csv"))
