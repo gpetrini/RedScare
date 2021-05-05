@@ -1,0 +1,23 @@
+Year,Country,Proxy,Continente,ISO3C,pais,capital,latitude,longitude,name
+1945,Czechoslovakia,Prague,Europa,oCZE,Czech Republic,Prague,50.0874654,14.4212535,Prague_45_Europa
+1945,Bulgaria,"",Europa,BGR,Bulgaria,Sofia,42.6978634,23.3221789,Sofia_45_Europa
+1945,Yugoslavia,Belgrade,Europa,YUG,Serbia,Belgrade,44.8178131,20.4568974,Belgrade_45_Europa
+1945,Romania,"",Europa,ROU,Romania,Bucharest,44.4361414,26.1027202,Bucharest_45_Europa
+1947,Poland,"",Europa,POL,Poland,Warsaw,52.2319581,21.0067249,Warsaw_47_Europa
+1947,Hungary,"",Europa,HUN,Hungary,Budapest,47.48138955,19.1460941269125,Budapest_47_Europa
+1947,Bulgaria,"",Europa,BGR,Bulgaria,Sofia,42.6978634,23.3221789,Sofia_47_Europa
+1947,Romania,"",Europa,ROU,Romania,Bucharest,44.4361414,26.1027202,Bucharest_47_Europa
+1948,North Korea,"",Asia,PRK,Korea North,Pyongyang,39.032,125.75,Pyongyang_48_Asia
+1948,Hungary,"",Europa,HUN,Hungary,Budapest,47.48138955,19.1460941269125,Budapest_48_Europa
+1948,East Germany,Bonn,Europa,GERe,Germany,Bonn,50.735851,7.10066,Bonn_48_Europa
+1949,USSR,Moscow,Europa,RUS,Russia,Moscow,55.7504461,37.6174943,Moscow_49_Europa
+1949,North Korea,"",Asia,PRK,Korea North,Pyongyang,39.032,125.75,Pyongyang_49_Asia
+1949,East Germany,Bonn,Europa,GERe,Germany,Bonn,50.735851,7.10066,Bonn_49_Europa
+1949,China,"",Asia,CHN,China,Beijing,39.906217,116.3912757,Beijing_49_Asia
+1952,East Germany,Bonn,Europa,GERe,Germany,Bonn,50.735851,7.10066,Bonn_52_Europa
+1954,East Germany,Bonn,Europa,GERe,Germany,Bonn,50.735851,7.10066,Bonn_54_Europa
+1960,Cuba,"",Americas,CUB,Cuba,Havanna,23.135305,-82.3589631,Havanna_60_Americas
+1960,Cuba,"",Americas,CUB,Cuba,Havanna,23.135305,-82.3589631,Havanna_60_Americas
+1970,Chile,"",Americas,CHL,Chile,Santiago,-33.4377756,-70.6504502,Santiago_70_Americas
+1976,Vietinam,"",Asia,VNM,Vietnam,Ha Noi,21.0294498,105.8544441,HaNoi_76_Asia
+1977,Ethiopia,"",Africa,ETH,Ethiopia,Addis Abeba,9.0107934,38.7612525,AddisAbeba_77_Africa

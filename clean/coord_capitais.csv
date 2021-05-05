@@ -44,7 +44,7 @@ Congo,Brazzaville,-4.2694407,15.2712256,COG
 Barbados,Bridgetown,13.0977832,-59.6184184,BRB
 Belgium,Brussels,50.8465573,4.351697,BEL
 Romania,Bucharest,44.4361414,26.1027202,ROU
-Hungary,Budapest,47.4983815,19.0404707,HUN
+Hungary,Budapest,47.48138955,19.1460941269125,HUN
 Argentina,Buenos Aires,-34.6075682,-58.4370894,ARG
 Burundi,Bujumbura,-3.3638125,29.3675028,BDI
 Egypt,Cairo,30.0443879,31.2357257,EGY
@@ -122,7 +122,7 @@ Wallis and Futuna,Mata'utu,,,WLF
 Swaziland,Mbabane,-26.325745,31.144663,SWZ
 Mexico,Mexico City,19.4326296,-99.1331785,MEX
 Belarus,Minsk,53.902334,27.5618791,BLR
-Somalia,Mogadishu,2.0349312,45.3419183,SOM
+Somalia,Mogadishu,,,SOM
 Monaco,Monaco-Ville,43.7309697,7.4248152,MCO
 Liberia,Monrovia,6.328034,-10.797788,LBR
 Uruguay,Montevideo,-34.9058916,-56.1913095,URY
@@ -196,7 +196,7 @@ Bolivia,Sucre,-19.0477251,-65.2594306,BOL
 Northern Mariana Islands,Susupe,,,MNP
 Taiwan,Taipei,25.0375198,121.5636796,TWN
 Estonia,Tallinn,59.4372155,24.7453688,EST
-Uzbekistan,Tashkent,40.4807487,68.758868,UZB
+Uzbekistan,Tashkent,41.28104555,69.2605944004503,UZB
 Georgia,Tbilisi,41.6934591,44.8014495,GEO
 Honduras,Tegucigalpa,14.1056861,-87.204676,HND
 Iran,Tehran,35.6892523,51.3896004,IRN
