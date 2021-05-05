@@ -662,6 +662,58 @@ write.csv(income_concentration, "./clean/income_concentration.csv")
 #+end_src
 
 
+** Renomeando países para ISO
+
+#+begin_src R
+
+inicio <- "1945"
+fim <- "1989"
+    
+df <- data.table::fread(
+                    './clean/income_concentration.csv',
+                    header=TRUE
+                    ) %>%
+  select(-c(V1)) %>%
+  mutate(Year = lubridate::ymd(Year, truncated = 2L)) %>%
+  rename(UK = United.Kingdom, `New Zealand` = New.Zealand) %>%
+  pivot_longer(!Year, names_to = "pais", values_to = "concentracao") %>% 
+  mutate(ISO = countrycode::countrycode(pais, origin ='country.name',destination ='iso3c', warn = FALSE)) %>%
+  select(-c(pais)) %>%
+  pivot_wider(names_from = ISO, values_from = concentracao) %>% # Preenchendo NAs para selecionar os primeiros
+  fill(everything(), .direction = "updown") %>% # Transpondo para criar primeiro e último valor
+  pivot_longer(-Year) %>%
+  pivot_wider(names_from = Year, values_from = value) %>%
+  select(name, starts_with(fim), starts_with(inicio)) %>%
+  setNames(c("ISO", "Fim", "Inicio")) %>%
+  mutate(Diff = Fim - Inicio)
+
+data.table::fwrite(df, paste0("./clean/diff_concentracao_", fim, "_", inicio, ".csv"))
+    
+#+end_src
+
+#+RESULTS:
+:results:
+:end:
+
+
+
+** Unindo com distâncias
+
+#+begin_src R
+data.table::fread(paste0("./clean/diff_concentracao_", fim, "_", inicio, ".csv")) -> concentracao
+data.table::fread("./clean/coldwar_inv2_n_violentos_selecionados.csv") -> coldwar
+
+df <- coldwar %>%
+  left_join(concentracao)
+
+data.table::fwrite(df, paste0("./clean/coldwar_concentracao_", fim, "_", inicio, ".csv"))
+#+end_src
+
+#+RESULTS:
+:results:
+Joining, by = "ISO"
+:end:
+
 * TODO
 
 - [ ] Associar distâncias ao resultado de interesse (base piketty)
