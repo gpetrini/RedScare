@@ -39,6 +39,8 @@ The following object is masked from ‘package:purrr’:
     transpose
 :end:
 
+
+
 ** Capitais
 
 #+begin_src R :tangle ./coordenadas.R
@@ -717,6 +719,107 @@ Joining, by = "ISO"
 
 * Unindo com dados do artigo de referência
 
-* TODO
 
-** WAIT Unir aos dados a serem passados pelos autores
+** Dicionário de variáveis
+
+#+NAME: dicionario
+|--------------------------------+-----------------------------------+-------------|
+| Variavel                       | Descricao                         | Uso         |
+|--------------------------------+-----------------------------------+-------------|
+| year                           | Year                              | Input       |
+| code                           | ISO code                          | Explicativa |
+| cold_war_events                | Cold War Events                   | Consulta    |
+| pc                             | Communist Party Share of seats    | Explicativa |
+| wage_bargaining_centralization | Wage bargaining centralization    | Alternativa |
+| decentralized                  | Decentralized Bargain             | Explicativa |
+| union                          | Union Density                     | Explicativa |
+| Left_Executive                 | Left Executive                    | Alternativa |
+| polity2                        | Polity IV index (Polity2 index?)  | Explicativa |
+| war_risk                       | War risk                          | Alternativa |
+| cultural_distance_cw           | Cultural Distance                 | Alternativa |
+| strikes                        | Labor Strikes (?)                 | Alternativa |
+| top_1                          | Top 1% of income                  | Consulta    |
+| top_5                          | Top 5% of income                  | Resultado   |
+| top_10                         | Top 10% of income                 | Resultado   |
+| gini                           | Gini                              | Resultado   |
+| sstran                         | Social security transfers (% GDP) | Resultado   |
+| yr_sch                         | Years of Schooling                | Resultado   |
+|--------------------------------+-----------------------------------+-------------|
+
+** Importando dados
+
+#+begin_src R :var dicionario=dicionario  :tangle ./coordenadas.R
+names(dicionario) <- as.matrix(dicionario[1, ])
+dicionario <- dicionario[-1, ]
+dicionario[] <- lapply(dicionario, function(x) type.convert(as.character(x)))
+
+haven::read_dta('./raw/base_JCP_vR1_dez18.dta') -> df
+
+df %>%
+    data.table::fwrite(paste0('./clean/santanna_weller_full.csv'))
+    
+df <- df %>%
+  filter(year >= 1945) %>%
+  filter(year <= 1990) %>%
+  group_by(code) %>%
+  summarise(across(where(is.numeric), ~mean(.x, rm.na = TRUE))) %>%
+  ungroup() %>%
+  select(all_of(dicionario$Variavel)) %>%
+  select(-c(year))
+
+df %>%
+    data.table::fwrite(paste0('./clean/santanna_weller_subset_media.csv'))
+
+flags <- dicionario %>% select(Uso) %>% filter(Uso != "Input") %>% unique() %>% pull() %>% as.character()
+
+exporter <- function(df, flag){
+  dicionario %>% filter(Uso == flag) %>% select(Variavel) %>% pull() %>% as.character() -> subset
+  subset <- append("code", subset)
+  
+  df %>%
+    select(all_of(subset)) %>%
+    data.table::fwrite(paste0('./clean/santanna_weller_', flag, '_media.csv'))
+}
+
+for(flag in flags){exporter(df = df, flag = flag)}
+
+#+end_src
+
+#+RESULTS:
+:results:
+:end:
+
+
+
+** Unindo as bases
+
+*Importante:* A base de dados de Santanna e Weller que será mesclada é a que esta no arquivo =santanna_weller_Explicativa_medias.csv= em que estão os dados médios.
+
+#+begin_src R
+
+data.table::fread(paste0("./clean/coldwar_concentracao_", fim, "_", inicio, ".csv")) -> df
+data.table::fread("./clean/santanna_weller_Explicativa_media.csv") -> santanna_weller
+santanna_weller <- santanna_weller %>%
+  rename(ISO = code)
+
+df <- df %>%
+  left_join(santanna_weller)
+
+data.table::fwrite(df, './clean/coldwar_concentracao_santanna_weller.csv')
+    
+#+end_src
+
+#+RESULTS:
+:results:
+Joining, by = "ISO"
+:end:
+
+
+
+
+
+* TODOs
+
+
+** TODO Conferir NAs da base
+- [ ] Como preencher se forem faltantes

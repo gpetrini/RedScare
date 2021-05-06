@@ -1,4 +1,4 @@
-# Data frame - Red Scare
+
 # Author: Lorena Dourado
 
 # loading packages
