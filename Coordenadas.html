@@ -1,0 +1,2138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2021-06-07 seg 17:55 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Coordenadas</title>
+<meta name="author" content="Gabriel Petrini" />
+<meta name="generator" content="Org Mode" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: auto;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline; margin-top: 14px;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { width: 90%; }
+  /*]]>*/-->
+</style>
+<link rel="stylesheet" type="text/css" href="https://fniessen.github.io/org-html-themes/src/bigblow_theme/css/htmlize.css"/>
+<link rel="stylesheet" type="text/css" href="https://fniessen.github.io/org-html-themes/src/bigblow_theme/css/bigblow.css"/>
+<link rel="stylesheet" type="text/css" href="https://fniessen.github.io/org-html-themes/src/bigblow_theme/css/hideshow.css"/>
+<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/bigblow_theme/js/jquery-1.11.0.min.js"></script>
+<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/bigblow_theme/js/jquery-ui-1.10.2.min.js"></script>
+<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/bigblow_theme/js/jquery.localscroll-min.js"></script>
+<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/bigblow_theme/js/jquery.scrollTo-1.4.3.1-min.js"></script>
+<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/bigblow_theme/js/jquery.zclip.min.js"></script>
+<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/bigblow_theme/js/bigblow.js"></script>
+<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/bigblow_theme/js/hideshow.js"></script>
+<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/lib/js/jquery.stickytableheaders.min.js"></script>
+<script type="text/javascript">
+// @license magnet:?xt=urn:btih:e95b018ef3580986a04669f1b5879592219e2a7a&dn=public-domain.txt Public Domain
+<!--/*--><![CDATA[/*><!--*/
+     function CodeHighlightOn(elem, id)
+     {
+       var target = document.getElementById(id);
+       if(null != target) {
+         elem.classList.add("code-highlighted");
+         target.classList.add("code-highlighted");
+       }
+     }
+     function CodeHighlightOff(elem, id)
+     {
+       var target = document.getElementById(id);
+       if(null != target) {
+         elem.classList.remove("code-highlighted");
+         target.classList.remove("code-highlighted");
+       }
+     }
+    /*]]>*///-->
+// @license-end
+</script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        displayAlign: "center",
+        displayIndent: "0em",
+
+        "HTML-CSS": { scale: 100,
+                        linebreaks: { automatic: "false" },
+                        webFont: "TeX"
+                       },
+        SVG: {scale: 100,
+              linebreaks: { automatic: "false" },
+              font: "TeX"},
+        NativeMML: {scale: 100},
+        TeX: { equationNumbers: {autoNumber: "AMS"},
+               MultLineWidth: "85%",
+               TagSide: "right",
+               TagIndent: ".8em"
+             }
+});
+</script>
+<script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_HTML"></script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">Coordenadas</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#org2bfc348">Carregando pacotes e dados</a>
+<ul>
+<li><a href="#org28ba4af">Pacotes</a></li>
+<li><a href="#orgfc5cfb0">Capitais</a></li>
+</ul>
+</li>
+<li><a href="#orga84bdef">Conflitos violentos</a>
+<ul>
+<li><a href="#orgabb14a0">Tabela no texto (p. 366-7)</a></li>
+<li><a href="#org083db74">Importando dados</a></li>
+<li><a href="#orgeb2ca60">Criando dataframe vazio</a></li>
+<li><a href="#org6517c49">Função para calcular distância</a></li>
+<li><a href="#org82ab223">Aplicando função</a></li>
+<li><a href="#orga6576e2">Exportando</a></li>
+<li><a href="#org9f115cc">Agrupando por regiões</a></li>
+<li><a href="#org4dce748">Exportando</a></li>
+</ul>
+</li>
+<li><a href="#orga07f125">Conflitos não-violentos</a>
+<ul>
+<li><a href="#orga37ef1a">Tabela no texto (p. 2 (apêndice))</a></li>
+<li><a href="#org955a260">Importando dados</a></li>
+<li><a href="#org0a79f67">Criando dataframe vazio</a></li>
+<li><a href="#orgd37980c">Aplicando função</a></li>
+<li><a href="#org61e6acb">Exportando</a></li>
+<li><a href="#org5d990c7">Agrupando por regiões</a></li>
+<li><a href="#orgf95ce6c">Exportando</a></li>
+</ul>
+</li>
+<li><a href="#org778feeb">Selecionando países</a>
+<ul>
+<li><a href="#org6072f83">Importando e combinando dataframes</a></li>
+<li><a href="#org871d3a4">Filtrando países (Tabela A.1)</a></li>
+<li><a href="#org3e9f5d7">Exportando</a></li>
+</ul>
+</li>
+<li><a href="#org1f3a829">Calculando inverso da distância</a></li>
+<li><a href="#org98d79df">Incluindo dados de distribuição</a>
+<ul>
+<li><a href="#orge92f21a">Script Lorena</a></li>
+<li><a href="#orgb4ddb05">Renomeando países para ISO</a></li>
+<li><a href="#orgb92c672">Unindo com distâncias</a></li>
+</ul>
+</li>
+<li><a href="#org653e40a">Unindo com dados do artigo de referência</a>
+<ul>
+<li><a href="#org1129ae3">Dicionário de variáveis</a></li>
+<li><a href="#org587c7ad">Importando dados</a></li>
+<li><a href="#org2f0a94d">Unindo as bases</a></li>
+</ul>
+</li>
+<li><a href="#org54068cb">Calibragem</a>
+<ul>
+<li><a href="#org7407cb7">Calibrando conflitos</a></li>
+<li><a href="#orgf581f47">Calibrando outras variáveis</a></li>
+</ul>
+</li>
+<li><a href="#org22cecd5">Tabela verdade e minimização</a>
+<ul>
+<li><a href="#orga49d8b5">Maior concentração (1989 - 1945 &gt; 0)</a>
+<ul>
+<li><a href="#org1ae3755">Tabela verdade</a></li>
+<li><a href="#orgd8eb8da">Solução conservadora</a></li>
+<li><a href="#org2517bf9">Solução parsimoniosa</a></li>
+</ul>
+</li>
+<li><a href="#org2f4c463">Menor concentração (1989 - 1945 &lt; 0)</a>
+<ul>
+<li><a href="#org0b5434f">Tabela verdade</a></li>
+<li><a href="#orgc19a9c5">Solução conservadora</a></li>
+<li><a href="#org98f5bcd">Solução parsimoniosa</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#orga8ef9e0">TODOs</a>
+<ul>
+<li><a href="#org168ede7"><span class="todo TODO">TODO</span> Conferir NAs da base</a></li>
+<li><a href="#orgadaafa5"><span class="todo TODO">TODO</span> Decidir se as medidas de centralidade são sempre as médias</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org2bfc348" class="outline-2">
+<h2 id="org2bfc348">Carregando pacotes e dados</h2>
+<div class="outline-text-2" id="text-org2bfc348">
+</div>
+<div id="outline-container-org28ba4af" class="outline-3">
+<h3 id="org28ba4af">Pacotes</h3>
+</div>
+
+<div id="outline-container-orgfc5cfb0" class="outline-3">
+<h3 id="orgfc5cfb0">Capitais</h3>
+<div class="outline-text-3" id="text-orgfc5cfb0">
+<div class="org-src-container">
+<pre class="src src-R">capitals <span style="color: #f78c6c;">&lt;-</span>maps::world.cities <span style="color: #f78c6c;">%&gt;%</span>
+  <span style="color: #82aaff;">filter</span><span style="color: #f78c6c;">(</span>capital <span style="color: #f78c6c;">==</span> <span style="color: #c3e88d;">"1"</span><span style="color: #f78c6c;">)</span> <span style="color: #f78c6c;">%&gt;%</span>
+  <span style="color: #82aaff;">select</span><span style="color: #f78c6c;">(</span>country.etc, name<span style="color: #f78c6c;">)</span> <span style="color: #f78c6c;">%&gt;%</span> <span style="color: #556369;"># </span><span style="color: #556369;">long and lat will be used in osm method</span>
+  <span style="color: #82aaff;">rename</span><span style="color: #f78c6c;">(</span>pais <span style="color: #f78c6c;">=</span> country.etc, capital <span style="color: #f78c6c;">=</span> name<span style="color: #f78c6c;">)</span> <span style="color: #f78c6c;">%&gt;%</span>
+  <span style="color: #82aaff;">geocode</span><span style="color: #f78c6c;">(</span>city <span style="color: #f78c6c;">=</span> capital, country <span style="color: #f78c6c;">=</span> pais, method <span style="color: #f78c6c;">=</span> <span style="color: #c3e88d;">'osm'</span>, lat <span style="color: #f78c6c;">=</span> latitude, long <span style="color: #f78c6c;">=</span> longitude<span style="color: #f78c6c;">)</span> <span style="color: #f78c6c;">%&gt;%</span>
+  <span style="color: #82aaff;">mutate</span><span style="color: #f78c6c;">(</span>ISO3C <span style="color: #f78c6c;">=</span> countrycode::<span style="color: #82aaff;">countrycode</span><span style="color: #f78c6c;">(</span>pais, origin <span style="color: #f78c6c;">=</span><span style="color: #c3e88d;">'country.name'</span>,destination <span style="color: #f78c6c;">=</span><span style="color: #c3e88d;">'iso3c'</span>, warn <span style="color: #f78c6c;">=</span> <span style="color: #c792ea;">FALSE</span><span style="color: #f78c6c;">))</span>
+
+data.table::<span style="color: #82aaff;">fwrite</span><span style="color: #f78c6c;">(</span>capitals, file <span style="color: #f78c6c;">=</span> <span style="color: #c3e88d;">"./clean/coord_capitais.csv"</span><span style="color: #f78c6c;">)</span>
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orga84bdef" class="outline-2">
+<h2 id="orga84bdef">Conflitos violentos</h2>
+<div class="outline-text-2" id="text-orga84bdef">
+</div>
+<div id="outline-container-orgabb14a0" class="outline-3">
+<h3 id="orgabb14a0">Tabela no texto (p. 366-7)</h3>
+<div class="outline-text-3" id="text-orgabb14a0">
+<table id="org3414142" border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+<caption class="t-above"><span class="table-number">Table 1:</span> Communist-led events</caption>
+
+<colgroup>
+<col  class="org-right" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-right">1945</td>
+<td class="org-left">Poland</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">Europa</td>
+</tr>
+
+<tr>
+<td class="org-right">1945</td>
+<td class="org-left">Austria</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">Europa</td>
+</tr>
+
+<tr>
+<td class="org-right">1946</td>
+<td class="org-left">North Korea</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">Asia</td>
+</tr>
+
+<tr>
+<td class="org-right">1946</td>
+<td class="org-left">China</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">Asia</td>
+</tr>
+
+<tr>
+<td class="org-right">1946</td>
+<td class="org-left">Greece</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">Europa</td>
+</tr>
+
+<tr>
+<td class="org-right">1947</td>
+<td class="org-left">Bulgaria</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">Europa</td>
+</tr>
+
+<tr>
+<td class="org-right">1948</td>
+<td class="org-left">Czechoslovakia</td>
+<td class="org-left">Prague</td>
+<td class="org-left">Europa</td>
+</tr>
+
+<tr>
+<td class="org-right">1948</td>
+<td class="org-left">East Germany</td>
+<td class="org-left">Bonn</td>
+<td class="org-left">Europa</td>
+</tr>
+
+<tr>
+<td class="org-right">1948</td>
+<td class="org-left">East Germany</td>
+<td class="org-left">Bonn</td>
+<td class="org-left">Europa</td>
+</tr>
+
+<tr>
+<td class="org-right">1948</td>
+<td class="org-left">China</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">Asia</td>
+</tr>
+
+<tr>
+<td class="org-right">1949</td>
+<td class="org-left">China</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">Asia</td>
+</tr>
+
+<tr>
+<td class="org-right">1950</td>
+<td class="org-left">South Korea</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">Asia</td>
+</tr>
+
+<tr>
+<td class="org-right">1950</td>
+<td class="org-left">China</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">Asia</td>
+</tr>
+
+<tr>
+<td class="org-right">1950</td>
+<td class="org-left">North and South Korea</td>
+<td class="org-left">South Korea</td>
+<td class="org-left">Asia</td>
+</tr>
+
+<tr>
+<td class="org-right">1953</td>
+<td class="org-left">East Germany</td>
+<td class="org-left">Bonn</td>
+<td class="org-left">Europa</td>
+</tr>
+
+<tr>
+<td class="org-right">1954</td>
+<td class="org-left">Vietinam</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">Asia</td>
+</tr>
+
+<tr>
+<td class="org-right">1954</td>
+<td class="org-left">Vietinam</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">Asia</td>
+</tr>
+
+<tr>
+<td class="org-right">1955</td>
+<td class="org-left">North and South Korea</td>
+<td class="org-left">South Korea</td>
+<td class="org-left">Asia</td>
+</tr>
+
+<tr>
+<td class="org-right">1956</td>
+<td class="org-left">Poland</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">Europa</td>
+</tr>
+
+<tr>
+<td class="org-right">1956</td>
+<td class="org-left">Hungary</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">Europa</td>
+</tr>
+
+<tr>
+<td class="org-right">1958</td>
+<td class="org-left">Taiwan</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">Asia</td>
+</tr>
+
+<tr>
+<td class="org-right">1959</td>
+<td class="org-left">Cuba</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">Americas</td>
+</tr>
+
+<tr>
+<td class="org-right">1960</td>
+<td class="org-left">East Germany</td>
+<td class="org-left">Bonn</td>
+<td class="org-left">Europa</td>
+</tr>
+
+<tr>
+<td class="org-right">1961</td>
+<td class="org-left">East Germany</td>
+<td class="org-left">Bonn</td>
+<td class="org-left">Europa</td>
+</tr>
+
+<tr>
+<td class="org-right">1962</td>
+<td class="org-left">Laos</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">Asia</td>
+</tr>
+
+<tr>
+<td class="org-right">1962</td>
+<td class="org-left">Cuba</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">Americas</td>
+</tr>
+
+<tr>
+<td class="org-right">1968</td>
+<td class="org-left">Vietinam</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">Asia</td>
+</tr>
+
+<tr>
+<td class="org-right">1968</td>
+<td class="org-left">Czechoslovakia</td>
+<td class="org-left">Prague</td>
+<td class="org-left">Europa</td>
+</tr>
+
+<tr>
+<td class="org-right">1969</td>
+<td class="org-left">North Korea</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">Asia</td>
+</tr>
+
+<tr>
+<td class="org-right">1969</td>
+<td class="org-left">Libya</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">Africa</td>
+</tr>
+
+<tr>
+<td class="org-right">1970</td>
+<td class="org-left">Cambodia</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">Asia</td>
+</tr>
+
+<tr>
+<td class="org-right">1975</td>
+<td class="org-left">Cambodia</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">Asia</td>
+</tr>
+
+<tr>
+<td class="org-right">1975</td>
+<td class="org-left">Vietinam</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">Asia</td>
+</tr>
+
+<tr>
+<td class="org-right">1975</td>
+<td class="org-left">Laos</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">Asia</td>
+</tr>
+
+<tr>
+<td class="org-right">1978</td>
+<td class="org-left">Afghanistan</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">Asia</td>
+</tr>
+
+<tr>
+<td class="org-right">1979</td>
+<td class="org-left">Nicaragua</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">Americas</td>
+</tr>
+
+<tr>
+<td class="org-right">1979</td>
+<td class="org-left">El Salvador</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">Americas</td>
+</tr>
+
+<tr>
+<td class="org-right">1979</td>
+<td class="org-left">Afghanistan</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">Asia</td>
+</tr>
+
+<tr>
+<td class="org-right">1981</td>
+<td class="org-left">Poland</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">Europa</td>
+</tr>
+
+<tr>
+<td class="org-right">1989</td>
+<td class="org-left">China</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">Asia</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+
+<div id="outline-container-org083db74" class="outline-3">
+<h3 id="org083db74">Importando dados</h3>
+<div class="outline-text-3" id="text-org083db74">
+<div class="org-src-container">
+<pre class="src src-R">
+capitais <span style="color: #f78c6c;">&lt;-</span> data.table::<span style="color: #82aaff;">fread</span><span style="color: #f78c6c;">(</span>file <span style="color: #f78c6c;">=</span> <span style="color: #c3e88d;">"./clean/coord_capitais.csv"</span><span style="color: #f78c6c;">)</span>
+
+conflicts <span style="color: #f78c6c;">&lt;-</span> conflicts <span style="color: #f78c6c;">%&gt;%</span>
+  <span style="color: #82aaff;">rename</span><span style="color: #f78c6c;">(</span>Year <span style="color: #f78c6c;">=</span> V1, Country <span style="color: #f78c6c;">=</span> V2, Proxy <span style="color: #f78c6c;">=</span> V3, Continente <span style="color: #f78c6c;">=</span> V4<span style="color: #f78c6c;">)</span> <span style="color: #f78c6c;">%&gt;%</span>
+  <span style="color: #82aaff;">mutate</span><span style="color: #f78c6c;">(</span>ISO3C <span style="color: #f78c6c;">=</span> countrycode::<span style="color: #82aaff;">countrycode</span><span style="color: #f78c6c;">(</span>Country, origin <span style="color: #f78c6c;">=</span><span style="color: #c3e88d;">'country.name'</span>,destination <span style="color: #f78c6c;">=</span><span style="color: #c3e88d;">'iso3c'</span>, warn <span style="color: #f78c6c;">=</span> <span style="color: #c792ea;">FALSE</span><span style="color: #f78c6c;">))</span> <span style="color: #f78c6c;">%&gt;%</span>
+  <span style="color: #82aaff;">left_join</span><span style="color: #f78c6c;">(</span>capitais<span style="color: #f78c6c;">)</span> <span style="color: #f78c6c;">%&gt;%</span>
+  <span style="color: #82aaff;">mutate</span><span style="color: #f78c6c;">(</span>pais <span style="color: #f78c6c;">=</span> <span style="color: #556369;"># </span><span style="color: #556369;">Keep countries not found in dataset</span>
+           pais <span style="color: #f78c6c;">%&gt;%</span>
+             is.na <span style="color: #f78c6c;">%&gt;%</span>
+             <span style="color: #82aaff;">ifelse</span><span style="color: #f78c6c;">(</span>Country, pais<span style="color: #f78c6c;">)</span> <span style="color: #f78c6c;">)</span> <span style="color: #f78c6c;">%&gt;%</span>
+  <span style="color: #82aaff;">mutate</span><span style="color: #f78c6c;">(</span>ISO3C <span style="color: #f78c6c;">=</span> <span style="color: #82aaff;">replace_na</span><span style="color: #f78c6c;">(</span>ISO3C, <span style="color: #c3e88d;">"404"</span><span style="color: #f78c6c;">))</span> <span style="color: #f78c6c;">%&gt;%</span>
+  <span style="color: #82aaff;">mutate</span><span style="color: #f78c6c;">(</span>Continente <span style="color: #f78c6c;">=</span> <span style="color: #82aaff;">factor</span><span style="color: #f78c6c;">(</span>Continente<span style="color: #f78c6c;">))</span>
+
+
+<span style="color: #556369;">## </span><span style="color: #556369;">proxies &lt;-conflicts %&gt;% filter(ISO3C == "404") %&gt;%</span>
+<span style="color: #556369;">##   </span><span style="color: #556369;">mutate(capital = case_when())</span>
+<span style="color: #556369;">##   </span><span style="color: #556369;">mutate(capital = Proxy) %&gt;% # Keep countries not found in dataset</span>
+<span style="color: #556369;">##   </span><span style="color: #556369;">## select(-c(latitude, longitude)) %&gt;%</span>
+<span style="color: #556369;">##   </span><span style="color: #556369;">geocode(city = capital, method = 'osm', lat = latitude, long = longitude)</span>
+
+conflicts <span style="color: #f78c6c;">&lt;-</span> conflicts <span style="color: #f78c6c;">%&gt;%</span>
+  <span style="color: #82aaff;">mutate</span><span style="color: #f78c6c;">(</span>capital <span style="color: #f78c6c;">=</span> <span style="color: #82aaff;">case_when</span><span style="color: #f78c6c;">(</span>
+         ISO3C <span style="color: #f78c6c;">==</span> <span style="color: #c3e88d;">"404"</span> ~ Proxy,
+         <span style="color: #c792ea;">TRUE</span> ~ capital<span style="color: #f78c6c;">))</span> <span style="color: #f78c6c;">%&gt;%</span>
+  <span style="color: #82aaff;">mutate</span><span style="color: #f78c6c;">(</span>ISO3C <span style="color: #f78c6c;">=</span> <span style="color: #82aaff;">case_when</span><span style="color: #f78c6c;">(</span>
+           pais <span style="color: #f78c6c;">==</span> <span style="color: #c3e88d;">"East Germany"</span> ~ <span style="color: #c3e88d;">"GERe"</span>,
+           pais <span style="color: #f78c6c;">==</span> <span style="color: #c3e88d;">"Czechoslovakia"</span> ~ <span style="color: #c3e88d;">"oCZE"</span>,
+           pais <span style="color: #f78c6c;">==</span> <span style="color: #c3e88d;">"North and South Korea"</span> ~ <span style="color: #c3e88d;">"PRK"</span>,
+           <span style="color: #c792ea;">TRUE</span> ~ ISO3C <span style="color: #556369;"># </span><span style="color: #556369;">N&#227;o sei se faz isso, mas a ideia dessa linha &#233; manter todo o restante como antes</span>
+         <span style="color: #f78c6c;">))</span> <span style="color: #f78c6c;">%&gt;%</span>
+  <span style="color: #82aaff;">mutate</span><span style="color: #f78c6c;">(</span>pais <span style="color: #f78c6c;">=</span> <span style="color: #82aaff;">case_when</span><span style="color: #f78c6c;">(</span> <span style="color: #556369;"># </span><span style="color: #556369;">Atualizando nome dos pa&#237;ses para preencher coordenadas faltantes</span>
+           pais <span style="color: #f78c6c;">==</span> <span style="color: #c3e88d;">"East Germany"</span> ~ <span style="color: #c3e88d;">"Germany"</span>,
+           pais <span style="color: #f78c6c;">==</span> <span style="color: #c3e88d;">"Czechoslovakia"</span> ~ <span style="color: #c3e88d;">"Czech Republic"</span>,
+           pais <span style="color: #f78c6c;">==</span> <span style="color: #c3e88d;">"North and South Korea"</span> ~ <span style="color: #c3e88d;">"North Korea"</span>,
+           <span style="color: #c792ea;">TRUE</span> ~ pais
+         <span style="color: #f78c6c;">))</span> <span style="color: #f78c6c;">%&gt;%</span>
+  <span style="color: #82aaff;">select</span><span style="color: #f78c6c;">(</span><span style="color: #f78c6c;">-</span><span style="color: #82aaff;">c</span><span style="color: #f78c6c;">(</span>latitude, longitude<span style="color: #f78c6c;">))</span> <span style="color: #f78c6c;">%&gt;%</span>
+  <span style="color: #82aaff;">geocode</span><span style="color: #f78c6c;">(</span>city <span style="color: #f78c6c;">=</span> capital, country <span style="color: #f78c6c;">=</span> pais, method <span style="color: #f78c6c;">=</span> <span style="color: #c3e88d;">'osm'</span>, lat <span style="color: #f78c6c;">=</span> latitude, long <span style="color: #f78c6c;">=</span> longitude<span style="color: #f78c6c;">)</span>
+  
+    
+conflicts <span style="color: #f78c6c;">&lt;-</span> conflicts <span style="color: #f78c6c;">%&gt;%</span>
+  <span style="color: #82aaff;">mutate</span><span style="color: #f78c6c;">(</span>latitude  <span style="color: #f78c6c;">=</span> <span style="color: #82aaff;">case_when</span><span style="color: #f78c6c;">(</span>
+           ISO3C <span style="color: #f78c6c;">==</span> <span style="color: #c3e88d;">"PRK"</span> ~ <span style="color: #f78c6c; font-weight: bold;">39.032</span>, <span style="color: #556369;"># </span><span style="color: #556369;">https://pt.db-city.com/Coreia-do-Norte--Pyongyang</span>
+           <span style="color: #c792ea;">TRUE</span> ~ <span style="color: #82aaff;">as.numeric</span><span style="color: #f78c6c;">(</span>latitude<span style="color: #f78c6c;">)))</span>
+conflicts <span style="color: #f78c6c;">&lt;-</span> conflicts <span style="color: #f78c6c;">%&gt;%</span>
+  <span style="color: #82aaff;">mutate</span><span style="color: #f78c6c;">(</span>longitude  <span style="color: #f78c6c;">=</span> <span style="color: #82aaff;">case_when</span><span style="color: #f78c6c;">(</span>
+           ISO3C <span style="color: #f78c6c;">==</span> <span style="color: #c3e88d;">"PRK"</span> ~ <span style="color: #f78c6c; font-weight: bold;">125.75</span>, <span style="color: #556369;"># </span><span style="color: #556369;">https://pt.db-city.com/Coreia-do-Norte--Pyongyang</span>
+           <span style="color: #c792ea;">TRUE</span> ~ <span style="color: #82aaff;">as.numeric</span><span style="color: #f78c6c;">(</span>longitude<span style="color: #f78c6c;">)))</span>
+
+
+conflicts <span style="color: #f78c6c;">&lt;-</span> conflicts <span style="color: #f78c6c;">%&gt;%</span>
+  <span style="color: #82aaff;">arrange</span><span style="color: #f78c6c;">(</span>Year<span style="color: #f78c6c;">)</span> <span style="color: #f78c6c;">%&gt;%</span>
+  <span style="color: #82aaff;">mutate</span><span style="color: #f78c6c;">(</span>
+    name <span style="color: #f78c6c;">=</span> <span style="color: #82aaff;">paste0</span><span style="color: #f78c6c;">(</span>capital, <span style="color: #c3e88d;">"_"</span>, Year <span style="color: #f78c6c;">%&gt;%</span> <span style="color: #82aaff;">as.character</span><span style="color: #f78c6c;">()</span> <span style="color: #f78c6c;">%&gt;%</span> <span style="color: #82aaff;">str_sub</span><span style="color: #f78c6c;">(</span>start<span style="color: #f78c6c;">=-</span><span style="color: #f78c6c; font-weight: bold;">2</span><span style="color: #f78c6c;">)</span>, <span style="color: #c3e88d;">"_"</span>, Continente<span style="color: #f78c6c;">)</span>
+  <span style="color: #f78c6c;">)</span> <span style="color: #f78c6c;">%&gt;%</span>
+  <span style="color: #82aaff;">mutate</span><span style="color: #f78c6c;">(</span>name <span style="color: #f78c6c;">=</span> <span style="color: #82aaff;">str_replace_all</span><span style="color: #f78c6c;">(</span>name, <span style="color: #c3e88d;">" "</span>, <span style="color: #c3e88d;">""</span><span style="color: #f78c6c;">))</span>
+    
+
+data.table::<span style="color: #82aaff;">fwrite</span><span style="color: #f78c6c;">(</span>conflicts, file <span style="color: #f78c6c;">=</span> <span style="color: #c3e88d;">"./clean/coord_conflitos_violentos.csv"</span><span style="color: #f78c6c;">)</span>
+</pre>
+</div>
+
+<p>
+Joining, by = &ldquo;ISO3C&rdquo;
+</p>
+</div>
+</div>
+
+
+
+<div id="outline-container-orgeb2ca60" class="outline-3">
+<h3 id="orgeb2ca60">Criando dataframe vazio</h3>
+<div class="outline-text-3" id="text-orgeb2ca60">
+<div class="org-src-container">
+<pre class="src src-R">capitais <span style="color: #f78c6c;">&lt;-</span> data.table::<span style="color: #82aaff;">fread</span><span style="color: #f78c6c;">(</span>file <span style="color: #f78c6c;">=</span> <span style="color: #c3e88d;">"./clean/coord_capitais.csv"</span><span style="color: #f78c6c;">)</span> <span style="color: #f78c6c;">%&gt;%</span> <span style="color: #82aaff;">arrange</span><span style="color: #f78c6c;">(</span>ISO3C<span style="color: #f78c6c;">)</span>
+conflitos <span style="color: #f78c6c;">&lt;-</span> data.table::<span style="color: #82aaff;">fread</span><span style="color: #f78c6c;">(</span>file <span style="color: #f78c6c;">=</span> <span style="color: #c3e88d;">"./clean/coord_conflitos_violentos.csv"</span><span style="color: #f78c6c;">)</span> <span style="color: #f78c6c;">%&gt;%</span> <span style="color: #82aaff;">arrange</span><span style="color: #f78c6c;">(</span>ISO3C<span style="color: #f78c6c;">)</span>
+
+repeticoes <span style="color: #f78c6c;">&lt;-</span> conflitos <span style="color: #f78c6c;">%&gt;%</span> <span style="color: #82aaff;">group_by</span><span style="color: #f78c6c;">(</span>name<span style="color: #f78c6c;">)</span> <span style="color: #f78c6c;">%&gt;%</span> <span style="color: #82aaff;">group_size</span><span style="color: #f78c6c;">()</span> <span style="color: #556369;"># </span><span style="color: #556369;">Equivalente ao Cr do artigo (vezes que ocorreu)</span>
+
+df <span style="color: #f78c6c;">&lt;-</span> <span style="color: #82aaff;">matrix</span><span style="color: #f78c6c;">(</span>
+  nrow <span style="color: #f78c6c;">=</span> capitais$longitude <span style="color: #f78c6c;">%&gt;%</span> <span style="color: #82aaff;">length</span><span style="color: #f78c6c;">()</span>,
+  ncol <span style="color: #f78c6c;">=</span> conflitos$name <span style="color: #f78c6c;">%&gt;%</span> <span style="color: #82aaff;">unique</span><span style="color: #f78c6c;">()</span> <span style="color: #f78c6c;">%&gt;%</span> <span style="color: #82aaff;">length</span><span style="color: #f78c6c;">()</span>
+<span style="color: #f78c6c;">)</span> <span style="color: #f78c6c;">%&gt;%</span>
+  <span style="color: #82aaff;">as.data.frame</span><span style="color: #f78c6c;">()</span>
+
+
+<span style="color: #82aaff;">names</span><span style="color: #f78c6c;">(</span>df<span style="color: #f78c6c;">)</span> <span style="color: #f78c6c;">&lt;-</span> conflitos$name <span style="color: #f78c6c;">%&gt;%</span> <span style="color: #82aaff;">unique</span><span style="color: #f78c6c;">()</span>
+df$ISO <span style="color: #f78c6c;">&lt;-</span> capitais$ISO3
+df <span style="color: #f78c6c;">&lt;-</span> df<span style="color: #f78c6c;">[</span>,<span style="color: #82aaff;">c</span><span style="color: #f78c6c;">(</span><span style="color: #c3e88d;">"ISO"</span>, conflitos$name<span style="color: #f78c6c;">)]</span> <span style="color: #f78c6c;">%&gt;%</span>
+  <span style="color: #82aaff;">arrange</span><span style="color: #f78c6c;">(</span>ISO<span style="color: #f78c6c;">)</span>
+df <span style="color: #f78c6c;">&lt;-</span> df <span style="color: #f78c6c;">%&gt;%</span> <span style="color: #82aaff;">pivot_longer</span><span style="color: #f78c6c;">(</span>!ISO,names_to <span style="color: #f78c6c;">=</span> <span style="color: #c3e88d;">"Origem"</span><span style="color: #f78c6c;">)</span>
+</pre>
+</div>
+</div>
+</div>
+
+
+
+
+
+
+
+
+<div id="outline-container-org6517c49" class="outline-3">
+<h3 id="org6517c49">Função para calcular distância</h3>
+<div class="outline-text-3" id="text-org6517c49">
+<div class="org-src-container">
+<pre class="src src-R"><span style="color: #82aaff;">distancia</span> <span style="color: #f78c6c;">&lt;-</span> <span style="color: #89DDFF;">function</span><span style="color: #f78c6c;">(</span>method <span style="color: #f78c6c;">=</span> <span style="color: #c3e88d;">"geodesic"</span>, Destino, Origem<span style="color: #f78c6c;">)</span> <span style="color: #f78c6c;">{</span>
+  geodist::<span style="color: #82aaff;">geodist</span><span style="color: #f78c6c;">(</span>
+    x <span style="color: #f78c6c;">=</span> capitais <span style="color: #f78c6c;">%&gt;%</span> <span style="color: #82aaff;">filter</span><span style="color: #f78c6c;">(</span>ISO3C <span style="color: #f78c6c;">==</span> Destino<span style="color: #f78c6c;">)</span> <span style="color: #f78c6c;">%&gt;%</span> <span style="color: #82aaff;">select</span><span style="color: #f78c6c;">(</span>latitude, longitude<span style="color: #f78c6c;">)</span>,
+    y <span style="color: #f78c6c;">=</span> conflitos <span style="color: #f78c6c;">%&gt;%</span> <span style="color: #82aaff;">filter</span><span style="color: #f78c6c;">(</span>name <span style="color: #f78c6c;">==</span> Origem<span style="color: #f78c6c;">)</span> <span style="color: #f78c6c;">%&gt;%</span> <span style="color: #82aaff;">select</span><span style="color: #f78c6c;">(</span>latitude, longitude<span style="color: #f78c6c;">)</span>,
+    measure <span style="color: #f78c6c;">=</span> method
+    <span style="color: #556369;">## </span><span style="color: #556369;">Nfrom = col_df %&gt;% filter(name == matrix_col) %&gt;% select(latitude) %&gt;% as.numeric(), # latitude of origin</span>
+    <span style="color: #556369;">## </span><span style="color: #556369;">Efrom = col_df %&gt;% filter(name == matrix_col) %&gt;% select(longitude) %&gt;% as.numeric(), # latitude of origin</span>
+    <span style="color: #556369;">## </span><span style="color: #556369;">Nto = row_df %&gt;% filter(ISO3C == matrix_row) %&gt;% select(latitude) %&gt;% as.numeric(), # latitude of origin</span>
+    <span style="color: #556369;">## </span><span style="color: #556369;">Eto = row_df %&gt;% filter(ISO3C == matrix_row) %&gt;% select(longitude) %&gt;% as.numeric(), # latitude of origin</span>
+    <span style="color: #556369;">## </span><span style="color: #556369;">units = units</span>
+  <span style="color: #f78c6c;">)[</span><span style="color: #f78c6c; font-weight: bold;">1</span><span style="color: #f78c6c;">]</span><span style="color: #f78c6c;">/</span><span style="color: #f78c6c; font-weight: bold;">1000</span> <span style="color: #f78c6c;">%&gt;%</span> <span style="color: #82aaff;">as.numeric</span><span style="color: #f78c6c;">()</span>
+<span style="color: #f78c6c;">}</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org82ab223" class="outline-3">
+<h3 id="org82ab223">Aplicando função</h3>
+<div class="outline-text-3" id="text-org82ab223">
+<div class="org-src-container">
+<pre class="src src-R">
+<span style="color: #556369;">## </span><span style="color: #556369;">start &lt;- sum(df$ISO == "") + 1</span>
+<span style="color: #556369;">## </span><span style="color: #556369;">for(i in start:nrow(df)){</span>
+<span style="color: #556369;">##   </span><span style="color: #556369;">for(j in 2:ncol(df)){</span>
+<span style="color: #556369;">##     </span><span style="color: #556369;">df[i,j] = distancia(</span>
+<span style="color: #556369;">##       </span><span style="color: #556369;">matrix_col = names(df)[j],</span>
+<span style="color: #556369;">##       </span><span style="color: #556369;">matrix_row = df$ISO[i]</span>
+<span style="color: #556369;">##         </span><span style="color: #556369;">)</span>
+<span style="color: #556369;">##   </span><span style="color: #556369;">}</span>
+<span style="color: #556369;">## </span><span style="color: #556369;">}</span>
+
+df <span style="color: #f78c6c;">&lt;-</span> <span style="color: #82aaff;">data.table</span><span style="color: #f78c6c;">(</span>df<span style="color: #f78c6c;">)</span>
+df<span style="color: #f78c6c;">[</span>, Distancia :<span style="color: #f78c6c;">=</span> <span style="color: #82aaff;">distancia</span><span style="color: #f78c6c;">(</span>Origem <span style="color: #f78c6c;">=</span> Origem, Destino <span style="color: #f78c6c;">=</span> ISO<span style="color: #f78c6c;">)</span>, by <span style="color: #f78c6c;">=</span> <span style="color: #f78c6c; font-weight: bold;">1</span>:<span style="color: #82aaff;">nrow</span><span style="color: #f78c6c;">(</span>df<span style="color: #f78c6c;">)]</span>
+df <span style="color: #f78c6c;">&lt;-</span> df <span style="color: #f78c6c;">%&gt;%</span> <span style="color: #82aaff;">as.data.frame</span><span style="color: #f78c6c;">()</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orga6576e2" class="outline-3">
+<h3 id="orga6576e2">Exportando</h3>
+<div class="outline-text-3" id="text-orga6576e2">
+<div class="org-src-container">
+<pre class="src src-R">
+df <span style="color: #f78c6c;">&lt;-</span> df <span style="color: #f78c6c;">%&gt;%</span>
+  <span style="color: #82aaff;">distinct</span><span style="color: #f78c6c;">()</span> <span style="color: #f78c6c;">%&gt;%</span>
+  <span style="color: #82aaff;">pivot_wider</span><span style="color: #f78c6c;">(</span>names_from <span style="color: #f78c6c;">=</span> Origem, values_from <span style="color: #f78c6c;">=</span> Distancia<span style="color: #f78c6c;">)</span>
+    
+data.table::<span style="color: #82aaff;">fwrite</span><span style="color: #f78c6c;">(</span>df, file <span style="color: #f78c6c;">=</span> <span style="color: #c3e88d;">"./raw/distancia_geodesica.csv"</span><span style="color: #f78c6c;">)</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org9f115cc" class="outline-3">
+<h3 id="org9f115cc">Agrupando por regiões</h3>
+<div class="outline-text-3" id="text-org9f115cc">
+<div class="org-src-container">
+<pre class="src src-R">df <span style="color: #f78c6c;">&lt;-</span> data.table::<span style="color: #82aaff;">fread</span><span style="color: #f78c6c;">(</span><span style="color: #c3e88d;">"./raw/distancia_geodesica.csv"</span><span style="color: #f78c6c;">)</span> <span style="color: #f78c6c;">%&gt;%</span> <span style="color: #82aaff;">select</span><span style="color: #f78c6c;">(</span>!<span style="color: #82aaff;">c</span><span style="color: #f78c6c;">(</span>value<span style="color: #f78c6c;">))</span>
+df <span style="color: #f78c6c;">&lt;-</span> df <span style="color: #f78c6c;">%&gt;%</span> <span style="color: #556369;"># </span><span style="color: #556369;">Remove colunas que cont&#234;m apenas NA</span>
+  <span style="color: #82aaff;">select</span><span style="color: #f78c6c;">(</span>
+    <span style="color: #82aaff;">where</span><span style="color: #f78c6c;">(</span>
+      ~!<span style="color: #82aaff;">all</span><span style="color: #f78c6c;">(</span><span style="color: #82aaff;">is.na</span><span style="color: #f78c6c;">(</span>.x<span style="color: #f78c6c;">))</span>
+    <span style="color: #f78c6c;">)</span>
+  <span style="color: #f78c6c;">)</span>
+    
+continentes <span style="color: #f78c6c;">&lt;-</span> <span style="color: #82aaff;">c</span><span style="color: #f78c6c;">(</span>
+  <span style="color: #c3e88d;">"Africa"</span>,
+  <span style="color: #c3e88d;">"Americas"</span>,
+  <span style="color: #c3e88d;">"Asia"</span>,
+  <span style="color: #c3e88d;">"Europa"</span>
+    <span style="color: #f78c6c;">)</span>
+
+<span style="color: #89DDFF;">for</span><span style="color: #f78c6c;">(</span>continente <span style="color: #89DDFF;">in</span> continentes<span style="color: #f78c6c;">){</span>
+  subset <span style="color: #f78c6c;">&lt;-</span> <span style="color: #82aaff;">str_subset</span><span style="color: #f78c6c;">(</span><span style="color: #82aaff;">names</span><span style="color: #f78c6c;">(</span>df<span style="color: #f78c6c;">)</span>, continente<span style="color: #f78c6c;">)</span>
+  df <span style="color: #f78c6c;">&lt;-</span> df <span style="color: #f78c6c;">%&gt;%</span>
+    <span style="color: #82aaff;">drop_na</span><span style="color: #f78c6c;">(</span><span style="color: #82aaff;">any_of</span><span style="color: #f78c6c;">(</span>subset<span style="color: #f78c6c;">))</span> <span style="color: #f78c6c;">%&gt;%</span>
+    <span style="color: #82aaff;">mutate</span><span style="color: #f78c6c;">(</span><span style="color: #c3e88d;">"Violentos_{continente}"</span> :<span style="color: #f78c6c;">=</span> <span style="color: #82aaff;">rowMeans</span><span style="color: #f78c6c;">(</span><span style="color: #82aaff;">across</span><span style="color: #f78c6c;">(</span><span style="color: #82aaff;">all_of</span><span style="color: #f78c6c;">(</span>subset<span style="color: #f78c6c;">))))</span>
+  
+<span style="color: #f78c6c;">}</span>
+    
+    
+subset <span style="color: #f78c6c;">&lt;-</span> <span style="color: #82aaff;">str_subset</span><span style="color: #f78c6c;">(</span><span style="color: #82aaff;">names</span><span style="color: #f78c6c;">(</span>df<span style="color: #f78c6c;">)</span>, <span style="color: #c3e88d;">"Violentos"</span><span style="color: #f78c6c;">)</span>
+df <span style="color: #f78c6c;">&lt;-</span> df <span style="color: #f78c6c;">%&gt;%</span> <span style="color: #82aaff;">select</span><span style="color: #f78c6c;">(</span>ISO, <span style="color: #82aaff;">all_of</span><span style="color: #f78c6c;">(</span>subset<span style="color: #f78c6c;">))</span> <span style="color: #f78c6c;">%&gt;%</span>
+    <span style="color: #82aaff;">mutate</span><span style="color: #f78c6c;">(</span><span style="color: #c3e88d;">"Violentos"</span> :<span style="color: #f78c6c;">=</span> <span style="color: #82aaff;">rowMeans</span><span style="color: #f78c6c;">(</span><span style="color: #82aaff;">across</span><span style="color: #f78c6c;">(</span><span style="color: #82aaff;">all_of</span><span style="color: #f78c6c;">(</span>subset<span style="color: #f78c6c;">))))</span>
+</pre>
+</div>
+</div>
+</div>
+
+
+
+
+<div id="outline-container-org4dce748" class="outline-3">
+<h3 id="org4dce748">Exportando</h3>
+<div class="outline-text-3" id="text-org4dce748">
+<div class="org-src-container">
+<pre class="src src-R">data.table::<span style="color: #82aaff;">fwrite</span><span style="color: #f78c6c;">(</span>df, file <span style="color: #f78c6c;">=</span> <span style="color: #c3e88d;">"./clean/conflitos_violentos_continentes.csv"</span><span style="color: #f78c6c;">)</span>
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-orga07f125" class="outline-2">
+<h2 id="orga07f125">Conflitos não-violentos</h2>
+<div class="outline-text-2" id="text-orga07f125">
+</div>
+<div id="outline-container-orga37ef1a" class="outline-3">
+<h3 id="orga37ef1a">Tabela no texto (p. 2 (apêndice))</h3>
+<div class="outline-text-3" id="text-orga37ef1a">
+<table id="orge107fde" border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+<caption class="t-above"><span class="table-number">Table 2:</span> Communist-led events (non-violents)</caption>
+
+<colgroup>
+<col  class="org-right" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-right">1945</td>
+<td class="org-left">Czechoslovakia</td>
+<td class="org-left">Prague</td>
+<td class="org-left">Europa</td>
+</tr>
+
+<tr>
+<td class="org-right">1945</td>
+<td class="org-left">Bulgaria</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">Europa</td>
+</tr>
+
+<tr>
+<td class="org-right">1945</td>
+<td class="org-left">Yugoslavia</td>
+<td class="org-left">Belgrade</td>
+<td class="org-left">Europa</td>
+</tr>
+
+<tr>
+<td class="org-right">1945</td>
+<td class="org-left">Romania</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">Europa</td>
+</tr>
+
+<tr>
+<td class="org-right">1947</td>
+<td class="org-left">Poland</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">Europa</td>
+</tr>
+
+<tr>
+<td class="org-right">1947</td>
+<td class="org-left">Hungary</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">Europa</td>
+</tr>
+
+<tr>
+<td class="org-right">1947</td>
+<td class="org-left">Bulgaria</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">Europa</td>
+</tr>
+
+<tr>
+<td class="org-right">1947</td>
+<td class="org-left">Romania</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">Europa</td>
+</tr>
+
+<tr>
+<td class="org-right">1948</td>
+<td class="org-left">North Korea</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">Asia</td>
+</tr>
+
+<tr>
+<td class="org-right">1948</td>
+<td class="org-left">Hungary</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">Europa</td>
+</tr>
+
+<tr>
+<td class="org-right">1948</td>
+<td class="org-left">East Germany</td>
+<td class="org-left">Bonn</td>
+<td class="org-left">Europa</td>
+</tr>
+
+<tr>
+<td class="org-right">1949</td>
+<td class="org-left">USSR</td>
+<td class="org-left">Moscow</td>
+<td class="org-left">Europa</td>
+</tr>
+
+<tr>
+<td class="org-right">1949</td>
+<td class="org-left">North Korea</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">Asia</td>
+</tr>
+
+<tr>
+<td class="org-right">1949</td>
+<td class="org-left">East Germany</td>
+<td class="org-left">Bonn</td>
+<td class="org-left">Europa</td>
+</tr>
+
+<tr>
+<td class="org-right">1949</td>
+<td class="org-left">China</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">Asia</td>
+</tr>
+
+<tr>
+<td class="org-right">1952</td>
+<td class="org-left">East Germany</td>
+<td class="org-left">Bonn</td>
+<td class="org-left">Europa</td>
+</tr>
+
+<tr>
+<td class="org-right">1954</td>
+<td class="org-left">East Germany</td>
+<td class="org-left">Bonn</td>
+<td class="org-left">Europa</td>
+</tr>
+
+<tr>
+<td class="org-right">1960</td>
+<td class="org-left">Cuba</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">Americas</td>
+</tr>
+
+<tr>
+<td class="org-right">1960</td>
+<td class="org-left">Cuba</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">Americas</td>
+</tr>
+
+<tr>
+<td class="org-right">1970</td>
+<td class="org-left">Chile</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">Americas</td>
+</tr>
+
+<tr>
+<td class="org-right">1976</td>
+<td class="org-left">Vietinam</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">Asia</td>
+</tr>
+
+<tr>
+<td class="org-right">1977</td>
+<td class="org-left">Ethiopia</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">Africa</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+
+<div id="outline-container-org955a260" class="outline-3">
+<h3 id="org955a260">Importando dados</h3>
+<div class="outline-text-3" id="text-org955a260">
+<div class="org-src-container">
+<pre class="src src-R">
+capitais <span style="color: #f78c6c;">&lt;-</span> data.table::<span style="color: #82aaff;">fread</span><span style="color: #f78c6c;">(</span>file <span style="color: #f78c6c;">=</span> <span style="color: #c3e88d;">"./clean/coord_capitais.csv"</span><span style="color: #f78c6c;">)</span>
+
+conflicts <span style="color: #f78c6c;">&lt;-</span> conflicts <span style="color: #f78c6c;">%&gt;%</span>
+  <span style="color: #82aaff;">rename</span><span style="color: #f78c6c;">(</span>Year <span style="color: #f78c6c;">=</span> V1, Country <span style="color: #f78c6c;">=</span> V2, Proxy <span style="color: #f78c6c;">=</span> V3, Continente <span style="color: #f78c6c;">=</span> V4<span style="color: #f78c6c;">)</span> <span style="color: #f78c6c;">%&gt;%</span>
+  <span style="color: #82aaff;">mutate</span><span style="color: #f78c6c;">(</span>ISO3C <span style="color: #f78c6c;">=</span> countrycode::<span style="color: #82aaff;">countrycode</span><span style="color: #f78c6c;">(</span>Country, origin <span style="color: #f78c6c;">=</span><span style="color: #c3e88d;">'country.name'</span>,destination <span style="color: #f78c6c;">=</span><span style="color: #c3e88d;">'iso3c'</span>, warn <span style="color: #f78c6c;">=</span> <span style="color: #c792ea;">FALSE</span><span style="color: #f78c6c;">))</span> <span style="color: #f78c6c;">%&gt;%</span>
+  <span style="color: #82aaff;">left_join</span><span style="color: #f78c6c;">(</span>capitais<span style="color: #f78c6c;">)</span> <span style="color: #f78c6c;">%&gt;%</span>
+  <span style="color: #82aaff;">mutate</span><span style="color: #f78c6c;">(</span>pais <span style="color: #f78c6c;">=</span> <span style="color: #556369;"># </span><span style="color: #556369;">Keep countries not found in dataset</span>
+           pais <span style="color: #f78c6c;">%&gt;%</span>
+             is.na <span style="color: #f78c6c;">%&gt;%</span>
+             <span style="color: #82aaff;">ifelse</span><span style="color: #f78c6c;">(</span>Country, pais<span style="color: #f78c6c;">)</span> <span style="color: #f78c6c;">)</span> <span style="color: #f78c6c;">%&gt;%</span>
+  <span style="color: #82aaff;">mutate</span><span style="color: #f78c6c;">(</span>ISO3C <span style="color: #f78c6c;">=</span> <span style="color: #82aaff;">replace_na</span><span style="color: #f78c6c;">(</span>ISO3C, <span style="color: #c3e88d;">"404"</span><span style="color: #f78c6c;">))</span> <span style="color: #f78c6c;">%&gt;%</span>
+  <span style="color: #82aaff;">mutate</span><span style="color: #f78c6c;">(</span>Continente <span style="color: #f78c6c;">=</span> <span style="color: #82aaff;">factor</span><span style="color: #f78c6c;">(</span>Continente<span style="color: #f78c6c;">))</span>
+
+
+
+conflicts <span style="color: #f78c6c;">&lt;-</span> conflicts <span style="color: #f78c6c;">%&gt;%</span>
+  <span style="color: #82aaff;">mutate</span><span style="color: #f78c6c;">(</span>capital <span style="color: #f78c6c;">=</span> <span style="color: #82aaff;">case_when</span><span style="color: #f78c6c;">(</span>
+         ISO3C <span style="color: #f78c6c;">==</span> <span style="color: #c3e88d;">"404"</span> ~ Proxy,
+         <span style="color: #c792ea;">TRUE</span> ~ capital<span style="color: #f78c6c;">))</span> <span style="color: #f78c6c;">%&gt;%</span>
+  <span style="color: #82aaff;">mutate</span><span style="color: #f78c6c;">(</span>ISO3C <span style="color: #f78c6c;">=</span> <span style="color: #82aaff;">case_when</span><span style="color: #f78c6c;">(</span>
+           pais <span style="color: #f78c6c;">==</span> <span style="color: #c3e88d;">"East Germany"</span> ~ <span style="color: #c3e88d;">"GERe"</span>,
+           pais <span style="color: #f78c6c;">==</span> <span style="color: #c3e88d;">"Czechoslovakia"</span> ~ <span style="color: #c3e88d;">"oCZE"</span>,
+           pais <span style="color: #f78c6c;">==</span> <span style="color: #c3e88d;">"North and South Korea"</span> ~ <span style="color: #c3e88d;">"PRK"</span>,
+           pais <span style="color: #f78c6c;">==</span> <span style="color: #c3e88d;">"Yugoslavia"</span> ~ <span style="color: #c3e88d;">"YUG"</span>,
+           pais <span style="color: #f78c6c;">==</span> <span style="color: #c3e88d;">"USSR"</span> ~ <span style="color: #c3e88d;">"USSR"</span>,
+           <span style="color: #c792ea;">TRUE</span> ~ ISO3C <span style="color: #556369;"># </span><span style="color: #556369;">N&#227;o sei se faz isso, mas a ideia dessa linha &#233; manter todo o restante como antes</span>
+         <span style="color: #f78c6c;">))</span> <span style="color: #f78c6c;">%&gt;%</span>
+  <span style="color: #82aaff;">mutate</span><span style="color: #f78c6c;">(</span>pais <span style="color: #f78c6c;">=</span> <span style="color: #82aaff;">case_when</span><span style="color: #f78c6c;">(</span> <span style="color: #556369;"># </span><span style="color: #556369;">Atualizando nome dos pa&#237;ses para preencher coordenadas faltantes</span>
+           pais <span style="color: #f78c6c;">==</span> <span style="color: #c3e88d;">"East Germany"</span> ~ <span style="color: #c3e88d;">"Germany"</span>,
+           pais <span style="color: #f78c6c;">==</span> <span style="color: #c3e88d;">"Czechoslovakia"</span> ~ <span style="color: #c3e88d;">"Czech Republic"</span>,
+           pais <span style="color: #f78c6c;">==</span> <span style="color: #c3e88d;">"North and South Korea"</span> ~ <span style="color: #c3e88d;">"North Korea"</span>,
+           pais <span style="color: #f78c6c;">==</span> <span style="color: #c3e88d;">"Yugoslavia"</span> ~ <span style="color: #c3e88d;">"Serbia"</span>,
+           pais <span style="color: #f78c6c;">==</span> <span style="color: #c3e88d;">"USSR"</span> ~ <span style="color: #c3e88d;">"Russia"</span>,
+           <span style="color: #c792ea;">TRUE</span> ~ pais
+         <span style="color: #f78c6c;">))</span> <span style="color: #f78c6c;">%&gt;%</span>
+  <span style="color: #82aaff;">select</span><span style="color: #f78c6c;">(</span><span style="color: #f78c6c;">-</span><span style="color: #82aaff;">c</span><span style="color: #f78c6c;">(</span>latitude, longitude<span style="color: #f78c6c;">))</span> <span style="color: #f78c6c;">%&gt;%</span>
+  <span style="color: #82aaff;">geocode</span><span style="color: #f78c6c;">(</span>city <span style="color: #f78c6c;">=</span> capital, country <span style="color: #f78c6c;">=</span> pais, method <span style="color: #f78c6c;">=</span> <span style="color: #c3e88d;">'osm'</span>, lat <span style="color: #f78c6c;">=</span> latitude, long <span style="color: #f78c6c;">=</span> longitude<span style="color: #f78c6c;">)</span>
+
+
+conflicts <span style="color: #f78c6c;">&lt;-</span> conflicts <span style="color: #f78c6c;">%&gt;%</span>
+  <span style="color: #82aaff;">mutate</span><span style="color: #f78c6c;">(</span>latitude  <span style="color: #f78c6c;">=</span> <span style="color: #82aaff;">case_when</span><span style="color: #f78c6c;">(</span>
+           ISO3C <span style="color: #f78c6c;">==</span> <span style="color: #c3e88d;">"PRK"</span> ~ <span style="color: #f78c6c; font-weight: bold;">39.032</span>, <span style="color: #556369;"># </span><span style="color: #556369;">https://pt.db-city.com/Coreia-do-Norte--Pyongyang</span>
+           <span style="color: #c792ea;">TRUE</span> ~ <span style="color: #82aaff;">as.numeric</span><span style="color: #f78c6c;">(</span>latitude<span style="color: #f78c6c;">)))</span>
+conflicts <span style="color: #f78c6c;">&lt;-</span> conflicts <span style="color: #f78c6c;">%&gt;%</span>
+  <span style="color: #82aaff;">mutate</span><span style="color: #f78c6c;">(</span>longitude  <span style="color: #f78c6c;">=</span> <span style="color: #82aaff;">case_when</span><span style="color: #f78c6c;">(</span>
+           ISO3C <span style="color: #f78c6c;">==</span> <span style="color: #c3e88d;">"PRK"</span> ~ <span style="color: #f78c6c; font-weight: bold;">125.75</span>, <span style="color: #556369;"># </span><span style="color: #556369;">https://pt.db-city.com/Coreia-do-Norte--Pyongyang</span>
+           <span style="color: #c792ea;">TRUE</span> ~ <span style="color: #82aaff;">as.numeric</span><span style="color: #f78c6c;">(</span>longitude<span style="color: #f78c6c;">)))</span>
+
+
+conflicts <span style="color: #f78c6c;">&lt;-</span> conflicts <span style="color: #f78c6c;">%&gt;%</span>
+  <span style="color: #82aaff;">arrange</span><span style="color: #f78c6c;">(</span>Year<span style="color: #f78c6c;">)</span> <span style="color: #f78c6c;">%&gt;%</span>
+  <span style="color: #82aaff;">mutate</span><span style="color: #f78c6c;">(</span>
+    name <span style="color: #f78c6c;">=</span> <span style="color: #82aaff;">paste0</span><span style="color: #f78c6c;">(</span>capital, <span style="color: #c3e88d;">"_"</span>, Year <span style="color: #f78c6c;">%&gt;%</span> <span style="color: #82aaff;">as.character</span><span style="color: #f78c6c;">()</span> <span style="color: #f78c6c;">%&gt;%</span> <span style="color: #82aaff;">str_sub</span><span style="color: #f78c6c;">(</span>start<span style="color: #f78c6c;">=-</span><span style="color: #f78c6c; font-weight: bold;">2</span><span style="color: #f78c6c;">)</span>, <span style="color: #c3e88d;">"_"</span>, Continente<span style="color: #f78c6c;">)</span>
+  <span style="color: #f78c6c;">)</span> <span style="color: #f78c6c;">%&gt;%</span>
+  <span style="color: #82aaff;">mutate</span><span style="color: #f78c6c;">(</span>name <span style="color: #f78c6c;">=</span> <span style="color: #82aaff;">str_replace_all</span><span style="color: #f78c6c;">(</span>name, <span style="color: #c3e88d;">" "</span>, <span style="color: #c3e88d;">""</span><span style="color: #f78c6c;">))</span>
+
+
+data.table::<span style="color: #82aaff;">fwrite</span><span style="color: #f78c6c;">(</span>conflicts, file <span style="color: #f78c6c;">=</span> <span style="color: #c3e88d;">"./clean/coord_conflitos_nao_violentos.csv"</span><span style="color: #f78c6c;">)</span>
+</pre>
+</div>
+
+<p>
+Joining, by = &ldquo;ISO3C&rdquo;
+</p>
+</div>
+</div>
+
+
+
+<div id="outline-container-org0a79f67" class="outline-3">
+<h3 id="org0a79f67">Criando dataframe vazio</h3>
+<div class="outline-text-3" id="text-org0a79f67">
+<div class="org-src-container">
+<pre class="src src-R">capitais <span style="color: #f78c6c;">&lt;-</span> data.table::<span style="color: #82aaff;">fread</span><span style="color: #f78c6c;">(</span>file <span style="color: #f78c6c;">=</span> <span style="color: #c3e88d;">"./clean/coord_capitais.csv"</span><span style="color: #f78c6c;">)</span> <span style="color: #f78c6c;">%&gt;%</span> <span style="color: #82aaff;">arrange</span><span style="color: #f78c6c;">(</span>ISO3C<span style="color: #f78c6c;">)</span>
+conflitos <span style="color: #f78c6c;">&lt;-</span> data.table::<span style="color: #82aaff;">fread</span><span style="color: #f78c6c;">(</span>file <span style="color: #f78c6c;">=</span> <span style="color: #c3e88d;">"./clean/coord_conflitos_nao_violentos.csv"</span><span style="color: #f78c6c;">)</span> <span style="color: #f78c6c;">%&gt;%</span> <span style="color: #82aaff;">arrange</span><span style="color: #f78c6c;">(</span>ISO3C<span style="color: #f78c6c;">)</span>
+
+repeticoes <span style="color: #f78c6c;">&lt;-</span> conflitos <span style="color: #f78c6c;">%&gt;%</span> <span style="color: #82aaff;">group_by</span><span style="color: #f78c6c;">(</span>name<span style="color: #f78c6c;">)</span> <span style="color: #f78c6c;">%&gt;%</span> <span style="color: #82aaff;">group_size</span><span style="color: #f78c6c;">()</span> <span style="color: #556369;"># </span><span style="color: #556369;">Equivalente ao Cr do artigo (vezes que ocorreu)</span>
+
+df <span style="color: #f78c6c;">&lt;-</span> <span style="color: #82aaff;">matrix</span><span style="color: #f78c6c;">(</span>
+  nrow <span style="color: #f78c6c;">=</span> capitais$longitude <span style="color: #f78c6c;">%&gt;%</span> <span style="color: #82aaff;">length</span><span style="color: #f78c6c;">()</span>,
+  ncol <span style="color: #f78c6c;">=</span> conflitos$name <span style="color: #f78c6c;">%&gt;%</span> <span style="color: #82aaff;">unique</span><span style="color: #f78c6c;">()</span> <span style="color: #f78c6c;">%&gt;%</span> <span style="color: #82aaff;">length</span><span style="color: #f78c6c;">()</span>
+<span style="color: #f78c6c;">)</span> <span style="color: #f78c6c;">%&gt;%</span>
+  <span style="color: #82aaff;">as.data.frame</span><span style="color: #f78c6c;">()</span>
+
+
+<span style="color: #82aaff;">names</span><span style="color: #f78c6c;">(</span>df<span style="color: #f78c6c;">)</span> <span style="color: #f78c6c;">&lt;-</span> conflitos$name <span style="color: #f78c6c;">%&gt;%</span> <span style="color: #82aaff;">unique</span><span style="color: #f78c6c;">()</span>
+df$ISO <span style="color: #f78c6c;">&lt;-</span> capitais$ISO3
+df <span style="color: #f78c6c;">&lt;-</span> df<span style="color: #f78c6c;">[</span>,<span style="color: #82aaff;">c</span><span style="color: #f78c6c;">(</span><span style="color: #c3e88d;">"ISO"</span>, conflitos$name<span style="color: #f78c6c;">)]</span> <span style="color: #f78c6c;">%&gt;%</span>
+  <span style="color: #82aaff;">arrange</span><span style="color: #f78c6c;">(</span>ISO<span style="color: #f78c6c;">)</span>
+df <span style="color: #f78c6c;">&lt;-</span> df <span style="color: #f78c6c;">%&gt;%</span> <span style="color: #82aaff;">pivot_longer</span><span style="color: #f78c6c;">(</span>!ISO,names_to <span style="color: #f78c6c;">=</span> <span style="color: #c3e88d;">"Origem"</span><span style="color: #f78c6c;">)</span>
+</pre>
+</div>
+</div>
+</div>
+
+
+
+
+
+
+
+
+<div id="outline-container-orgd37980c" class="outline-3">
+<h3 id="orgd37980c">Aplicando função</h3>
+<div class="outline-text-3" id="text-orgd37980c">
+<div class="org-src-container">
+<pre class="src src-R">
+df <span style="color: #f78c6c;">&lt;-</span> <span style="color: #82aaff;">data.table</span><span style="color: #f78c6c;">(</span>df<span style="color: #f78c6c;">)</span>
+df<span style="color: #f78c6c;">[</span>, Distancia :<span style="color: #f78c6c;">=</span> <span style="color: #82aaff;">distancia</span><span style="color: #f78c6c;">(</span>Origem <span style="color: #f78c6c;">=</span> Origem, Destino <span style="color: #f78c6c;">=</span> ISO<span style="color: #f78c6c;">)</span>, by <span style="color: #f78c6c;">=</span> <span style="color: #f78c6c; font-weight: bold;">1</span>:<span style="color: #82aaff;">nrow</span><span style="color: #f78c6c;">(</span>df<span style="color: #f78c6c;">)]</span>
+df <span style="color: #f78c6c;">&lt;-</span> df <span style="color: #f78c6c;">%&gt;%</span> <span style="color: #82aaff;">as.data.frame</span><span style="color: #f78c6c;">()</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org61e6acb" class="outline-3">
+<h3 id="org61e6acb">Exportando</h3>
+<div class="outline-text-3" id="text-org61e6acb">
+<div class="org-src-container">
+<pre class="src src-R">
+df <span style="color: #f78c6c;">&lt;-</span> df <span style="color: #f78c6c;">%&gt;%</span>
+  <span style="color: #82aaff;">distinct</span><span style="color: #f78c6c;">()</span> <span style="color: #f78c6c;">%&gt;%</span>
+  <span style="color: #82aaff;">pivot_wider</span><span style="color: #f78c6c;">(</span>names_from <span style="color: #f78c6c;">=</span> Origem, values_from <span style="color: #f78c6c;">=</span> Distancia<span style="color: #f78c6c;">)</span>
+
+data.table::<span style="color: #82aaff;">fwrite</span><span style="color: #f78c6c;">(</span>df, file <span style="color: #f78c6c;">=</span> <span style="color: #c3e88d;">"./raw/distancia_geodesica_naoviolentos.csv"</span><span style="color: #f78c6c;">)</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org5d990c7" class="outline-3">
+<h3 id="org5d990c7">Agrupando por regiões</h3>
+<div class="outline-text-3" id="text-org5d990c7">
+<div class="org-src-container">
+<pre class="src src-R">df <span style="color: #f78c6c;">&lt;-</span> data.table::<span style="color: #82aaff;">fread</span><span style="color: #f78c6c;">(</span><span style="color: #c3e88d;">"./raw/distancia_geodesica_naoviolentos.csv"</span><span style="color: #f78c6c;">)</span> <span style="color: #f78c6c;">%&gt;%</span> <span style="color: #82aaff;">select</span><span style="color: #f78c6c;">(</span>!<span style="color: #82aaff;">c</span><span style="color: #f78c6c;">(</span>value<span style="color: #f78c6c;">))</span>
+df <span style="color: #f78c6c;">&lt;-</span> df <span style="color: #f78c6c;">%&gt;%</span> <span style="color: #556369;"># </span><span style="color: #556369;">Remove colunas que cont&#234;m apenas NA</span>
+  <span style="color: #82aaff;">select</span><span style="color: #f78c6c;">(</span>
+    <span style="color: #82aaff;">where</span><span style="color: #f78c6c;">(</span>
+      ~!<span style="color: #82aaff;">all</span><span style="color: #f78c6c;">(</span><span style="color: #82aaff;">is.na</span><span style="color: #f78c6c;">(</span>.x<span style="color: #f78c6c;">))</span>
+    <span style="color: #f78c6c;">)</span>
+  <span style="color: #f78c6c;">)</span>
+
+continentes <span style="color: #f78c6c;">&lt;-</span> <span style="color: #82aaff;">c</span><span style="color: #f78c6c;">(</span>
+  <span style="color: #c3e88d;">"Africa"</span>,
+  <span style="color: #c3e88d;">"Americas"</span>,
+  <span style="color: #c3e88d;">"Asia"</span>,
+  <span style="color: #c3e88d;">"Europa"</span>
+    <span style="color: #f78c6c;">)</span>
+
+<span style="color: #89DDFF;">for</span><span style="color: #f78c6c;">(</span>continente <span style="color: #89DDFF;">in</span> continentes<span style="color: #f78c6c;">){</span>
+  subset <span style="color: #f78c6c;">&lt;-</span> <span style="color: #82aaff;">str_subset</span><span style="color: #f78c6c;">(</span><span style="color: #82aaff;">names</span><span style="color: #f78c6c;">(</span>df<span style="color: #f78c6c;">)</span>, continente<span style="color: #f78c6c;">)</span>
+  df <span style="color: #f78c6c;">&lt;-</span> df <span style="color: #f78c6c;">%&gt;%</span>
+    <span style="color: #82aaff;">drop_na</span><span style="color: #f78c6c;">(</span><span style="color: #82aaff;">any_of</span><span style="color: #f78c6c;">(</span>subset<span style="color: #f78c6c;">))</span> <span style="color: #f78c6c;">%&gt;%</span>
+    <span style="color: #82aaff;">mutate</span><span style="color: #f78c6c;">(</span><span style="color: #c3e88d;">"NaoViolentos_{continente}"</span> :<span style="color: #f78c6c;">=</span> <span style="color: #82aaff;">rowMeans</span><span style="color: #f78c6c;">(</span><span style="color: #82aaff;">across</span><span style="color: #f78c6c;">(</span><span style="color: #82aaff;">all_of</span><span style="color: #f78c6c;">(</span>subset<span style="color: #f78c6c;">))))</span>
+
+<span style="color: #f78c6c;">}</span>
+
+
+subset <span style="color: #f78c6c;">&lt;-</span> <span style="color: #82aaff;">str_subset</span><span style="color: #f78c6c;">(</span><span style="color: #82aaff;">names</span><span style="color: #f78c6c;">(</span>df<span style="color: #f78c6c;">)</span>, <span style="color: #c3e88d;">"Violentos"</span><span style="color: #f78c6c;">)</span>
+df <span style="color: #f78c6c;">&lt;-</span> df <span style="color: #f78c6c;">%&gt;%</span> <span style="color: #82aaff;">select</span><span style="color: #f78c6c;">(</span>ISO, <span style="color: #82aaff;">all_of</span><span style="color: #f78c6c;">(</span>subset<span style="color: #f78c6c;">))</span> <span style="color: #f78c6c;">%&gt;%</span>
+    <span style="color: #82aaff;">mutate</span><span style="color: #f78c6c;">(</span><span style="color: #c3e88d;">"NaoViolentos"</span> :<span style="color: #f78c6c;">=</span> <span style="color: #82aaff;">rowMeans</span><span style="color: #f78c6c;">(</span><span style="color: #82aaff;">across</span><span style="color: #f78c6c;">(</span><span style="color: #82aaff;">all_of</span><span style="color: #f78c6c;">(</span>subset<span style="color: #f78c6c;">))))</span>
+</pre>
+</div>
+</div>
+</div>
+
+
+
+
+<div id="outline-container-orgf95ce6c" class="outline-3">
+<h3 id="orgf95ce6c">Exportando</h3>
+<div class="outline-text-3" id="text-orgf95ce6c">
+<div class="org-src-container">
+<pre class="src src-R">data.table::<span style="color: #82aaff;">fwrite</span><span style="color: #f78c6c;">(</span>df, file <span style="color: #f78c6c;">=</span> <span style="color: #c3e88d;">"./clean/conflitos_naoviolentos_continentes.csv"</span><span style="color: #f78c6c;">)</span>
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org778feeb" class="outline-2">
+<h2 id="org778feeb">Selecionando países</h2>
+<div class="outline-text-2" id="text-org778feeb">
+</div>
+<div id="outline-container-org6072f83" class="outline-3">
+<h3 id="org6072f83">Importando e combinando dataframes</h3>
+<div class="outline-text-3" id="text-org6072f83">
+<div class="org-src-container">
+<pre class="src src-R">data.table::<span style="color: #82aaff;">fread</span><span style="color: #f78c6c;">(</span><span style="color: #c3e88d;">"./clean/conflitos_violentos_continentes.csv"</span><span style="color: #f78c6c;">)</span> <span style="color: #f78c6c;">-&gt;</span> violentos
+data.table::<span style="color: #82aaff;">fread</span><span style="color: #f78c6c;">(</span><span style="color: #c3e88d;">"./clean/conflitos_naoviolentos_continentes.csv"</span><span style="color: #f78c6c;">)</span> <span style="color: #f78c6c;">-&gt;</span> naoviolentos
+
+df <span style="color: #f78c6c;">&lt;-</span> violentos <span style="color: #f78c6c;">%&gt;%</span>
+  <span style="color: #82aaff;">arrange</span><span style="color: #f78c6c;">(</span>ISO<span style="color: #f78c6c;">)</span> <span style="color: #f78c6c;">%&gt;%</span>
+  <span style="color: #82aaff;">left_join</span><span style="color: #f78c6c;">(</span>naoviolentos<span style="color: #f78c6c;">)</span> <span style="color: #f78c6c;">%&gt;%</span>
+  <span style="color: #82aaff;">arrange</span><span style="color: #f78c6c;">(</span>ISO<span style="color: #f78c6c;">)</span>
+</pre>
+</div>
+
+<p>
+Joining, by = &ldquo;ISO&rdquo;
+</p>
+</div>
+</div>
+
+<div id="outline-container-org871d3a4" class="outline-3">
+<h3 id="org871d3a4">Filtrando países (Tabela A.1)</h3>
+<div class="outline-text-3" id="text-org871d3a4">
+<div class="org-src-container">
+<pre class="src src-R">paises <span style="color: #f78c6c;">&lt;-</span> <span style="color: #82aaff;">c</span><span style="color: #f78c6c;">(</span>
+  <span style="color: #c3e88d;">"Australia"</span>,
+  <span style="color: #c3e88d;">"Canada"</span>,
+  <span style="color: #c3e88d;">"Denmark"</span>,
+  <span style="color: #c3e88d;">"Finland"</span>,
+  <span style="color: #c3e88d;">"France"</span>,
+  <span style="color: #c3e88d;">"Germany"</span>,
+  <span style="color: #c3e88d;">"Ireland"</span>,
+  <span style="color: #c3e88d;">"Italy"</span>,
+  <span style="color: #c3e88d;">"Japan"</span>,
+  <span style="color: #c3e88d;">"Netherlands"</span>,
+  <span style="color: #c3e88d;">"New Zealand"</span>,
+  <span style="color: #c3e88d;">"Norway"</span>,
+  <span style="color: #c3e88d;">"Portugal"</span>,
+  <span style="color: #c3e88d;">"Spain"</span>,
+  <span style="color: #c3e88d;">"Sweden"</span>,
+  <span style="color: #c3e88d;">"Switzerland"</span>,
+  <span style="color: #c3e88d;">"UK"</span>,
+  <span style="color: #c3e88d;">"USA"</span> <span style="color: #556369;"># </span><span style="color: #556369;">Ausente no original</span>
+<span style="color: #f78c6c;">)</span>
+
+
+ISOs <span style="color: #f78c6c;">&lt;-</span> data.table::<span style="color: #82aaff;">fread</span><span style="color: #f78c6c;">(</span>file <span style="color: #f78c6c;">=</span> <span style="color: #c3e88d;">"./clean/coord_capitais.csv"</span><span style="color: #f78c6c;">)</span> <span style="color: #f78c6c;">%&gt;%</span>
+  <span style="color: #82aaff;">filter</span><span style="color: #f78c6c;">(</span>pais <span style="color: #f78c6c;">%in%</span> paises<span style="color: #f78c6c;">)</span> <span style="color: #f78c6c;">%&gt;%</span>
+  <span style="color: #82aaff;">select</span><span style="color: #f78c6c;">(</span>ISO3C<span style="color: #f78c6c;">)</span> <span style="color: #f78c6c;">%&gt;%</span>
+  <span style="color: #82aaff;">rename</span><span style="color: #f78c6c;">(</span>ISO <span style="color: #f78c6c;">=</span> ISO3C<span style="color: #f78c6c;">)</span>
+
+df <span style="color: #f78c6c;">&lt;-</span> df <span style="color: #f78c6c;">%&gt;%</span>
+  <span style="color: #82aaff;">filter</span><span style="color: #f78c6c;">(</span>ISO <span style="color: #f78c6c;">%in%</span> ISOs$ISO <span style="color: #f78c6c;">%&gt;%</span> <span style="color: #82aaff;">c</span><span style="color: #f78c6c;">())</span>
+    
+    
+</pre>
+</div>
+</div>
+</div>
+
+
+
+
+<div id="outline-container-org3e9f5d7" class="outline-3">
+<h3 id="org3e9f5d7">Exportando</h3>
+<div class="outline-text-3" id="text-org3e9f5d7">
+<div class="org-src-container">
+<pre class="src src-R">data.table::<span style="color: #82aaff;">fwrite</span><span style="color: #f78c6c;">(</span>df, file <span style="color: #f78c6c;">=</span> <span style="color: #c3e88d;">"./clean/conflitos_filtrados_n_violentos_continentes.csv"</span><span style="color: #f78c6c;">)</span>
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org1f3a829" class="outline-2">
+<h2 id="org1f3a829">Calculando inverso da distância</h2>
+<div class="outline-text-2" id="text-org1f3a829">
+<div class="latex" id="org9f284f2">
+\begin{equation}
+Cold war Event = 1000 \cdot \sum W_{j}\cdot CR_{j}
+\end{equation}
+
+</div>
+
+<div class="latex" id="org865643b">
+\begin{equation}
+W_{j} = dist^{-2}
+\end{equation}
+
+</div>
+
+<p>
+em que dist é medido em quilometros.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-R">
+data.table::<span style="color: #82aaff;">fread</span><span style="color: #f78c6c;">(</span><span style="color: #c3e88d;">"./clean/conflitos_filtrados_n_violentos_continentes.csv"</span><span style="color: #f78c6c;">)</span> <span style="color: #f78c6c;">-&gt;</span> df
+
+<span style="color: #82aaff;">inv_dist2</span> <span style="color: #f78c6c;">&lt;-</span> <span style="color: #89DDFF;">function</span><span style="color: #f78c6c;">(</span>x, pow<span style="color: #f78c6c;">=-</span><span style="color: #f78c6c; font-weight: bold;">1</span><span style="color: #f78c6c;">){</span>
+  x^pow*<span style="color: #f78c6c; font-weight: bold;">10</span>^<span style="color: #f78c6c; font-weight: bold;">3</span>
+<span style="color: #f78c6c;">}</span>
+
+df <span style="color: #f78c6c;">&lt;-</span> df <span style="color: #f78c6c;">%&gt;%</span>
+  <span style="color: #82aaff;">mutate</span><span style="color: #f78c6c;">(</span><span style="color: #82aaff;">across</span><span style="color: #f78c6c;">(</span><span style="color: #82aaff;">where</span><span style="color: #f78c6c;">(</span>is.numeric<span style="color: #f78c6c;">)</span>, ~<span style="color: #82aaff;">inv_dist2</span><span style="color: #f78c6c;">(</span>.x<span style="color: #f78c6c;">)))</span>
+
+data.table::<span style="color: #82aaff;">fwrite</span><span style="color: #f78c6c;">(</span>df, file <span style="color: #f78c6c;">=</span> <span style="color: #c3e88d;">"./clean/coldwar_inv2_n_violentos_selecionados.csv"</span><span style="color: #f78c6c;">)</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org98d79df" class="outline-2">
+<h2 id="org98d79df">Incluindo dados de distribuição</h2>
+<div class="outline-text-2" id="text-org98d79df">
+</div>
+<div id="outline-container-orge92f21a" class="outline-3">
+<h3 id="orge92f21a">Script Lorena</h3>
+<div class="outline-text-3" id="text-orge92f21a">
+<div class="org-src-container">
+<pre class="src src-R">one_percent_income <span style="color: #f78c6c;">&lt;-</span> <span style="color: #82aaff;">read.csv2</span><span style="color: #f78c6c;">(</span><span style="color: #c3e88d;">"./raw/WID_Data_11042021-185939.csv"</span><span style="color: #f78c6c;">)</span>
+
+<span style="color: #556369;"># </span><span style="color: #556369;">subseting</span>
+year <span style="color: #f78c6c;">&lt;-</span> one_percent_income<span style="color: #f78c6c;">[</span>, <span style="color: #f78c6c; font-weight: bold;">1</span>, drop <span style="color: #f78c6c;">=</span> <span style="color: #c792ea;">FALSE</span><span style="color: #f78c6c;">]</span>
+income <span style="color: #f78c6c;">&lt;-</span> one_percent_income<span style="color: #f78c6c;">[</span>, <span style="color: #f78c6c; font-weight: bold;">2</span>:<span style="color: #f78c6c; font-weight: bold;">19</span><span style="color: #f78c6c;">]</span>
+
+<span style="color: #556369;"># </span><span style="color: #556369;">cleaning data</span>
+<span style="color: #556369;"># </span><span style="color: #556369;">gsub() or nchar() as additional options</span>
+<span style="color: #82aaff;">colnames</span><span style="color: #f78c6c;">(</span>income<span style="color: #f78c6c;">)</span> <span style="color: #f78c6c;">&lt;-</span> <span style="color: #82aaff;">substring</span><span style="color: #f78c6c;">(</span><span style="color: #82aaff;">colnames</span><span style="color: #f78c6c;">(</span>income<span style="color: #f78c6c;">)</span>, <span style="color: #f78c6c; font-weight: bold;">52</span><span style="color: #f78c6c;">)</span>
+
+<span style="color: #556369;"># </span><span style="color: #556369;">transforming in ISO3</span>
+<span style="color: #82aaff;">colnames</span><span style="color: #f78c6c;">(</span>income<span style="color: #f78c6c;">)</span> <span style="color: #f78c6c;">&lt;-</span> <span style="color: #82aaff;">countrycode</span><span style="color: #f78c6c;">(</span><span style="color: #82aaff;">colnames</span><span style="color: #f78c6c;">(</span>income<span style="color: #f78c6c;">)</span>, origin <span style="color: #f78c6c;">=</span> <span style="color: #c3e88d;">"country.name"</span>, destination <span style="color: #f78c6c;">=</span> <span style="color: #c3e88d;">"iso3c"</span><span style="color: #f78c6c;">)</span>
+
+<span style="color: #556369;"># </span><span style="color: #556369;">joining subsets again</span>
+income_concentration <span style="color: #f78c6c;">&lt;-</span> <span style="color: #82aaff;">cbind</span><span style="color: #f78c6c;">(</span>year, income<span style="color: #f78c6c;">)</span>
+
+<span style="color: #556369;"># </span><span style="color: #556369;">exporting to csv</span>
+<span style="color: #82aaff;">write.csv</span><span style="color: #f78c6c;">(</span>income_concentration, <span style="color: #c3e88d;">"./clean/income_concentration.csv"</span><span style="color: #f78c6c;">)</span>
+</pre>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-orgb4ddb05" class="outline-3">
+<h3 id="orgb4ddb05">Renomeando países para ISO</h3>
+<div class="outline-text-3" id="text-orgb4ddb05">
+<div class="org-src-container">
+<pre class="src src-R">
+inicio <span style="color: #f78c6c;">&lt;-</span> <span style="color: #c3e88d;">"1945"</span>
+fim <span style="color: #f78c6c;">&lt;-</span> <span style="color: #c3e88d;">"1989"</span>
+
+df <span style="color: #f78c6c;">&lt;-</span> data.table::<span style="color: #82aaff;">fread</span><span style="color: #f78c6c;">(</span>
+                    <span style="color: #c3e88d;">'./clean/income_concentration.csv'</span>,
+                    header<span style="color: #f78c6c;">=</span><span style="color: #c792ea;">TRUE</span>
+                    <span style="color: #f78c6c;">)</span> <span style="color: #f78c6c;">%&gt;%</span>
+  <span style="color: #82aaff;">select</span><span style="color: #f78c6c;">(</span><span style="color: #f78c6c;">-</span><span style="color: #82aaff;">c</span><span style="color: #f78c6c;">(</span>V1<span style="color: #f78c6c;">))</span> <span style="color: #f78c6c;">%&gt;%</span>
+  <span style="color: #82aaff;">mutate</span><span style="color: #f78c6c;">(</span>Year <span style="color: #f78c6c;">=</span> lubridate::<span style="color: #82aaff;">ymd</span><span style="color: #f78c6c;">(</span>Year, truncated <span style="color: #f78c6c;">=</span> <span style="color: #c792ea;">2L</span><span style="color: #f78c6c;">))</span> <span style="color: #f78c6c;">%&gt;%</span>
+  <span style="color: #82aaff;">rename</span><span style="color: #f78c6c;">(</span>UK <span style="color: #f78c6c;">=</span> United.Kingdom, <span style="color: #EEFFFF; background-color: #1C262B;">`New Zealand`</span> <span style="color: #f78c6c;">=</span> New.Zealand<span style="color: #f78c6c;">)</span> <span style="color: #f78c6c;">%&gt;%</span>
+  <span style="color: #82aaff;">pivot_longer</span><span style="color: #f78c6c;">(</span>!Year, names_to <span style="color: #f78c6c;">=</span> <span style="color: #c3e88d;">"pais"</span>, values_to <span style="color: #f78c6c;">=</span> <span style="color: #c3e88d;">"concentracao"</span><span style="color: #f78c6c;">)</span> <span style="color: #f78c6c;">%&gt;%</span>
+  <span style="color: #82aaff;">mutate</span><span style="color: #f78c6c;">(</span>ISO <span style="color: #f78c6c;">=</span> countrycode::<span style="color: #82aaff;">countrycode</span><span style="color: #f78c6c;">(</span>pais, origin <span style="color: #f78c6c;">=</span><span style="color: #c3e88d;">'country.name'</span>,destination <span style="color: #f78c6c;">=</span><span style="color: #c3e88d;">'iso3c'</span>, warn <span style="color: #f78c6c;">=</span> <span style="color: #c792ea;">FALSE</span><span style="color: #f78c6c;">))</span> <span style="color: #f78c6c;">%&gt;%</span>
+  <span style="color: #82aaff;">select</span><span style="color: #f78c6c;">(</span><span style="color: #f78c6c;">-</span><span style="color: #82aaff;">c</span><span style="color: #f78c6c;">(</span>pais<span style="color: #f78c6c;">))</span> <span style="color: #f78c6c;">%&gt;%</span>
+  <span style="color: #82aaff;">pivot_wider</span><span style="color: #f78c6c;">(</span>names_from <span style="color: #f78c6c;">=</span> ISO, values_from <span style="color: #f78c6c;">=</span> concentracao<span style="color: #f78c6c;">)</span> <span style="color: #f78c6c;">%&gt;%</span> <span style="color: #556369;"># </span><span style="color: #556369;">Preenchendo NAs para selecionar os primeiros</span>
+  <span style="color: #82aaff;">fill</span><span style="color: #f78c6c;">(</span><span style="color: #82aaff;">everything</span><span style="color: #f78c6c;">()</span>, .direction <span style="color: #f78c6c;">=</span> <span style="color: #c3e88d;">"updown"</span><span style="color: #f78c6c;">)</span> <span style="color: #f78c6c;">%&gt;%</span> <span style="color: #556369;"># </span><span style="color: #556369;">Transpondo para criar primeiro e &#250;ltimo valor</span>
+  <span style="color: #82aaff;">pivot_longer</span><span style="color: #f78c6c;">(</span><span style="color: #f78c6c;">-</span>Year<span style="color: #f78c6c;">)</span> <span style="color: #f78c6c;">%&gt;%</span>
+  <span style="color: #82aaff;">pivot_wider</span><span style="color: #f78c6c;">(</span>names_from <span style="color: #f78c6c;">=</span> Year, values_from <span style="color: #f78c6c;">=</span> value<span style="color: #f78c6c;">)</span> <span style="color: #f78c6c;">%&gt;%</span>
+  <span style="color: #82aaff;">select</span><span style="color: #f78c6c;">(</span>name, <span style="color: #82aaff;">starts_with</span><span style="color: #f78c6c;">(</span>fim<span style="color: #f78c6c;">)</span>, <span style="color: #82aaff;">starts_with</span><span style="color: #f78c6c;">(</span>inicio<span style="color: #f78c6c;">))</span> <span style="color: #f78c6c;">%&gt;%</span>
+  <span style="color: #82aaff;">setNames</span><span style="color: #f78c6c;">(</span><span style="color: #82aaff;">c</span><span style="color: #f78c6c;">(</span><span style="color: #c3e88d;">"ISO"</span>, <span style="color: #c3e88d;">"Fim"</span>, <span style="color: #c3e88d;">"Inicio"</span><span style="color: #f78c6c;">))</span> <span style="color: #f78c6c;">%&gt;%</span>
+  <span style="color: #82aaff;">mutate</span><span style="color: #f78c6c;">(</span>Diff <span style="color: #f78c6c;">=</span> <span style="color: #f78c6c;">(</span>Fim <span style="color: #f78c6c;">-</span> Inicio<span style="color: #f78c6c;">)</span><span style="color: #f78c6c;">/</span>Inicio<span style="color: #f78c6c;">)</span>
+
+data.table::<span style="color: #82aaff;">fwrite</span><span style="color: #f78c6c;">(</span>df, <span style="color: #82aaff;">paste0</span><span style="color: #f78c6c;">(</span><span style="color: #c3e88d;">"./clean/diff_concentracao_"</span>, fim, <span style="color: #c3e88d;">"_"</span>, inicio, <span style="color: #c3e88d;">".csv"</span><span style="color: #f78c6c;">))</span>
+
+</pre>
+</div>
+</div>
+</div>
+
+
+
+<div id="outline-container-orgb92c672" class="outline-3">
+<h3 id="orgb92c672">Unindo com distâncias</h3>
+<div class="outline-text-3" id="text-orgb92c672">
+<div class="org-src-container">
+<pre class="src src-R">data.table::<span style="color: #82aaff;">fread</span><span style="color: #f78c6c;">(</span><span style="color: #82aaff;">paste0</span><span style="color: #f78c6c;">(</span><span style="color: #c3e88d;">"./clean/diff_concentracao_"</span>, fim, <span style="color: #c3e88d;">"_"</span>, inicio, <span style="color: #c3e88d;">".csv"</span><span style="color: #f78c6c;">))</span> <span style="color: #f78c6c;">-&gt;</span> concentracao
+data.table::<span style="color: #82aaff;">fread</span><span style="color: #f78c6c;">(</span><span style="color: #c3e88d;">"./clean/coldwar_inv2_n_violentos_selecionados.csv"</span><span style="color: #f78c6c;">)</span> <span style="color: #f78c6c;">-&gt;</span> coldwar
+
+df <span style="color: #f78c6c;">&lt;-</span> coldwar <span style="color: #f78c6c;">%&gt;%</span>
+  <span style="color: #82aaff;">left_join</span><span style="color: #f78c6c;">(</span>concentracao<span style="color: #f78c6c;">)</span>
+
+data.table::<span style="color: #82aaff;">fwrite</span><span style="color: #f78c6c;">(</span>df, <span style="color: #82aaff;">paste0</span><span style="color: #f78c6c;">(</span><span style="color: #c3e88d;">"./clean/coldwar_concentracao_"</span>, fim, <span style="color: #c3e88d;">"_"</span>, inicio, <span style="color: #c3e88d;">".csv"</span><span style="color: #f78c6c;">))</span>
+</pre>
+</div>
+
+<p>
+Joining, by = &ldquo;ISO&rdquo;
+</p>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-org653e40a" class="outline-2">
+<h2 id="org653e40a">Unindo com dados do artigo de referência</h2>
+<div class="outline-text-2" id="text-org653e40a">
+</div>
+<div id="outline-container-org1129ae3" class="outline-3">
+<h3 id="org1129ae3">Dicionário de variáveis</h3>
+<div class="outline-text-3" id="text-org1129ae3">
+<table id="org61d6e9e" border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Variavel</th>
+<th scope="col" class="org-left">Descricao</th>
+<th scope="col" class="org-left">Uso</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">year</td>
+<td class="org-left">Year</td>
+<td class="org-left">Input</td>
+</tr>
+
+<tr>
+<td class="org-left">code</td>
+<td class="org-left">ISO code</td>
+<td class="org-left">Explicativa</td>
+</tr>
+
+<tr>
+<td class="org-left">cold_war_events</td>
+<td class="org-left">Cold War Events</td>
+<td class="org-left">Consulta</td>
+</tr>
+
+<tr>
+<td class="org-left">pc</td>
+<td class="org-left">Communist Party Share of seats</td>
+<td class="org-left">Explicativa</td>
+</tr>
+
+<tr>
+<td class="org-left">wage_bargaining_centralization</td>
+<td class="org-left">Wage bargaining centralization</td>
+<td class="org-left">Alternativa</td>
+</tr>
+
+<tr>
+<td class="org-left">decentralized</td>
+<td class="org-left">Decentralized Bargain</td>
+<td class="org-left">Explicativa</td>
+</tr>
+
+<tr>
+<td class="org-left">union</td>
+<td class="org-left">Union Density</td>
+<td class="org-left">Explicativa</td>
+</tr>
+
+<tr>
+<td class="org-left">Left_Executive</td>
+<td class="org-left">Left Executive</td>
+<td class="org-left">Alternativa</td>
+</tr>
+
+<tr>
+<td class="org-left">polity2</td>
+<td class="org-left">Polity IV index (Polity2 index?)</td>
+<td class="org-left">Explicativa</td>
+</tr>
+
+<tr>
+<td class="org-left">war_risk</td>
+<td class="org-left">War risk</td>
+<td class="org-left">Alternativa</td>
+</tr>
+
+<tr>
+<td class="org-left">cultural_distance_cw</td>
+<td class="org-left">Cultural Distance</td>
+<td class="org-left">Alternativa</td>
+</tr>
+
+<tr>
+<td class="org-left">strikes</td>
+<td class="org-left">Labor Strikes (?)</td>
+<td class="org-left">Alternativa</td>
+</tr>
+
+<tr>
+<td class="org-left">top_1</td>
+<td class="org-left">Top 1% of income</td>
+<td class="org-left">Consulta</td>
+</tr>
+
+<tr>
+<td class="org-left">top_5</td>
+<td class="org-left">Top 5% of income</td>
+<td class="org-left">Resultado</td>
+</tr>
+
+<tr>
+<td class="org-left">top_10</td>
+<td class="org-left">Top 10% of income</td>
+<td class="org-left">Resultado</td>
+</tr>
+
+<tr>
+<td class="org-left">gini</td>
+<td class="org-left">Gini</td>
+<td class="org-left">Resultado</td>
+</tr>
+
+<tr>
+<td class="org-left">sstran</td>
+<td class="org-left">Social security transfers (% GDP)</td>
+<td class="org-left">Resultado</td>
+</tr>
+
+<tr>
+<td class="org-left">yr_sch</td>
+<td class="org-left">Years of Schooling</td>
+<td class="org-left">Resultado</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<div id="outline-container-org587c7ad" class="outline-3">
+<h3 id="org587c7ad">Importando dados</h3>
+<div class="outline-text-3" id="text-org587c7ad">
+<div class="org-src-container">
+<pre class="src src-R"><span style="color: #82aaff;">names</span><span style="color: #f78c6c;">(</span>dicionario<span style="color: #f78c6c;">)</span> <span style="color: #f78c6c;">&lt;-</span> <span style="color: #82aaff;">as.matrix</span><span style="color: #f78c6c;">(</span>dicionario<span style="color: #f78c6c;">[</span><span style="color: #f78c6c; font-weight: bold;">1</span>, <span style="color: #f78c6c;">])</span>
+dicionario <span style="color: #f78c6c;">&lt;-</span> dicionario<span style="color: #f78c6c;">[</span><span style="color: #f78c6c;">-</span><span style="color: #f78c6c; font-weight: bold;">1</span>, <span style="color: #f78c6c;">]</span>
+dicionario<span style="color: #f78c6c;">[]</span> <span style="color: #f78c6c;">&lt;-</span> <span style="color: #82aaff;">lapply</span><span style="color: #f78c6c;">(</span>dicionario, <span style="color: #89DDFF;">function</span><span style="color: #f78c6c;">(</span>x<span style="color: #f78c6c;">)</span> <span style="color: #82aaff;">type.convert</span><span style="color: #f78c6c;">(</span><span style="color: #82aaff;">as.character</span><span style="color: #f78c6c;">(</span>x<span style="color: #f78c6c;">)))</span>
+
+haven::<span style="color: #82aaff;">read_dta</span><span style="color: #f78c6c;">(</span><span style="color: #c3e88d;">'./raw/base_JCP_vR1_dez18.dta'</span><span style="color: #f78c6c;">)</span> <span style="color: #f78c6c;">-&gt;</span> df
+
+df <span style="color: #f78c6c;">%&gt;%</span>
+    data.table::<span style="color: #82aaff;">fwrite</span><span style="color: #f78c6c;">(</span><span style="color: #82aaff;">paste0</span><span style="color: #f78c6c;">(</span><span style="color: #c3e88d;">'./clean/santanna_weller_full.csv'</span><span style="color: #f78c6c;">))</span>
+    
+df <span style="color: #f78c6c;">&lt;-</span> df <span style="color: #f78c6c;">%&gt;%</span>
+  <span style="color: #82aaff;">filter</span><span style="color: #f78c6c;">(</span>year <span style="color: #f78c6c;">&gt;=</span> <span style="color: #f78c6c; font-weight: bold;">1945</span><span style="color: #f78c6c;">)</span> <span style="color: #f78c6c;">%&gt;%</span>
+  <span style="color: #82aaff;">filter</span><span style="color: #f78c6c;">(</span>year <span style="color: #f78c6c;">&lt;=</span> <span style="color: #f78c6c; font-weight: bold;">1990</span><span style="color: #f78c6c;">)</span> <span style="color: #f78c6c;">%&gt;%</span>
+  <span style="color: #82aaff;">group_by</span><span style="color: #f78c6c;">(</span>code<span style="color: #f78c6c;">)</span> <span style="color: #f78c6c;">%&gt;%</span>
+  <span style="color: #82aaff;">summarise</span><span style="color: #f78c6c;">(</span><span style="color: #82aaff;">across</span><span style="color: #f78c6c;">(</span><span style="color: #82aaff;">where</span><span style="color: #f78c6c;">(</span>is.numeric<span style="color: #f78c6c;">)</span>, ~<span style="color: #82aaff;">mean</span><span style="color: #f78c6c;">(</span>.x, rm.na <span style="color: #f78c6c;">=</span> <span style="color: #c792ea;">TRUE</span><span style="color: #f78c6c;">)))</span> <span style="color: #f78c6c;">%&gt;%</span>
+  <span style="color: #82aaff;">ungroup</span><span style="color: #f78c6c;">()</span> <span style="color: #f78c6c;">%&gt;%</span>
+  <span style="color: #82aaff;">select</span><span style="color: #f78c6c;">(</span><span style="color: #82aaff;">all_of</span><span style="color: #f78c6c;">(</span>dicionario$Variavel<span style="color: #f78c6c;">))</span> <span style="color: #f78c6c;">%&gt;%</span>
+  <span style="color: #82aaff;">select</span><span style="color: #f78c6c;">(</span><span style="color: #f78c6c;">-</span><span style="color: #82aaff;">c</span><span style="color: #f78c6c;">(</span>year<span style="color: #f78c6c;">))</span>
+
+df <span style="color: #f78c6c;">%&gt;%</span>
+    data.table::<span style="color: #82aaff;">fwrite</span><span style="color: #f78c6c;">(</span><span style="color: #82aaff;">paste0</span><span style="color: #f78c6c;">(</span><span style="color: #c3e88d;">'./clean/santanna_weller_subset_media.csv'</span><span style="color: #f78c6c;">))</span>
+
+flags <span style="color: #f78c6c;">&lt;-</span> dicionario <span style="color: #f78c6c;">%&gt;%</span> <span style="color: #82aaff;">select</span><span style="color: #f78c6c;">(</span>Uso<span style="color: #f78c6c;">)</span> <span style="color: #f78c6c;">%&gt;%</span> <span style="color: #82aaff;">filter</span><span style="color: #f78c6c;">(</span>Uso !<span style="color: #f78c6c;">=</span> <span style="color: #c3e88d;">"Input"</span><span style="color: #f78c6c;">)</span> <span style="color: #f78c6c;">%&gt;%</span> <span style="color: #82aaff;">unique</span><span style="color: #f78c6c;">()</span> <span style="color: #f78c6c;">%&gt;%</span> <span style="color: #82aaff;">pull</span><span style="color: #f78c6c;">()</span> <span style="color: #f78c6c;">%&gt;%</span> <span style="color: #82aaff;">as.character</span><span style="color: #f78c6c;">()</span>
+
+<span style="color: #82aaff;">exporter</span> <span style="color: #f78c6c;">&lt;-</span> <span style="color: #89DDFF;">function</span><span style="color: #f78c6c;">(</span>df, flag<span style="color: #f78c6c;">){</span>
+  dicionario <span style="color: #f78c6c;">%&gt;%</span> <span style="color: #82aaff;">filter</span><span style="color: #f78c6c;">(</span>Uso <span style="color: #f78c6c;">==</span> flag<span style="color: #f78c6c;">)</span> <span style="color: #f78c6c;">%&gt;%</span> <span style="color: #82aaff;">select</span><span style="color: #f78c6c;">(</span>Variavel<span style="color: #f78c6c;">)</span> <span style="color: #f78c6c;">%&gt;%</span> <span style="color: #82aaff;">pull</span><span style="color: #f78c6c;">()</span> <span style="color: #f78c6c;">%&gt;%</span> <span style="color: #82aaff;">as.character</span><span style="color: #f78c6c;">()</span> <span style="color: #f78c6c;">-&gt;</span> subset
+  subset <span style="color: #f78c6c;">&lt;-</span> <span style="color: #82aaff;">append</span><span style="color: #f78c6c;">(</span><span style="color: #c3e88d;">"code"</span>, subset<span style="color: #f78c6c;">)</span>
+  
+  df <span style="color: #f78c6c;">%&gt;%</span>
+    <span style="color: #82aaff;">select</span><span style="color: #f78c6c;">(</span><span style="color: #82aaff;">all_of</span><span style="color: #f78c6c;">(</span>subset<span style="color: #f78c6c;">))</span> <span style="color: #f78c6c;">%&gt;%</span>
+    data.table::<span style="color: #82aaff;">fwrite</span><span style="color: #f78c6c;">(</span><span style="color: #82aaff;">paste0</span><span style="color: #f78c6c;">(</span><span style="color: #c3e88d;">'./clean/santanna_weller_'</span>, flag, <span style="color: #c3e88d;">'_media.csv'</span><span style="color: #f78c6c;">))</span>
+<span style="color: #f78c6c;">}</span>
+
+<span style="color: #89DDFF;">for</span><span style="color: #f78c6c;">(</span>flag <span style="color: #89DDFF;">in</span> flags<span style="color: #f78c6c;">){</span><span style="color: #82aaff;">exporter</span><span style="color: #f78c6c;">(</span>df <span style="color: #f78c6c;">=</span> df, flag <span style="color: #f78c6c;">=</span> flag<span style="color: #f78c6c;">)}</span>
+
+</pre>
+</div>
+</div>
+</div>
+
+
+
+<div id="outline-container-org2f0a94d" class="outline-3">
+<h3 id="org2f0a94d">Unindo as bases</h3>
+<div class="outline-text-3" id="text-org2f0a94d">
+<p>
+<b>Importante:</b> A base de dados de Santanna e Weller que será mesclada é a que esta no arquivo <code>santanna_weller_Explicativa_medias.csv</code> em que estão os dados médios.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-R">
+data.table::<span style="color: #82aaff;">fread</span><span style="color: #f78c6c;">(</span><span style="color: #82aaff;">paste0</span><span style="color: #f78c6c;">(</span><span style="color: #c3e88d;">"./clean/coldwar_concentracao_"</span>, fim, <span style="color: #c3e88d;">"_"</span>, inicio, <span style="color: #c3e88d;">".csv"</span><span style="color: #f78c6c;">))</span> <span style="color: #f78c6c;">-&gt;</span> df
+data.table::<span style="color: #82aaff;">fread</span><span style="color: #f78c6c;">(</span><span style="color: #c3e88d;">"./clean/santanna_weller_Explicativa_media.csv"</span><span style="color: #f78c6c;">)</span> <span style="color: #f78c6c;">-&gt;</span> santanna_weller
+santanna_weller <span style="color: #f78c6c;">&lt;-</span> santanna_weller <span style="color: #f78c6c;">%&gt;%</span>
+  <span style="color: #82aaff;">rename</span><span style="color: #f78c6c;">(</span>ISO <span style="color: #f78c6c;">=</span> code<span style="color: #f78c6c;">)</span>
+
+df <span style="color: #f78c6c;">&lt;-</span> df <span style="color: #f78c6c;">%&gt;%</span>
+  <span style="color: #82aaff;">left_join</span><span style="color: #f78c6c;">(</span>santanna_weller<span style="color: #f78c6c;">)</span>
+
+data.table::<span style="color: #82aaff;">fwrite</span><span style="color: #f78c6c;">(</span>df, <span style="color: #c3e88d;">'./clean/coldwar_concentracao_santanna_weller.csv'</span><span style="color: #f78c6c;">)</span>
+    
+</pre>
+</div>
+
+<p>
+Joining, by = &ldquo;ISO&rdquo;
+</p>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-org54068cb" class="outline-2">
+<h2 id="org54068cb">Calibragem</h2>
+<div class="outline-text-2" id="text-org54068cb">
+</div>
+<div id="outline-container-org7407cb7" class="outline-3">
+<h3 id="org7407cb7">Calibrando conflitos</h3>
+<div class="outline-text-3" id="text-org7407cb7">
+<p>
+Os conflitos serão calibrados de acordo com o método indireto.
+Para evitar a sensibilidade da amostra, transpõe-se o dataframe.
+Desse modo, as âncoras qualitativas serão associadas aos países e não as continentes que os conflitos ocorreram.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-R">
+data.table::<span style="color: #82aaff;">fread</span><span style="color: #f78c6c;">(</span><span style="color: #c3e88d;">'./clean/coldwar_concentracao_santanna_weller.csv'</span><span style="color: #f78c6c;">)</span> <span style="color: #f78c6c;">%&gt;%</span> <span style="color: #82aaff;">as.data.frame</span><span style="color: #f78c6c;">()</span> <span style="color: #f78c6c;">-&gt;</span> df
+
+tmp <span style="color: #f78c6c;">&lt;-</span> df <span style="color: #f78c6c;">%&gt;%</span>
+  <span style="color: #82aaff;">select</span><span style="color: #f78c6c;">(</span>
+    ISO,
+    Violentos_Europa, NaoViolentos_Europa,
+    Violentos_Asia, NaoViolentos_Asia,
+    Violentos_Africa, NaoViolentos_Africa,
+    Violentos_Americas, NaoViolentos_Americas,
+    Violentos, NaoViolentos
+  <span style="color: #f78c6c;">)</span> <span style="color: #f78c6c;">%&gt;%</span>
+  <span style="color: #82aaff;">rename_with</span><span style="color: #f78c6c;">(</span>.cols <span style="color: #f78c6c;">=</span> <span style="color: #f78c6c;">-</span>ISO, .fn <span style="color: #f78c6c;">=</span> ~ <span style="color: #82aaff;">paste0</span><span style="color: #f78c6c;">(</span>.x, <span style="color: #c3e88d;">"_cal"</span><span style="color: #f78c6c;">))</span> <span style="color: #f78c6c;">%&gt;%</span>
+   <span style="color: #82aaff;">pivot_longer</span><span style="color: #f78c6c;">(</span><span style="color: #f78c6c;">-</span>ISO<span style="color: #f78c6c;">)</span> <span style="color: #f78c6c;">%&gt;%</span>
+   <span style="color: #82aaff;">pivot_wider</span><span style="color: #f78c6c;">(</span>names_from<span style="color: #f78c6c;">=</span>ISO, values_from<span style="color: #f78c6c;">=</span>value<span style="color: #f78c6c;">)</span>
+
+<span style="color: #89DDFF;">for</span><span style="color: #f78c6c;">(</span>country <span style="color: #89DDFF;">in</span> <span style="color: #82aaff;">names</span><span style="color: #f78c6c;">(</span>tmp<span style="color: #f78c6c;">)[</span><span style="color: #f78c6c;">-</span><span style="color: #f78c6c; font-weight: bold;">1</span><span style="color: #f78c6c;">]){</span>
+  new_name <span style="color: #f78c6c;">&lt;-</span> <span style="color: #82aaff;">paste0</span><span style="color: #f78c6c;">(</span>country, <span style="color: #c3e88d;">"_cal"</span><span style="color: #f78c6c;">)</span>
+  x <span style="color: #f78c6c;">&lt;-</span> tmp<span style="color: #f78c6c;">[</span>country<span style="color: #f78c6c;">]</span> <span style="color: #f78c6c;">%&gt;%</span> <span style="color: #82aaff;">as.vector</span><span style="color: #f78c6c;">()</span> <span style="color: #f78c6c;">%&gt;%</span> <span style="color: #82aaff;">t</span><span style="color: #f78c6c;">()</span>
+  <span style="color: #556369;"># </span><span style="color: #556369;">Find quantiles</span>
+  quant <span style="color: #f78c6c;">&lt;-</span> <span style="color: #82aaff;">quantile</span><span style="color: #f78c6c;">(</span>x, probs <span style="color: #f78c6c;">=</span> <span style="color: #82aaff;">seq</span><span style="color: #f78c6c;">(</span><span style="color: #f78c6c; font-weight: bold;">0</span>, <span style="color: #f78c6c; font-weight: bold;">1</span>, <span style="color: #f78c6c; font-weight: bold;">0.2</span><span style="color: #f78c6c;">))</span>
+
+  <span style="color: #556369;"># </span><span style="color: #556369;">Theoretical calibration</span>
+  x_cal <span style="color: #f78c6c;">&lt;-</span> <span style="color: #c792ea;">NA</span>
+  x_cal<span style="color: #f78c6c;">[</span>x <span style="color: #f78c6c;">&lt;=</span> quant<span style="color: #f78c6c;">[</span><span style="color: #f78c6c; font-weight: bold;">1</span><span style="color: #f78c6c;">]]</span> <span style="color: #f78c6c;">&lt;-</span> <span style="color: #f78c6c; font-weight: bold;">0</span>
+  x_cal<span style="color: #f78c6c;">[</span>x <span style="color: #f78c6c;">&gt;</span> quant<span style="color: #f78c6c;">[</span><span style="color: #f78c6c; font-weight: bold;">1</span><span style="color: #f78c6c;">]</span> &amp; x <span style="color: #f78c6c;">&lt;=</span> quant<span style="color: #f78c6c;">[</span><span style="color: #f78c6c; font-weight: bold;">2</span><span style="color: #f78c6c;">]]</span> <span style="color: #f78c6c;">&lt;-</span> <span style="color: #c792ea;">.2</span>
+  x_cal<span style="color: #f78c6c;">[</span>x <span style="color: #f78c6c;">&gt;</span> quant<span style="color: #f78c6c;">[</span><span style="color: #f78c6c; font-weight: bold;">2</span><span style="color: #f78c6c;">]</span> &amp; x <span style="color: #f78c6c;">&lt;=</span> quant<span style="color: #f78c6c;">[</span><span style="color: #f78c6c; font-weight: bold;">3</span><span style="color: #f78c6c;">]]</span> <span style="color: #f78c6c;">&lt;-</span> <span style="color: #c792ea;">.4</span>
+  x_cal<span style="color: #f78c6c;">[</span>x <span style="color: #f78c6c;">&gt;</span> quant<span style="color: #f78c6c;">[</span><span style="color: #f78c6c; font-weight: bold;">3</span><span style="color: #f78c6c;">]</span> &amp; x <span style="color: #f78c6c;">&lt;=</span> quant<span style="color: #f78c6c;">[</span><span style="color: #f78c6c; font-weight: bold;">4</span><span style="color: #f78c6c;">]]</span> <span style="color: #f78c6c;">&lt;-</span> <span style="color: #c792ea;">.6</span>
+  x_cal<span style="color: #f78c6c;">[</span>x <span style="color: #f78c6c;">&gt;</span> quant<span style="color: #f78c6c;">[</span><span style="color: #f78c6c; font-weight: bold;">4</span><span style="color: #f78c6c;">]</span> &amp; x <span style="color: #f78c6c;">&lt;=</span> quant<span style="color: #f78c6c;">[</span><span style="color: #f78c6c; font-weight: bold;">5</span><span style="color: #f78c6c;">]]</span> <span style="color: #f78c6c;">&lt;-</span> <span style="color: #c792ea;">.8</span>
+  x_cal<span style="color: #f78c6c;">[</span>x <span style="color: #f78c6c;">&gt;</span> quant<span style="color: #f78c6c;">[</span><span style="color: #f78c6c; font-weight: bold;">5</span><span style="color: #f78c6c;">]]</span> <span style="color: #f78c6c;">&lt;-</span> <span style="color: #f78c6c; font-weight: bold;">1</span>
+
+  tmp<span style="color: #f78c6c;">[</span>country<span style="color: #f78c6c;">]</span> <span style="color: #f78c6c;">&lt;-</span> <span style="color: #82aaff;">indirectCalibration</span><span style="color: #f78c6c;">(</span>x <span style="color: #f78c6c;">%&gt;%</span> <span style="color: #82aaff;">as.vector</span><span style="color: #f78c6c;">()</span>, x_cal, binom <span style="color: #f78c6c;">=</span> <span style="color: #c792ea;">TRUE</span><span style="color: #f78c6c;">)</span>
+<span style="color: #f78c6c;">}</span>
+
+tmp <span style="color: #f78c6c;">&lt;-</span> tmp <span style="color: #f78c6c;">%&gt;%</span>
+  <span style="color: #556369;">## </span><span style="color: #556369;">select(name, ends_with("_cal")) %&gt;%</span>
+  <span style="color: #82aaff;">rename</span><span style="color: #f78c6c;">(</span>Conflito <span style="color: #f78c6c;">=</span> name<span style="color: #f78c6c;">)</span> <span style="color: #f78c6c;">%&gt;%</span>
+  <span style="color: #82aaff;">pivot_longer</span><span style="color: #f78c6c;">(</span><span style="color: #f78c6c;">-</span>Conflito<span style="color: #f78c6c;">)</span> <span style="color: #f78c6c;">%&gt;%</span>
+  <span style="color: #82aaff;">pivot_wider</span><span style="color: #f78c6c;">(</span>names_from<span style="color: #f78c6c;">=</span>Conflito, values_from<span style="color: #f78c6c;">=</span>value<span style="color: #f78c6c;">)</span> <span style="color: #f78c6c;">%&gt;%</span>
+  <span style="color: #82aaff;">rename</span><span style="color: #f78c6c;">(</span>ISO <span style="color: #f78c6c;">=</span> name<span style="color: #f78c6c;">)</span>
+
+df <span style="color: #f78c6c;">&lt;-</span> df <span style="color: #f78c6c;">%&gt;%</span>
+  <span style="color: #82aaff;">left_join</span><span style="color: #f78c6c;">(</span>tmp<span style="color: #f78c6c;">)</span>
+
+data.table::<span style="color: #82aaff;">fwrite</span><span style="color: #f78c6c;">(</span>df, <span style="color: #c3e88d;">'./clean/full_distancias_calibradas.csv'</span><span style="color: #f78c6c;">)</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgf581f47" class="outline-3">
+<h3 id="orgf581f47">Calibrando outras variáveis</h3>
+<div class="outline-text-3" id="text-orgf581f47">
+<p>
+Tal como para os conflitos, será utilizado o método indireto.
+Diferentemente dos conflitos, o cálculo será feito entre países.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-R">data.table::<span style="color: #82aaff;">fread</span><span style="color: #f78c6c;">(</span><span style="color: #c3e88d;">'./clean/full_distancias_calibradas.csv'</span><span style="color: #f78c6c;">)</span> <span style="color: #f78c6c;">-&gt;</span> df
+
+tmp <span style="color: #f78c6c;">&lt;-</span> df <span style="color: #f78c6c;">%&gt;%</span>
+  <span style="color: #82aaff;">select</span><span style="color: #f78c6c;">(</span>
+    ISO,
+    <span style="color: #556369;">## </span><span style="color: #556369;">Diff,</span>
+    pc,
+    decentralized
+  <span style="color: #f78c6c;">)</span> <span style="color: #f78c6c;">%&gt;%</span>
+  <span style="color: #82aaff;">as.data.frame</span><span style="color: #f78c6c;">()</span>
+
+<span style="color: #89DDFF;">for</span><span style="color: #f78c6c;">(</span>variable <span style="color: #89DDFF;">in</span> <span style="color: #82aaff;">names</span><span style="color: #f78c6c;">(</span>tmp<span style="color: #f78c6c;">)[</span><span style="color: #f78c6c;">-</span><span style="color: #f78c6c; font-weight: bold;">1</span><span style="color: #f78c6c;">]){</span>
+  x <span style="color: #f78c6c;">&lt;-</span> tmp<span style="color: #f78c6c;">[</span>variable<span style="color: #f78c6c;">]</span> <span style="color: #f78c6c;">%&gt;%</span> <span style="color: #82aaff;">as.vector</span><span style="color: #f78c6c;">()</span> <span style="color: #f78c6c;">%&gt;%</span> <span style="color: #82aaff;">t</span><span style="color: #f78c6c;">()</span>
+  <span style="color: #556369;"># </span><span style="color: #556369;">Find quantiles</span>
+  quant <span style="color: #f78c6c;">&lt;-</span> <span style="color: #82aaff;">quantile</span><span style="color: #f78c6c;">(</span>x, probs <span style="color: #f78c6c;">=</span> <span style="color: #82aaff;">seq</span><span style="color: #f78c6c;">(</span><span style="color: #f78c6c; font-weight: bold;">0</span>, <span style="color: #f78c6c; font-weight: bold;">1</span>, <span style="color: #f78c6c; font-weight: bold;">0.2</span><span style="color: #f78c6c;">))</span>
+
+  <span style="color: #556369;"># </span><span style="color: #556369;">Theoretical calibration</span>
+  x_cal <span style="color: #f78c6c;">&lt;-</span> <span style="color: #c792ea;">NA</span>
+  x_cal<span style="color: #f78c6c;">[</span>x <span style="color: #f78c6c;">&lt;=</span> quant<span style="color: #f78c6c;">[</span><span style="color: #f78c6c; font-weight: bold;">1</span><span style="color: #f78c6c;">]]</span> <span style="color: #f78c6c;">&lt;-</span> <span style="color: #f78c6c; font-weight: bold;">0</span>
+  x_cal<span style="color: #f78c6c;">[</span>x <span style="color: #f78c6c;">&gt;</span> quant<span style="color: #f78c6c;">[</span><span style="color: #f78c6c; font-weight: bold;">1</span><span style="color: #f78c6c;">]</span> &amp; x <span style="color: #f78c6c;">&lt;=</span> quant<span style="color: #f78c6c;">[</span><span style="color: #f78c6c; font-weight: bold;">2</span><span style="color: #f78c6c;">]]</span> <span style="color: #f78c6c;">&lt;-</span> <span style="color: #c792ea;">.2</span>
+  x_cal<span style="color: #f78c6c;">[</span>x <span style="color: #f78c6c;">&gt;</span> quant<span style="color: #f78c6c;">[</span><span style="color: #f78c6c; font-weight: bold;">2</span><span style="color: #f78c6c;">]</span> &amp; x <span style="color: #f78c6c;">&lt;=</span> quant<span style="color: #f78c6c;">[</span><span style="color: #f78c6c; font-weight: bold;">3</span><span style="color: #f78c6c;">]]</span> <span style="color: #f78c6c;">&lt;-</span> <span style="color: #c792ea;">.4</span>
+  x_cal<span style="color: #f78c6c;">[</span>x <span style="color: #f78c6c;">&gt;</span> quant<span style="color: #f78c6c;">[</span><span style="color: #f78c6c; font-weight: bold;">3</span><span style="color: #f78c6c;">]</span> &amp; x <span style="color: #f78c6c;">&lt;=</span> quant<span style="color: #f78c6c;">[</span><span style="color: #f78c6c; font-weight: bold;">4</span><span style="color: #f78c6c;">]]</span> <span style="color: #f78c6c;">&lt;-</span> <span style="color: #c792ea;">.6</span>
+  x_cal<span style="color: #f78c6c;">[</span>x <span style="color: #f78c6c;">&gt;</span> quant<span style="color: #f78c6c;">[</span><span style="color: #f78c6c; font-weight: bold;">4</span><span style="color: #f78c6c;">]</span> &amp; x <span style="color: #f78c6c;">&lt;=</span> quant<span style="color: #f78c6c;">[</span><span style="color: #f78c6c; font-weight: bold;">5</span><span style="color: #f78c6c;">]]</span> <span style="color: #f78c6c;">&lt;-</span> <span style="color: #c792ea;">.8</span>
+  x_cal<span style="color: #f78c6c;">[</span>x <span style="color: #f78c6c;">&gt;</span> quant<span style="color: #f78c6c;">[</span><span style="color: #f78c6c; font-weight: bold;">5</span><span style="color: #f78c6c;">]]</span> <span style="color: #f78c6c;">&lt;-</span> <span style="color: #f78c6c; font-weight: bold;">1</span>
+
+  tmp<span style="color: #f78c6c;">[</span>variable<span style="color: #f78c6c;">]</span> <span style="color: #f78c6c;">&lt;-</span> <span style="color: #82aaff;">indirectCalibration</span><span style="color: #f78c6c;">(</span>x <span style="color: #f78c6c;">%&gt;%</span> <span style="color: #82aaff;">as.vector</span><span style="color: #f78c6c;">()</span>, x_cal, binom <span style="color: #f78c6c;">=</span> <span style="color: #c792ea;">TRUE</span><span style="color: #f78c6c;">)</span>
+<span style="color: #f78c6c;">}</span>
+
+tmp <span style="color: #f78c6c;">&lt;-</span> tmp <span style="color: #f78c6c;">%&gt;%</span>
+  <span style="color: #82aaff;">rename_with</span><span style="color: #f78c6c;">(</span>.cols <span style="color: #f78c6c;">=</span> <span style="color: #f78c6c;">-</span>ISO, .fn <span style="color: #f78c6c;">=</span> ~ <span style="color: #82aaff;">paste0</span><span style="color: #f78c6c;">(</span>.x, <span style="color: #c3e88d;">"_cal"</span><span style="color: #f78c6c;">))</span>
+
+diff_cal <span style="color: #f78c6c;">&lt;-</span> <span style="color: #82aaff;">calibrate</span><span style="color: #f78c6c;">(</span>
+  x <span style="color: #f78c6c;">=</span> df$Diff <span style="color: #f78c6c;">%&gt;%</span> <span style="color: #82aaff;">as.vector</span><span style="color: #f78c6c;">()</span>,
+  thresholds <span style="color: #f78c6c;">=</span> <span style="color: #c3e88d;">"e=-0.6, c=-0.00001, i=0.6"</span>
+<span style="color: #f78c6c;">)</span>
+
+df <span style="color: #f78c6c;">&lt;-</span> df <span style="color: #f78c6c;">%&gt;%</span>
+  <span style="color: #82aaff;">mutate</span><span style="color: #f78c6c;">(</span>Diff_cal <span style="color: #f78c6c;">=</span> diff_cal<span style="color: #f78c6c;">)</span> <span style="color: #f78c6c;">%&gt;%</span>
+  <span style="color: #82aaff;">left_join</span><span style="color: #f78c6c;">(</span>tmp<span style="color: #f78c6c;">)</span>
+
+data.table::<span style="color: #82aaff;">fwrite</span><span style="color: #f78c6c;">(</span>df, <span style="color: #c3e88d;">'./clean/raw_calibrados.csv'</span><span style="color: #f78c6c;">)</span>
+data.table::<span style="color: #82aaff;">fwrite</span><span style="color: #f78c6c;">(</span>
+              df <span style="color: #f78c6c;">%&gt;%</span> <span style="color: #82aaff;">select</span><span style="color: #f78c6c;">(</span>ISO,  <span style="color: #82aaff;">ends_with</span><span style="color: #f78c6c;">(</span><span style="color: #c3e88d;">"_cal"</span><span style="color: #f78c6c;">))</span>,
+              <span style="color: #c3e88d;">'./clean/calibrados.csv'</span><span style="color: #f78c6c;">)</span>
+</pre>
+</div>
+
+<p>
+Joining, by = &ldquo;ISO&rdquo;
+</p>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-org22cecd5" class="outline-2">
+<h2 id="org22cecd5">Tabela verdade e minimização</h2>
+<div class="outline-text-2" id="text-org22cecd5">
+</div>
+<div id="outline-container-orga49d8b5" class="outline-3">
+<h3 id="orga49d8b5">Maior concentração (1989 - 1945 &gt; 0)</h3>
+<div class="outline-text-3" id="text-orga49d8b5">
+</div>
+<div id="outline-container-org1ae3755" class="outline-4">
+<h4 id="org1ae3755">Tabela verdade</h4>
+<div class="outline-text-4" id="text-org1ae3755">
+<div class="org-src-container">
+<pre class="src src-R">df <span style="color: #f78c6c;">&lt;-</span> data.table::<span style="color: #82aaff;">fread</span><span style="color: #f78c6c;">(</span><span style="color: #c3e88d;">'./clean/calibrados.csv'</span><span style="color: #f78c6c;">)</span> <span style="color: #f78c6c;">%&gt;%</span> <span style="color: #82aaff;">as.data.frame</span><span style="color: #f78c6c;">()</span>
+
+df <span style="color: #f78c6c;">&lt;-</span> df <span style="color: #f78c6c;">%&gt;%</span>
+  <span style="color: #82aaff;">set_names</span><span style="color: #f78c6c;">(</span>
+    ~ <span style="color: #82aaff;">str_to_upper</span><span style="color: #f78c6c;">(</span>.<span style="color: #f78c6c;">)</span> <span style="color: #f78c6c;">%&gt;%</span>
+                  <span style="color: #82aaff;">str_replace_all</span><span style="color: #f78c6c;">(</span><span style="color: #c3e88d;">"_CAL"</span>, <span style="color: #c3e88d;">""</span><span style="color: #f78c6c;">)</span> <span style="color: #f78c6c;">%&gt;%</span>
+                  <span style="color: #82aaff;">str_replace_all</span><span style="color: #f78c6c;">(</span><span style="color: #c3e88d;">"VIOLENTOS"</span>, <span style="color: #c3e88d;">"V"</span><span style="color: #f78c6c;">)</span> <span style="color: #f78c6c;">%&gt;%</span>
+                  <span style="color: #82aaff;">str_replace_all</span><span style="color: #f78c6c;">(</span><span style="color: #c3e88d;">"AFRICA"</span>, <span style="color: #c3e88d;">"AFR"</span><span style="color: #f78c6c;">)</span> <span style="color: #f78c6c;">%&gt;%</span>
+                  <span style="color: #82aaff;">str_replace_all</span><span style="color: #f78c6c;">(</span><span style="color: #c3e88d;">"AMERICAS"</span>, <span style="color: #c3e88d;">"AME"</span><span style="color: #f78c6c;">)</span> <span style="color: #f78c6c;">%&gt;%</span>
+                  <span style="color: #82aaff;">str_replace_all</span><span style="color: #f78c6c;">(</span><span style="color: #c3e88d;">"EUROPA"</span>, <span style="color: #c3e88d;">"EUR"</span><span style="color: #f78c6c;">)</span> <span style="color: #f78c6c;">%&gt;%</span>
+                  <span style="color: #82aaff;">str_replace_all</span><span style="color: #f78c6c;">(</span><span style="color: #c3e88d;">"NAO"</span>, <span style="color: #c3e88d;">"N"</span><span style="color: #f78c6c;">)</span>
+  <span style="color: #f78c6c;">)</span> <span style="color: #f78c6c;">%&gt;%</span>
+  <span style="color: #82aaff;">rename</span><span style="color: #f78c6c;">(</span>DEC <span style="color: #f78c6c;">=</span> DECENTRALIZED<span style="color: #f78c6c;">)</span>
+
+conds <span style="color: #f78c6c;">&lt;-</span> df <span style="color: #f78c6c;">%&gt;%</span>
+  <span style="color: #82aaff;">select</span><span style="color: #f78c6c;">(</span><span style="color: #f78c6c;">-</span><span style="color: #82aaff;">c</span><span style="color: #f78c6c;">(</span>DIFF, V, NV, ISO<span style="color: #f78c6c;">))</span> <span style="color: #f78c6c;">%&gt;%</span>
+  <span style="color: #82aaff;">select</span><span style="color: #f78c6c;">(</span><span style="color: #f78c6c;">-</span><span style="color: #82aaff;">c</span><span style="color: #f78c6c;">(</span><span style="color: #82aaff;">starts_with</span><span style="color: #f78c6c;">(</span><span style="color: #c3e88d;">"N"</span><span style="color: #f78c6c;">)))</span> <span style="color: #f78c6c;">%&gt;%</span>
+  <span style="color: #82aaff;">names</span><span style="color: #f78c6c;">()</span> <span style="color: #f78c6c;">%&gt;%</span>
+  <span style="color: #82aaff;">as.vector</span><span style="color: #f78c6c;">()</span>
+
+TT <span style="color: #f78c6c;">&lt;-</span> <span style="color: #82aaff;">truthTable</span><span style="color: #f78c6c;">(</span>
+  data <span style="color: #f78c6c;">=</span> df,
+  outcome <span style="color: #f78c6c;">=</span> <span style="color: #c3e88d;">"DIFF"</span>,
+  conditions <span style="color: #f78c6c;">=</span> conds,
+  complete <span style="color: #f78c6c;">=</span> <span style="color: #c792ea;">TRUE</span>,
+  show.cases <span style="color: #f78c6c;">=</span> <span style="color: #c792ea;">TRUE</span>,
+  incl.cut <span style="color: #f78c6c;">=</span> <span style="color: #f78c6c; font-weight: bold;">0.8</span>,
+  sort.by <span style="color: #f78c6c;">=</span> <span style="color: #c3e88d;">"out, incl"</span>
+<span style="color: #f78c6c;">)</span>
+
+<span style="color: #82aaff;">stargazerTT</span><span style="color: #f78c6c;">(</span>TT, show.cases <span style="color: #f78c6c;">=</span> <span style="color: #c792ea;">TRUE</span>, type <span style="color: #f78c6c;">=</span> <span style="color: #c3e88d;">"html"</span><span style="color: #f78c6c;">)</span>
+</pre>
+</div>
+
+
+<table style="text-align:center"><tr><td colspan="12" style="border-bottom: 1px solid black"></td></tr><tr><td style="text-align:left"></td><td>V_EUR</td><td>V_ASIA</td><td>V_AFR</td><td>V_AME</td><td>PC</td><td>DEC</td><td>OUT</td><td>n</td><td>incl</td><td>PRI</td><td>cases</td></tr>
+<tr><td colspan="12" style="border-bottom: 1px solid black"></td></tr><tr><td style="text-align:left">52</td><td>1</td><td>1</td><td>0</td><td>0</td><td>1</td><td>1</td><td>1</td><td>1</td><td>1</td><td>1</td><td>12</td></tr>
+<tr><td style="text-align:left">44</td><td>1</td><td>0</td><td>1</td><td>0</td><td>1</td><td>1</td><td>1</td><td>1</td><td>0.881</td><td>0.364</td><td>8</td></tr>
+<tr><td style="text-align:left">46</td><td>1</td><td>0</td><td>1</td><td>1</td><td>0</td><td>1</td><td>1</td><td>2</td><td>0.846</td><td>0.618</td><td>2,18</td></tr>
+<tr><td style="text-align:left">42</td><td>1</td><td>0</td><td>1</td><td>0</td><td>0</td><td>1</td><td>0</td><td>3</td><td>0.732</td><td>0.553</td><td>4,9,10</td></tr>
+<tr><td style="text-align:left">43</td><td>1</td><td>0</td><td>1</td><td>0</td><td>1</td><td>0</td><td>0</td><td>5</td><td>0.612</td><td>0.299</td><td>5,11,13,16,17</td></tr>
+<tr><td style="text-align:left">41</td><td>1</td><td>0</td><td>1</td><td>0</td><td>0</td><td>0</td><td>0</td><td>4</td><td>0.561</td><td>0.178</td><td>3,6,7,14</td></tr>
+<tr><td style="text-align:left">18</td><td>0</td><td>1</td><td>0</td><td>0</td><td>0</td><td>1</td><td>0</td><td>1</td><td>0.510</td><td>0.276</td><td>1</td></tr>
+<tr><td style="text-align:left">21</td><td>0</td><td>1</td><td>0</td><td>1</td><td>0</td><td>0</td><td>0</td><td>1</td><td>0.391</td><td>0</td><td>15</td></tr>
+<tr><td style="text-align:left">1</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>?</td><td>0</td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">2</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>1</td><td>?</td><td>0</td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">3</td><td>0</td><td>0</td><td>0</td><td>0</td><td>1</td><td>0</td><td>?</td><td>0</td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">4</td><td>0</td><td>0</td><td>0</td><td>0</td><td>1</td><td>1</td><td>?</td><td>0</td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">5</td><td>0</td><td>0</td><td>0</td><td>1</td><td>0</td><td>0</td><td>?</td><td>0</td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">6</td><td>0</td><td>0</td><td>0</td><td>1</td><td>0</td><td>1</td><td>?</td><td>0</td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">7</td><td>0</td><td>0</td><td>0</td><td>1</td><td>1</td><td>0</td><td>?</td><td>0</td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">8</td><td>0</td><td>0</td><td>0</td><td>1</td><td>1</td><td>1</td><td>?</td><td>0</td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">9</td><td>0</td><td>0</td><td>1</td><td>0</td><td>0</td><td>0</td><td>?</td><td>0</td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">10</td><td>0</td><td>0</td><td>1</td><td>0</td><td>0</td><td>1</td><td>?</td><td>0</td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">11</td><td>0</td><td>0</td><td>1</td><td>0</td><td>1</td><td>0</td><td>?</td><td>0</td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">12</td><td>0</td><td>0</td><td>1</td><td>0</td><td>1</td><td>1</td><td>?</td><td>0</td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">13</td><td>0</td><td>0</td><td>1</td><td>1</td><td>0</td><td>0</td><td>?</td><td>0</td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">14</td><td>0</td><td>0</td><td>1</td><td>1</td><td>0</td><td>1</td><td>?</td><td>0</td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">15</td><td>0</td><td>0</td><td>1</td><td>1</td><td>1</td><td>0</td><td>?</td><td>0</td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">16</td><td>0</td><td>0</td><td>1</td><td>1</td><td>1</td><td>1</td><td>?</td><td>0</td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">17</td><td>0</td><td>1</td><td>0</td><td>0</td><td>0</td><td>0</td><td>?</td><td>0</td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">19</td><td>0</td><td>1</td><td>0</td><td>0</td><td>1</td><td>0</td><td>?</td><td>0</td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">20</td><td>0</td><td>1</td><td>0</td><td>0</td><td>1</td><td>1</td><td>?</td><td>0</td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">22</td><td>0</td><td>1</td><td>0</td><td>1</td><td>0</td><td>1</td><td>?</td><td>0</td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">23</td><td>0</td><td>1</td><td>0</td><td>1</td><td>1</td><td>0</td><td>?</td><td>0</td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">24</td><td>0</td><td>1</td><td>0</td><td>1</td><td>1</td><td>1</td><td>?</td><td>0</td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">25</td><td>0</td><td>1</td><td>1</td><td>0</td><td>0</td><td>0</td><td>?</td><td>0</td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">26</td><td>0</td><td>1</td><td>1</td><td>0</td><td>0</td><td>1</td><td>?</td><td>0</td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">27</td><td>0</td><td>1</td><td>1</td><td>0</td><td>1</td><td>0</td><td>?</td><td>0</td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">28</td><td>0</td><td>1</td><td>1</td><td>0</td><td>1</td><td>1</td><td>?</td><td>0</td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">29</td><td>0</td><td>1</td><td>1</td><td>1</td><td>0</td><td>0</td><td>?</td><td>0</td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">30</td><td>0</td><td>1</td><td>1</td><td>1</td><td>0</td><td>1</td><td>?</td><td>0</td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">31</td><td>0</td><td>1</td><td>1</td><td>1</td><td>1</td><td>0</td><td>?</td><td>0</td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">32</td><td>0</td><td>1</td><td>1</td><td>1</td><td>1</td><td>1</td><td>?</td><td>0</td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">33</td><td>1</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>?</td><td>0</td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">34</td><td>1</td><td>0</td><td>0</td><td>0</td><td>0</td><td>1</td><td>?</td><td>0</td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">35</td><td>1</td><td>0</td><td>0</td><td>0</td><td>1</td><td>0</td><td>?</td><td>0</td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">36</td><td>1</td><td>0</td><td>0</td><td>0</td><td>1</td><td>1</td><td>?</td><td>0</td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">37</td><td>1</td><td>0</td><td>0</td><td>1</td><td>0</td><td>0</td><td>?</td><td>0</td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">38</td><td>1</td><td>0</td><td>0</td><td>1</td><td>0</td><td>1</td><td>?</td><td>0</td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">39</td><td>1</td><td>0</td><td>0</td><td>1</td><td>1</td><td>0</td><td>?</td><td>0</td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">40</td><td>1</td><td>0</td><td>0</td><td>1</td><td>1</td><td>1</td><td>?</td><td>0</td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">45</td><td>1</td><td>0</td><td>1</td><td>1</td><td>0</td><td>0</td><td>?</td><td>0</td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">47</td><td>1</td><td>0</td><td>1</td><td>1</td><td>1</td><td>0</td><td>?</td><td>0</td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">48</td><td>1</td><td>0</td><td>1</td><td>1</td><td>1</td><td>1</td><td>?</td><td>0</td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">49</td><td>1</td><td>1</td><td>0</td><td>0</td><td>0</td><td>0</td><td>?</td><td>0</td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">50</td><td>1</td><td>1</td><td>0</td><td>0</td><td>0</td><td>1</td><td>?</td><td>0</td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">51</td><td>1</td><td>1</td><td>0</td><td>0</td><td>1</td><td>0</td><td>?</td><td>0</td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">53</td><td>1</td><td>1</td><td>0</td><td>1</td><td>0</td><td>0</td><td>?</td><td>0</td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">54</td><td>1</td><td>1</td><td>0</td><td>1</td><td>0</td><td>1</td><td>?</td><td>0</td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">55</td><td>1</td><td>1</td><td>0</td><td>1</td><td>1</td><td>0</td><td>?</td><td>0</td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">56</td><td>1</td><td>1</td><td>0</td><td>1</td><td>1</td><td>1</td><td>?</td><td>0</td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">57</td><td>1</td><td>1</td><td>1</td><td>0</td><td>0</td><td>0</td><td>?</td><td>0</td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">58</td><td>1</td><td>1</td><td>1</td><td>0</td><td>0</td><td>1</td><td>?</td><td>0</td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">59</td><td>1</td><td>1</td><td>1</td><td>0</td><td>1</td><td>0</td><td>?</td><td>0</td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">60</td><td>1</td><td>1</td><td>1</td><td>0</td><td>1</td><td>1</td><td>?</td><td>0</td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">61</td><td>1</td><td>1</td><td>1</td><td>1</td><td>0</td><td>0</td><td>?</td><td>0</td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">62</td><td>1</td><td>1</td><td>1</td><td>1</td><td>0</td><td>1</td><td>?</td><td>0</td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">63</td><td>1</td><td>1</td><td>1</td><td>1</td><td>1</td><td>0</td><td>?</td><td>0</td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">64</td><td>1</td><td>1</td><td>1</td><td>1</td><td>1</td><td>1</td><td>?</td><td>0</td><td></td><td></td><td></td></tr>
+<tr><td colspan="12" style="border-bottom: 1px solid black"></td></tr></table>
+</div>
+</div>
+
+<div id="outline-container-orgd8eb8da" class="outline-4">
+<h4 id="orgd8eb8da">Solução conservadora</h4>
+<div class="outline-text-4" id="text-orgd8eb8da">
+<div class="org-src-container">
+<pre class="src src-R">MIN <span style="color: #f78c6c;">&lt;-</span> <span style="color: #82aaff;">minimize</span><span style="color: #f78c6c;">(</span>TT<span style="color: #f78c6c;">)</span>
+
+<span style="color: #82aaff;">stargazerSol</span><span style="color: #f78c6c;">(</span>MIN, type <span style="color: #f78c6c;">=</span> <span style="color: #c3e88d;">"html"</span>, outcome <span style="color: #f78c6c;">=</span> <span style="color: #c3e88d;">"DIFF"</span>, show.cases <span style="color: #f78c6c;">=</span> <span style="color: #c792ea;">TRUE</span><span style="color: #f78c6c;">)</span>
+</pre>
+</div>
+
+
+<table style="text-align:center"><tr><td colspan="6" style="border-bottom: 1px solid black"></td></tr><tr><td style="text-align:left"></td><td>inclS</td><td>PRI</td><td>covS</td><td>covU</td><td>cases</td></tr>
+<tr><td colspan="6" style="border-bottom: 1px solid black"></td></tr><tr><td style="text-align:left">V_EUR* ~ V_ASIA* V_AFR* ~ V_AME* PC* DEC</td><td>0.881</td><td>0.364</td><td>0.118</td><td>0.055</td><td>8</td></tr>
+<tr><td style="text-align:left">V_EUR* V_ASIA* ~ V_AFR* ~ V_AME* PC* DEC</td><td>1</td><td>1</td><td>0.130</td><td>0.094</td><td>12</td></tr>
+<tr><td style="text-align:left">V_EUR* ~ V_ASIA* V_AFR* V_AME* ~ PC* DEC</td><td>0.846</td><td>0.618</td><td>0.267</td><td>0.213</td><td>2,18</td></tr>
+<tr><td style="text-align:left">Solution</td><td>0.869</td><td>0.716</td><td>0.426</td><td></td><td></td></tr>
+<tr><td colspan="6" style="border-bottom: 1px solid black"></td></tr></table>
+</div>
+</div>
+
+<div id="outline-container-org2517bf9" class="outline-4">
+<h4 id="org2517bf9">Solução parsimoniosa</h4>
+<div class="outline-text-4" id="text-org2517bf9">
+<div class="org-src-container">
+<pre class="src src-R">MIN <span style="color: #f78c6c;">&lt;-</span> <span style="color: #82aaff;">minimize</span><span style="color: #f78c6c;">(</span>TT, include <span style="color: #f78c6c;">=</span> <span style="color: #c3e88d;">"?"</span><span style="color: #f78c6c;">)</span>
+
+<span style="color: #82aaff;">stargazerSol</span><span style="color: #f78c6c;">(</span>MIN, type <span style="color: #f78c6c;">=</span> <span style="color: #c3e88d;">"html"</span>, outcome <span style="color: #f78c6c;">=</span> <span style="color: #c3e88d;">"DIFF"</span>, show.cases <span style="color: #f78c6c;">=</span> <span style="color: #c792ea;">TRUE</span><span style="color: #f78c6c;">)</span>
+</pre>
+</div>
+
+
+<table style="text-align:center"><tr><td colspan="6" style="border-bottom: 1px solid black"></td></tr><tr><td style="text-align:left"></td><td>inclS</td><td>PRI</td><td>covS</td><td>covU</td><td>cases</td></tr>
+<tr><td colspan="6" style="border-bottom: 1px solid black"></td></tr><tr><td style="text-align:left">V_EUR* V_AME</td><td>0.744</td><td>0.390</td><td>0.657</td><td>0</td><td>2,18</td></tr>
+<tr><td style="text-align:left">PC* DEC</td><td>0.941</td><td>0.883</td><td>0.256</td><td>0.109</td><td>8; 12</td></tr>
+<tr><td style="text-align:left">Solution</td><td>0.705</td><td>0.426</td><td>0.771</td><td></td><td></td></tr>
+<tr><td colspan="6" style="border-bottom: 1px solid black"></td></tr></table>
+</div>
+</div>
+</div>
+
+
+
+
+<div id="outline-container-org2f4c463" class="outline-3">
+<h3 id="org2f4c463">Menor concentração (1989 - 1945 &lt; 0)</h3>
+<div class="outline-text-3" id="text-org2f4c463">
+</div>
+<div id="outline-container-org0b5434f" class="outline-4">
+<h4 id="org0b5434f">Tabela verdade</h4>
+<div class="outline-text-4" id="text-org0b5434f">
+<div class="org-src-container">
+<pre class="src src-R">df <span style="color: #f78c6c;">&lt;-</span> data.table::<span style="color: #82aaff;">fread</span><span style="color: #f78c6c;">(</span><span style="color: #c3e88d;">'./clean/calibrados.csv'</span><span style="color: #f78c6c;">)</span> <span style="color: #f78c6c;">%&gt;%</span> <span style="color: #82aaff;">as.data.frame</span><span style="color: #f78c6c;">()</span>
+
+df <span style="color: #f78c6c;">&lt;-</span> df <span style="color: #f78c6c;">%&gt;%</span>
+  <span style="color: #82aaff;">set_names</span><span style="color: #f78c6c;">(</span>
+    ~ <span style="color: #82aaff;">str_to_upper</span><span style="color: #f78c6c;">(</span>.<span style="color: #f78c6c;">)</span> <span style="color: #f78c6c;">%&gt;%</span>
+                  <span style="color: #82aaff;">str_replace_all</span><span style="color: #f78c6c;">(</span><span style="color: #c3e88d;">"_CAL"</span>, <span style="color: #c3e88d;">""</span><span style="color: #f78c6c;">)</span> <span style="color: #f78c6c;">%&gt;%</span>
+                  <span style="color: #82aaff;">str_replace_all</span><span style="color: #f78c6c;">(</span><span style="color: #c3e88d;">"VIOLENTOS"</span>, <span style="color: #c3e88d;">"V"</span><span style="color: #f78c6c;">)</span> <span style="color: #f78c6c;">%&gt;%</span>
+                  <span style="color: #82aaff;">str_replace_all</span><span style="color: #f78c6c;">(</span><span style="color: #c3e88d;">"AFRICA"</span>, <span style="color: #c3e88d;">"AFR"</span><span style="color: #f78c6c;">)</span> <span style="color: #f78c6c;">%&gt;%</span>
+                  <span style="color: #82aaff;">str_replace_all</span><span style="color: #f78c6c;">(</span><span style="color: #c3e88d;">"AMERICAS"</span>, <span style="color: #c3e88d;">"AME"</span><span style="color: #f78c6c;">)</span> <span style="color: #f78c6c;">%&gt;%</span>
+                  <span style="color: #82aaff;">str_replace_all</span><span style="color: #f78c6c;">(</span><span style="color: #c3e88d;">"EUROPA"</span>, <span style="color: #c3e88d;">"EUR"</span><span style="color: #f78c6c;">)</span> <span style="color: #f78c6c;">%&gt;%</span>
+                  <span style="color: #82aaff;">str_replace_all</span><span style="color: #f78c6c;">(</span><span style="color: #c3e88d;">"NAO"</span>, <span style="color: #c3e88d;">"N"</span><span style="color: #f78c6c;">)</span>
+  <span style="color: #f78c6c;">)</span> <span style="color: #f78c6c;">%&gt;%</span>
+  <span style="color: #82aaff;">rename</span><span style="color: #f78c6c;">(</span>DEC <span style="color: #f78c6c;">=</span> DECENTRALIZED<span style="color: #f78c6c;">)</span>
+
+conds <span style="color: #f78c6c;">&lt;-</span> df <span style="color: #f78c6c;">%&gt;%</span>  <span style="color: #82aaff;">select</span><span style="color: #f78c6c;">(</span><span style="color: #f78c6c;">-</span><span style="color: #82aaff;">c</span><span style="color: #f78c6c;">(</span>DIFF, V, NV, ISO<span style="color: #f78c6c;">))</span> <span style="color: #f78c6c;">%&gt;%</span>
+  <span style="color: #82aaff;">select</span><span style="color: #f78c6c;">(</span><span style="color: #f78c6c;">-</span><span style="color: #82aaff;">c</span><span style="color: #f78c6c;">(</span><span style="color: #82aaff;">starts_with</span><span style="color: #f78c6c;">(</span><span style="color: #c3e88d;">"N"</span><span style="color: #f78c6c;">)))</span> <span style="color: #f78c6c;">%&gt;%</span>
+  <span style="color: #82aaff;">names</span><span style="color: #f78c6c;">()</span> <span style="color: #f78c6c;">%&gt;%</span>
+  <span style="color: #82aaff;">as.vector</span><span style="color: #f78c6c;">()</span>
+
+TT <span style="color: #f78c6c;">&lt;-</span> <span style="color: #82aaff;">truthTable</span><span style="color: #f78c6c;">(</span>
+  data <span style="color: #f78c6c;">=</span> df,
+  outcome <span style="color: #f78c6c;">=</span> <span style="color: #c3e88d;">"~DIFF"</span>,
+  conditions <span style="color: #f78c6c;">=</span> conds,
+  complete <span style="color: #f78c6c;">=</span> <span style="color: #c792ea;">TRUE</span>,
+  show.cases <span style="color: #f78c6c;">=</span> <span style="color: #c792ea;">TRUE</span>,
+  incl.cut <span style="color: #f78c6c;">=</span> <span style="color: #f78c6c; font-weight: bold;">0.8</span>,
+  sort.by <span style="color: #f78c6c;">=</span> <span style="color: #c3e88d;">"out, incl"</span>
+<span style="color: #f78c6c;">)</span>
+
+<span style="color: #82aaff;">stargazerTT</span><span style="color: #f78c6c;">(</span>TT, show.cases <span style="color: #f78c6c;">=</span> <span style="color: #c792ea;">TRUE</span>, type <span style="color: #f78c6c;">=</span> <span style="color: #c3e88d;">"html"</span><span style="color: #f78c6c;">)</span>
+</pre>
+</div>
+
+
+<table style="text-align:center"><tr><td colspan="12" style="border-bottom: 1px solid black"></td></tr><tr><td style="text-align:left"></td><td>V_EUR</td><td>V_ASIA</td><td>V_AFR</td><td>V_AME</td><td>PC</td><td>DEC</td><td>OUT</td><td>n</td><td>incl</td><td>PRI</td><td>cases</td></tr>
+<tr><td colspan="12" style="border-bottom: 1px solid black"></td></tr><tr><td style="text-align:left">21</td><td>0</td><td>1</td><td>0</td><td>1</td><td>0</td><td>0</td><td>1</td><td>1</td><td>0.971</td><td>0.953</td><td>15</td></tr>
+<tr><td style="text-align:left">41</td><td>1</td><td>0</td><td>1</td><td>0</td><td>0</td><td>0</td><td>1</td><td>4</td><td>0.890</td><td>0.794</td><td>3,6,7,14</td></tr>
+<tr><td style="text-align:left">44</td><td>1</td><td>0</td><td>1</td><td>0</td><td>1</td><td>1</td><td>1</td><td>1</td><td>0.851</td><td>0.201</td><td>8</td></tr>
+<tr><td style="text-align:left">43</td><td>1</td><td>0</td><td>1</td><td>0</td><td>1</td><td>0</td><td>1</td><td>5</td><td>0.834</td><td>0.701</td><td>5,11,13,16,17</td></tr>
+<tr><td style="text-align:left">18</td><td>0</td><td>1</td><td>0</td><td>0</td><td>0</td><td>1</td><td>1</td><td>1</td><td>0.813</td><td>0.724</td><td>1</td></tr>
+<tr><td style="text-align:left">46</td><td>1</td><td>0</td><td>1</td><td>1</td><td>0</td><td>1</td><td>0</td><td>2</td><td>0.701</td><td>0.256</td><td>2,18</td></tr>
+<tr><td style="text-align:left">42</td><td>1</td><td>0</td><td>1</td><td>0</td><td>0</td><td>1</td><td>0</td><td>3</td><td>0.669</td><td>0.447</td><td>4,9,10</td></tr>
+<tr><td style="text-align:left">52</td><td>1</td><td>1</td><td>0</td><td>0</td><td>1</td><td>1</td><td>0</td><td>1</td><td>0.355</td><td>0</td><td>12</td></tr>
+<tr><td style="text-align:left">1</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>?</td><td>0</td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">2</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>1</td><td>?</td><td>0</td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">3</td><td>0</td><td>0</td><td>0</td><td>0</td><td>1</td><td>0</td><td>?</td><td>0</td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">4</td><td>0</td><td>0</td><td>0</td><td>0</td><td>1</td><td>1</td><td>?</td><td>0</td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">5</td><td>0</td><td>0</td><td>0</td><td>1</td><td>0</td><td>0</td><td>?</td><td>0</td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">6</td><td>0</td><td>0</td><td>0</td><td>1</td><td>0</td><td>1</td><td>?</td><td>0</td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">7</td><td>0</td><td>0</td><td>0</td><td>1</td><td>1</td><td>0</td><td>?</td><td>0</td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">8</td><td>0</td><td>0</td><td>0</td><td>1</td><td>1</td><td>1</td><td>?</td><td>0</td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">9</td><td>0</td><td>0</td><td>1</td><td>0</td><td>0</td><td>0</td><td>?</td><td>0</td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">10</td><td>0</td><td>0</td><td>1</td><td>0</td><td>0</td><td>1</td><td>?</td><td>0</td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">11</td><td>0</td><td>0</td><td>1</td><td>0</td><td>1</td><td>0</td><td>?</td><td>0</td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">12</td><td>0</td><td>0</td><td>1</td><td>0</td><td>1</td><td>1</td><td>?</td><td>0</td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">13</td><td>0</td><td>0</td><td>1</td><td>1</td><td>0</td><td>0</td><td>?</td><td>0</td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">14</td><td>0</td><td>0</td><td>1</td><td>1</td><td>0</td><td>1</td><td>?</td><td>0</td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">15</td><td>0</td><td>0</td><td>1</td><td>1</td><td>1</td><td>0</td><td>?</td><td>0</td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">16</td><td>0</td><td>0</td><td>1</td><td>1</td><td>1</td><td>1</td><td>?</td><td>0</td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">17</td><td>0</td><td>1</td><td>0</td><td>0</td><td>0</td><td>0</td><td>?</td><td>0</td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">19</td><td>0</td><td>1</td><td>0</td><td>0</td><td>1</td><td>0</td><td>?</td><td>0</td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">20</td><td>0</td><td>1</td><td>0</td><td>0</td><td>1</td><td>1</td><td>?</td><td>0</td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">22</td><td>0</td><td>1</td><td>0</td><td>1</td><td>0</td><td>1</td><td>?</td><td>0</td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">23</td><td>0</td><td>1</td><td>0</td><td>1</td><td>1</td><td>0</td><td>?</td><td>0</td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">24</td><td>0</td><td>1</td><td>0</td><td>1</td><td>1</td><td>1</td><td>?</td><td>0</td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">25</td><td>0</td><td>1</td><td>1</td><td>0</td><td>0</td><td>0</td><td>?</td><td>0</td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">26</td><td>0</td><td>1</td><td>1</td><td>0</td><td>0</td><td>1</td><td>?</td><td>0</td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">27</td><td>0</td><td>1</td><td>1</td><td>0</td><td>1</td><td>0</td><td>?</td><td>0</td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">28</td><td>0</td><td>1</td><td>1</td><td>0</td><td>1</td><td>1</td><td>?</td><td>0</td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">29</td><td>0</td><td>1</td><td>1</td><td>1</td><td>0</td><td>0</td><td>?</td><td>0</td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">30</td><td>0</td><td>1</td><td>1</td><td>1</td><td>0</td><td>1</td><td>?</td><td>0</td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">31</td><td>0</td><td>1</td><td>1</td><td>1</td><td>1</td><td>0</td><td>?</td><td>0</td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">32</td><td>0</td><td>1</td><td>1</td><td>1</td><td>1</td><td>1</td><td>?</td><td>0</td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">33</td><td>1</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>?</td><td>0</td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">34</td><td>1</td><td>0</td><td>0</td><td>0</td><td>0</td><td>1</td><td>?</td><td>0</td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">35</td><td>1</td><td>0</td><td>0</td><td>0</td><td>1</td><td>0</td><td>?</td><td>0</td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">36</td><td>1</td><td>0</td><td>0</td><td>0</td><td>1</td><td>1</td><td>?</td><td>0</td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">37</td><td>1</td><td>0</td><td>0</td><td>1</td><td>0</td><td>0</td><td>?</td><td>0</td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">38</td><td>1</td><td>0</td><td>0</td><td>1</td><td>0</td><td>1</td><td>?</td><td>0</td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">39</td><td>1</td><td>0</td><td>0</td><td>1</td><td>1</td><td>0</td><td>?</td><td>0</td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">40</td><td>1</td><td>0</td><td>0</td><td>1</td><td>1</td><td>1</td><td>?</td><td>0</td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">45</td><td>1</td><td>0</td><td>1</td><td>1</td><td>0</td><td>0</td><td>?</td><td>0</td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">47</td><td>1</td><td>0</td><td>1</td><td>1</td><td>1</td><td>0</td><td>?</td><td>0</td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">48</td><td>1</td><td>0</td><td>1</td><td>1</td><td>1</td><td>1</td><td>?</td><td>0</td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">49</td><td>1</td><td>1</td><td>0</td><td>0</td><td>0</td><td>0</td><td>?</td><td>0</td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">50</td><td>1</td><td>1</td><td>0</td><td>0</td><td>0</td><td>1</td><td>?</td><td>0</td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">51</td><td>1</td><td>1</td><td>0</td><td>0</td><td>1</td><td>0</td><td>?</td><td>0</td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">53</td><td>1</td><td>1</td><td>0</td><td>1</td><td>0</td><td>0</td><td>?</td><td>0</td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">54</td><td>1</td><td>1</td><td>0</td><td>1</td><td>0</td><td>1</td><td>?</td><td>0</td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">55</td><td>1</td><td>1</td><td>0</td><td>1</td><td>1</td><td>0</td><td>?</td><td>0</td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">56</td><td>1</td><td>1</td><td>0</td><td>1</td><td>1</td><td>1</td><td>?</td><td>0</td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">57</td><td>1</td><td>1</td><td>1</td><td>0</td><td>0</td><td>0</td><td>?</td><td>0</td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">58</td><td>1</td><td>1</td><td>1</td><td>0</td><td>0</td><td>1</td><td>?</td><td>0</td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">59</td><td>1</td><td>1</td><td>1</td><td>0</td><td>1</td><td>0</td><td>?</td><td>0</td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">60</td><td>1</td><td>1</td><td>1</td><td>0</td><td>1</td><td>1</td><td>?</td><td>0</td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">61</td><td>1</td><td>1</td><td>1</td><td>1</td><td>0</td><td>0</td><td>?</td><td>0</td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">62</td><td>1</td><td>1</td><td>1</td><td>1</td><td>0</td><td>1</td><td>?</td><td>0</td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">63</td><td>1</td><td>1</td><td>1</td><td>1</td><td>1</td><td>0</td><td>?</td><td>0</td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">64</td><td>1</td><td>1</td><td>1</td><td>1</td><td>1</td><td>1</td><td>?</td><td>0</td><td></td><td></td><td></td></tr>
+<tr><td colspan="12" style="border-bottom: 1px solid black"></td></tr></table>
+</div>
+</div>
+
+<div id="outline-container-orgc19a9c5" class="outline-4">
+<h4 id="orgc19a9c5">Solução conservadora</h4>
+<div class="outline-text-4" id="text-orgc19a9c5">
+<div class="org-src-container">
+<pre class="src src-R">MIN <span style="color: #f78c6c;">&lt;-</span> <span style="color: #82aaff;">minimize</span><span style="color: #f78c6c;">(</span>TT<span style="color: #f78c6c;">)</span>
+
+<span style="color: #82aaff;">stargazerSol</span><span style="color: #f78c6c;">(</span>MIN, type <span style="color: #f78c6c;">=</span> <span style="color: #c3e88d;">"html"</span>, outcome <span style="color: #f78c6c;">=</span> <span style="color: #c3e88d;">"~DIFF"</span>, show.cases <span style="color: #f78c6c;">=</span> <span style="color: #c792ea;">TRUE</span><span style="color: #f78c6c;">)</span>
+</pre>
+</div>
+
+
+<table style="text-align:center"><tr><td colspan="6" style="border-bottom: 1px solid black"></td></tr><tr><td style="text-align:left"></td><td>inclS</td><td>PRI</td><td>covS</td><td>covU</td><td>cases</td></tr>
+<tr><td colspan="6" style="border-bottom: 1px solid black"></td></tr><tr><td style="text-align:left">V_EUR* ~ V_ASIA* V_AFR* ~ V_AME* PC</td><td>0.820</td><td>0.674</td><td>0.353</td><td>0.017</td><td>5,11,13,16,17; 8</td></tr>
+<tr><td style="text-align:left">V_EUR* ~ V_ASIA* V_AFR* ~ V_AME* ~ DEC</td><td>0.850</td><td>0.748</td><td>0.551</td><td>0.215</td><td>3,6,7,14; 5,11,13,16,17</td></tr>
+<tr><td style="text-align:left">~ V_EUR* V_ASIA* ~ V_AFR* ~ V_AME* ~ PC* DEC</td><td>0.813</td><td>0.724</td><td>0.058</td><td>0.019</td><td>1</td></tr>
+<tr><td style="text-align:left">~ V_EUR* V_ASIA* ~ V_AFR* V_AME* ~ PC* ~ DEC</td><td>0.971</td><td>0.953</td><td>0.114</td><td>0.068</td><td>15</td></tr>
+<tr><td style="text-align:left">Solution</td><td>0.847</td><td>0.752</td><td>0.693</td><td></td><td></td></tr>
+<tr><td colspan="6" style="border-bottom: 1px solid black"></td></tr></table>
+</div>
+</div>
+
+<div id="outline-container-org98f5bcd" class="outline-4">
+<h4 id="org98f5bcd">Solução parsimoniosa</h4>
+<div class="outline-text-4" id="text-org98f5bcd">
+<div class="org-src-container">
+<pre class="src src-R">MIN <span style="color: #f78c6c;">&lt;-</span> <span style="color: #82aaff;">minimize</span><span style="color: #f78c6c;">(</span>TT, include <span style="color: #f78c6c;">=</span> <span style="color: #c3e88d;">"?"</span><span style="color: #f78c6c;">)</span>
+
+<span style="color: #82aaff;">stargazerSol</span><span style="color: #f78c6c;">(</span>MIN, type <span style="color: #f78c6c;">=</span> <span style="color: #c3e88d;">"html"</span>, outcome <span style="color: #f78c6c;">=</span> <span style="color: #c3e88d;">"~DIFF"</span>, show.cases <span style="color: #f78c6c;">=</span> <span style="color: #c792ea;">TRUE</span><span style="color: #f78c6c;">)</span>
+</pre>
+</div>
+
+
+<table style="text-align:center"><tr><td colspan="6" style="border-bottom: 1px solid black"></td></tr><tr><td style="text-align:left"></td><td>inclS</td><td>PRI</td><td>covS</td><td>covU</td><td>cases</td></tr>
+<tr><td colspan="6" style="border-bottom: 1px solid black"></td></tr><tr><td style="text-align:left">~ V_EUR</td><td>0.846</td><td>0.742</td><td>0.198</td><td>0</td><td>1; 15</td></tr>
+<tr><td style="text-align:left">~ DEC</td><td>0.731</td><td>0.631</td><td>0.805</td><td>0.158</td><td>15; 3,6,7,14; 5,11,13,16,17</td></tr>
+<tr><td style="text-align:left">~ V_ASIA* PC</td><td>0.807</td><td>0.647</td><td>0.365</td><td>0</td><td>5,11,13,16,17; 8</td></tr>
+<tr><td style="text-align:left">Solution</td><td>0.702</td><td>0.586</td><td>0.939</td><td></td><td></td></tr>
+<tr><td colspan="6" style="border-bottom: 1px solid black"></td></tr></table>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orga8ef9e0" class="outline-2">
+<h2 id="orga8ef9e0">TODOs</h2>
+<div class="outline-text-2" id="text-orga8ef9e0">
+</div>
+<div id="outline-container-org168ede7" class="outline-3">
+<h3 id="org168ede7"><span class="todo TODO">TODO</span> Conferir NAs da base</h3>
+<div class="outline-text-3" id="text-org168ede7">
+<ul class="org-ul">
+<li class="off">&#x2610; Como preencher se forem faltantes</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgadaafa5" class="outline-3">
+<h3 id="orgadaafa5"><span class="todo TODO">TODO</span> Decidir se as medidas de centralidade são sempre as médias</h3>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: Gabriel Petrini</p>
+<p class="date">Created: 2021-06-07 seg 17:55</p>
+</div>
+</body>
+</html>

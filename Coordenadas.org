@@ -3,17 +3,19 @@
 #+AUTHOR: Gabriel Petrini
 #+PROPERTY:header-args R :results output drawer :eval never-export :exports both :session *coords* :tangle ./coordenadas.R
 #+PROPERTY:header-args python :results output drawer :eval never-export :exports both :session *coords*
+#+SETUPFILE: https://fniessen.github.io/org-html-themes/org/theme-bigblow.setup
 
 * Carregando pacotes e dados
 
 ** Pacotes
 
-#+begin_src R  :tangle ./coordenadas.R
+#+begin_src R  :tangle ./coordenadas.R :exports none
 library(tidyverse)
 library(tidygeocoder)
 library(tabulizer)
 library(geodist)
 library(data.table)
+library(SetMethods)
 #+end_src
 
 #+RESULTS:
@@ -37,6 +39,45 @@ The following objects are masked from ‘package:dplyr’:
 The following object is masked from ‘package:purrr’:
 
     transpose
+Carregando pacotes exigidos: QCA
+Carregando pacotes exigidos: admisc
+
+Attaching package: ‘admisc’
+
+The following objects are masked from ‘package:dplyr’:
+
+    compute, recode
+
+The following objects are masked from ‘package:purrr’:
+
+    negate, simplify
+
+The following object is masked from ‘package:tidyr’:
+
+    expand
+
+
+To cite package QCA in publications, please use:
+  Dusa, Adrian (2019) QCA with R. A Comprehensive Resource.
+  Springer International Publishing.
+
+To run the graphical user interface, use: runGUI()
+
+
+Carregando pacotes exigidos: ggrepel
+Carregando pacotes exigidos: stargazer
+
+Please cite as:
+
+ Hlavac, Marek (2018). stargazer: Well-Formatted Regression and Summary Statistics Tables.
+ R package version 5.2.2. https://CRAN.R-project.org/package=stargazer
+
+
+
+  To cite package SetMethods in publications use:
+
+  Oana, Ioana-Elena and Carsten Q. Schneider. 2018. SetMethods: An Add-on R Package for
+  Advanced QCA. The R Journal 10(1): 507-33. https://journal.r-project.org/archive/2018/RJ-2018-031/index.html
 :end:
 
 
@@ -53,10 +94,6 @@ capitals <-maps::world.cities %>%
 
 data.table::fwrite(capitals, file = "./clean/coord_capitais.csv")
 #+end_src
-
-#+RESULTS:
-:results:
-:end:
 
 * Conflitos violentos
 
@@ -670,7 +707,7 @@ write.csv(income_concentration, "./clean/income_concentration.csv")
 
 inicio <- "1945"
 fim <- "1989"
-    
+
 df <- data.table::fread(
                     './clean/income_concentration.csv',
                     header=TRUE
@@ -678,7 +715,7 @@ df <- data.table::fread(
   select(-c(V1)) %>%
   mutate(Year = lubridate::ymd(Year, truncated = 2L)) %>%
   rename(UK = United.Kingdom, `New Zealand` = New.Zealand) %>%
-  pivot_longer(!Year, names_to = "pais", values_to = "concentracao") %>% 
+  pivot_longer(!Year, names_to = "pais", values_to = "concentracao") %>%
   mutate(ISO = countrycode::countrycode(pais, origin ='country.name',destination ='iso3c', warn = FALSE)) %>%
   select(-c(pais)) %>%
   pivot_wider(names_from = ISO, values_from = concentracao) %>% # Preenchendo NAs para selecionar os primeiros
@@ -687,10 +724,10 @@ df <- data.table::fread(
   pivot_wider(names_from = Year, values_from = value) %>%
   select(name, starts_with(fim), starts_with(inicio)) %>%
   setNames(c("ISO", "Fim", "Inicio")) %>%
-  mutate(Diff = Fim - Inicio)
+  mutate(Diff = (Fim - Inicio)/Inicio)
 
 data.table::fwrite(df, paste0("./clean/diff_concentracao_", fim, "_", inicio, ".csv"))
-    
+
 #+end_src
 
 #+RESULTS:
@@ -815,11 +852,425 @@ Joining, by = "ISO"
 :end:
 
 
+* Calibragem
+
+** Calibrando conflitos
+
+Os conflitos serão calibrados de acordo com o método indireto.
+Para evitar a sensibilidade da amostra, transpõe-se o dataframe.
+Desse modo, as âncoras qualitativas serão associadas aos países e não as continentes que os conflitos ocorreram.
+
+#+begin_src R
+
+data.table::fread('./clean/coldwar_concentracao_santanna_weller.csv') %>% as.data.frame() -> df
+
+tmp <- df %>%
+  select(
+    ISO,
+    Violentos_Europa, NaoViolentos_Europa,
+    Violentos_Asia, NaoViolentos_Asia,
+    Violentos_Africa, NaoViolentos_Africa,
+    Violentos_Americas, NaoViolentos_Americas,
+    Violentos, NaoViolentos
+  ) %>%
+  rename_with(.cols = -ISO, .fn = ~ paste0(.x, "_cal")) %>%
+   pivot_longer(-ISO) %>%
+   pivot_wider(names_from=ISO, values_from=value)
+
+for(country in names(tmp)[-1]){
+  new_name <- paste0(country, "_cal")
+  x <- tmp[country] %>% as.vector() %>% t()
+  # Find quantiles
+  quant <- quantile(x, probs = seq(0, 1, 0.2))
+
+  # Theoretical calibration
+  x_cal <- NA
+  x_cal[x <= quant[1]] <- 0
+  x_cal[x > quant[1] & x <= quant[2]] <- .2
+  x_cal[x > quant[2] & x <= quant[3]] <- .4
+  x_cal[x > quant[3] & x <= quant[4]] <- .6
+  x_cal[x > quant[4] & x <= quant[5]] <- .8
+  x_cal[x > quant[5]] <- 1
+
+  tmp[country] <- indirectCalibration(x %>% as.vector(), x_cal, binom = TRUE)
+}
+
+tmp <- tmp %>%
+  ## select(name, ends_with("_cal")) %>%
+  rename(Conflito = name) %>%
+  pivot_longer(-Conflito) %>%
+  pivot_wider(names_from=Conflito, values_from=value) %>%
+  rename(ISO = name)
+
+df <- df %>%
+  left_join(tmp)
+
+data.table::fwrite(df, './clean/full_distancias_calibradas.csv')
+#+end_src
+
+#+RESULTS:
+:results:
+:end:
+
+** Calibrando outras variáveis
+
+Tal como para os conflitos, será utilizado o método indireto.
+Diferentemente dos conflitos, o cálculo será feito entre países.
+
+#+begin_src R
+data.table::fread('./clean/full_distancias_calibradas.csv') -> df
+
+tmp <- df %>%
+  select(
+    ISO,
+    ## Diff,
+    pc,
+    decentralized
+  ) %>%
+  as.data.frame()
+
+for(variable in names(tmp)[-1]){
+  x <- tmp[variable] %>% as.vector() %>% t()
+  # Find quantiles
+  quant <- quantile(x, probs = seq(0, 1, 0.2))
+
+  # Theoretical calibration
+  x_cal <- NA
+  x_cal[x <= quant[1]] <- 0
+  x_cal[x > quant[1] & x <= quant[2]] <- .2
+  x_cal[x > quant[2] & x <= quant[3]] <- .4
+  x_cal[x > quant[3] & x <= quant[4]] <- .6
+  x_cal[x > quant[4] & x <= quant[5]] <- .8
+  x_cal[x > quant[5]] <- 1
+
+  tmp[variable] <- indirectCalibration(x %>% as.vector(), x_cal, binom = TRUE)
+}
+
+tmp <- tmp %>%
+  rename_with(.cols = -ISO, .fn = ~ paste0(.x, "_cal"))
+
+diff_cal <- calibrate(
+  x = df$Diff %>% as.vector(),
+  thresholds = "e=-0.6, c=-0.00001, i=0.6"
+)
+
+df <- df %>%
+  mutate(Diff_cal = diff_cal) %>%
+  left_join(tmp)
+
+data.table::fwrite(df, './clean/raw_calibrados.csv')
+data.table::fwrite(
+              df %>% select(ISO,  ends_with("_cal")),
+              './clean/calibrados.csv')
+#+end_src
+
+#+RESULTS:
+:results:
+Joining, by = "ISO"
+:end:
 
 
+* Tabela verdade e minimização
+
+** Maior concentração (1989 - 1945 > 0)
+
+*** Tabela verdade
+
+#+begin_src R :results output html table
+df <- data.table::fread('./clean/calibrados.csv') %>% as.data.frame()
+
+df <- df %>%
+  set_names(
+    ~ str_to_upper(.) %>%
+                  str_replace_all("_CAL", "") %>%
+                  str_replace_all("VIOLENTOS", "V") %>%
+                  str_replace_all("AFRICA", "AFR") %>%
+                  str_replace_all("AMERICAS", "AME") %>%
+                  str_replace_all("EUROPA", "EUR") %>%
+                  str_replace_all("NAO", "N")
+  ) %>%
+  rename(DEC = DECENTRALIZED)
+
+conds <- df %>%
+  select(-c(DIFF, V, NV, ISO)) %>%
+  select(-c(starts_with("N"))) %>%
+  names() %>%
+  as.vector()
+
+TT <- truthTable(
+  data = df,
+  outcome = "DIFF",
+  conditions = conds,
+  complete = TRUE,
+  show.cases = TRUE,
+  incl.cut = 0.8,
+  sort.by = "out, incl"
+)
+
+stargazerTT(TT, show.cases = TRUE, type = "html")
+#+end_src
+
+#+RESULTS:
+#+begin_export html
+
+<table style="text-align:center"><tr><td colspan="12" style="border-bottom: 1px solid black"></td></tr><tr><td style="text-align:left"></td><td>V_EUR</td><td>V_ASIA</td><td>V_AFR</td><td>V_AME</td><td>PC</td><td>DEC</td><td>OUT</td><td>n</td><td>incl</td><td>PRI</td><td>cases</td></tr>
+<tr><td colspan="12" style="border-bottom: 1px solid black"></td></tr><tr><td style="text-align:left">52</td><td>1</td><td>1</td><td>0</td><td>0</td><td>1</td><td>1</td><td>1</td><td>1</td><td>1</td><td>1</td><td>12</td></tr>
+<tr><td style="text-align:left">44</td><td>1</td><td>0</td><td>1</td><td>0</td><td>1</td><td>1</td><td>1</td><td>1</td><td>0.881</td><td>0.364</td><td>8</td></tr>
+<tr><td style="text-align:left">46</td><td>1</td><td>0</td><td>1</td><td>1</td><td>0</td><td>1</td><td>1</td><td>2</td><td>0.846</td><td>0.618</td><td>2,18</td></tr>
+<tr><td style="text-align:left">42</td><td>1</td><td>0</td><td>1</td><td>0</td><td>0</td><td>1</td><td>0</td><td>3</td><td>0.732</td><td>0.553</td><td>4,9,10</td></tr>
+<tr><td style="text-align:left">43</td><td>1</td><td>0</td><td>1</td><td>0</td><td>1</td><td>0</td><td>0</td><td>5</td><td>0.612</td><td>0.299</td><td>5,11,13,16,17</td></tr>
+<tr><td style="text-align:left">41</td><td>1</td><td>0</td><td>1</td><td>0</td><td>0</td><td>0</td><td>0</td><td>4</td><td>0.561</td><td>0.178</td><td>3,6,7,14</td></tr>
+<tr><td style="text-align:left">18</td><td>0</td><td>1</td><td>0</td><td>0</td><td>0</td><td>1</td><td>0</td><td>1</td><td>0.510</td><td>0.276</td><td>1</td></tr>
+<tr><td style="text-align:left">21</td><td>0</td><td>1</td><td>0</td><td>1</td><td>0</td><td>0</td><td>0</td><td>1</td><td>0.391</td><td>0</td><td>15</td></tr>
+<tr><td style="text-align:left">1</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>?</td><td>0</td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">2</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>1</td><td>?</td><td>0</td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">3</td><td>0</td><td>0</td><td>0</td><td>0</td><td>1</td><td>0</td><td>?</td><td>0</td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">4</td><td>0</td><td>0</td><td>0</td><td>0</td><td>1</td><td>1</td><td>?</td><td>0</td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">5</td><td>0</td><td>0</td><td>0</td><td>1</td><td>0</td><td>0</td><td>?</td><td>0</td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">6</td><td>0</td><td>0</td><td>0</td><td>1</td><td>0</td><td>1</td><td>?</td><td>0</td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">7</td><td>0</td><td>0</td><td>0</td><td>1</td><td>1</td><td>0</td><td>?</td><td>0</td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">8</td><td>0</td><td>0</td><td>0</td><td>1</td><td>1</td><td>1</td><td>?</td><td>0</td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">9</td><td>0</td><td>0</td><td>1</td><td>0</td><td>0</td><td>0</td><td>?</td><td>0</td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">10</td><td>0</td><td>0</td><td>1</td><td>0</td><td>0</td><td>1</td><td>?</td><td>0</td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">11</td><td>0</td><td>0</td><td>1</td><td>0</td><td>1</td><td>0</td><td>?</td><td>0</td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">12</td><td>0</td><td>0</td><td>1</td><td>0</td><td>1</td><td>1</td><td>?</td><td>0</td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">13</td><td>0</td><td>0</td><td>1</td><td>1</td><td>0</td><td>0</td><td>?</td><td>0</td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">14</td><td>0</td><td>0</td><td>1</td><td>1</td><td>0</td><td>1</td><td>?</td><td>0</td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">15</td><td>0</td><td>0</td><td>1</td><td>1</td><td>1</td><td>0</td><td>?</td><td>0</td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">16</td><td>0</td><td>0</td><td>1</td><td>1</td><td>1</td><td>1</td><td>?</td><td>0</td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">17</td><td>0</td><td>1</td><td>0</td><td>0</td><td>0</td><td>0</td><td>?</td><td>0</td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">19</td><td>0</td><td>1</td><td>0</td><td>0</td><td>1</td><td>0</td><td>?</td><td>0</td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">20</td><td>0</td><td>1</td><td>0</td><td>0</td><td>1</td><td>1</td><td>?</td><td>0</td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">22</td><td>0</td><td>1</td><td>0</td><td>1</td><td>0</td><td>1</td><td>?</td><td>0</td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">23</td><td>0</td><td>1</td><td>0</td><td>1</td><td>1</td><td>0</td><td>?</td><td>0</td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">24</td><td>0</td><td>1</td><td>0</td><td>1</td><td>1</td><td>1</td><td>?</td><td>0</td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">25</td><td>0</td><td>1</td><td>1</td><td>0</td><td>0</td><td>0</td><td>?</td><td>0</td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">26</td><td>0</td><td>1</td><td>1</td><td>0</td><td>0</td><td>1</td><td>?</td><td>0</td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">27</td><td>0</td><td>1</td><td>1</td><td>0</td><td>1</td><td>0</td><td>?</td><td>0</td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">28</td><td>0</td><td>1</td><td>1</td><td>0</td><td>1</td><td>1</td><td>?</td><td>0</td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">29</td><td>0</td><td>1</td><td>1</td><td>1</td><td>0</td><td>0</td><td>?</td><td>0</td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">30</td><td>0</td><td>1</td><td>1</td><td>1</td><td>0</td><td>1</td><td>?</td><td>0</td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">31</td><td>0</td><td>1</td><td>1</td><td>1</td><td>1</td><td>0</td><td>?</td><td>0</td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">32</td><td>0</td><td>1</td><td>1</td><td>1</td><td>1</td><td>1</td><td>?</td><td>0</td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">33</td><td>1</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>?</td><td>0</td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">34</td><td>1</td><td>0</td><td>0</td><td>0</td><td>0</td><td>1</td><td>?</td><td>0</td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">35</td><td>1</td><td>0</td><td>0</td><td>0</td><td>1</td><td>0</td><td>?</td><td>0</td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">36</td><td>1</td><td>0</td><td>0</td><td>0</td><td>1</td><td>1</td><td>?</td><td>0</td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">37</td><td>1</td><td>0</td><td>0</td><td>1</td><td>0</td><td>0</td><td>?</td><td>0</td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">38</td><td>1</td><td>0</td><td>0</td><td>1</td><td>0</td><td>1</td><td>?</td><td>0</td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">39</td><td>1</td><td>0</td><td>0</td><td>1</td><td>1</td><td>0</td><td>?</td><td>0</td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">40</td><td>1</td><td>0</td><td>0</td><td>1</td><td>1</td><td>1</td><td>?</td><td>0</td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">45</td><td>1</td><td>0</td><td>1</td><td>1</td><td>0</td><td>0</td><td>?</td><td>0</td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">47</td><td>1</td><td>0</td><td>1</td><td>1</td><td>1</td><td>0</td><td>?</td><td>0</td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">48</td><td>1</td><td>0</td><td>1</td><td>1</td><td>1</td><td>1</td><td>?</td><td>0</td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">49</td><td>1</td><td>1</td><td>0</td><td>0</td><td>0</td><td>0</td><td>?</td><td>0</td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">50</td><td>1</td><td>1</td><td>0</td><td>0</td><td>0</td><td>1</td><td>?</td><td>0</td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">51</td><td>1</td><td>1</td><td>0</td><td>0</td><td>1</td><td>0</td><td>?</td><td>0</td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">53</td><td>1</td><td>1</td><td>0</td><td>1</td><td>0</td><td>0</td><td>?</td><td>0</td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">54</td><td>1</td><td>1</td><td>0</td><td>1</td><td>0</td><td>1</td><td>?</td><td>0</td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">55</td><td>1</td><td>1</td><td>0</td><td>1</td><td>1</td><td>0</td><td>?</td><td>0</td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">56</td><td>1</td><td>1</td><td>0</td><td>1</td><td>1</td><td>1</td><td>?</td><td>0</td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">57</td><td>1</td><td>1</td><td>1</td><td>0</td><td>0</td><td>0</td><td>?</td><td>0</td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">58</td><td>1</td><td>1</td><td>1</td><td>0</td><td>0</td><td>1</td><td>?</td><td>0</td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">59</td><td>1</td><td>1</td><td>1</td><td>0</td><td>1</td><td>0</td><td>?</td><td>0</td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">60</td><td>1</td><td>1</td><td>1</td><td>0</td><td>1</td><td>1</td><td>?</td><td>0</td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">61</td><td>1</td><td>1</td><td>1</td><td>1</td><td>0</td><td>0</td><td>?</td><td>0</td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">62</td><td>1</td><td>1</td><td>1</td><td>1</td><td>0</td><td>1</td><td>?</td><td>0</td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">63</td><td>1</td><td>1</td><td>1</td><td>1</td><td>1</td><td>0</td><td>?</td><td>0</td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">64</td><td>1</td><td>1</td><td>1</td><td>1</td><td>1</td><td>1</td><td>?</td><td>0</td><td></td><td></td><td></td></tr>
+<tr><td colspan="12" style="border-bottom: 1px solid black"></td></tr></table>
+#+end_export
+
+*** Solução conservadora
+
+#+begin_src R :results output html table
+MIN <- minimize(TT)
+
+stargazerSol(MIN, type = "html", outcome = "DIFF", show.cases = TRUE)
+#+end_src
+
+#+RESULTS:
+#+begin_export html
+
+<table style="text-align:center"><tr><td colspan="6" style="border-bottom: 1px solid black"></td></tr><tr><td style="text-align:left"></td><td>inclS</td><td>PRI</td><td>covS</td><td>covU</td><td>cases</td></tr>
+<tr><td colspan="6" style="border-bottom: 1px solid black"></td></tr><tr><td style="text-align:left">V_EUR* ~ V_ASIA* V_AFR* ~ V_AME* PC* DEC</td><td>0.881</td><td>0.364</td><td>0.118</td><td>0.055</td><td>8</td></tr>
+<tr><td style="text-align:left">V_EUR* V_ASIA* ~ V_AFR* ~ V_AME* PC* DEC</td><td>1</td><td>1</td><td>0.130</td><td>0.094</td><td>12</td></tr>
+<tr><td style="text-align:left">V_EUR* ~ V_ASIA* V_AFR* V_AME* ~ PC* DEC</td><td>0.846</td><td>0.618</td><td>0.267</td><td>0.213</td><td>2,18</td></tr>
+<tr><td style="text-align:left">Solution</td><td>0.869</td><td>0.716</td><td>0.426</td><td></td><td></td></tr>
+<tr><td colspan="6" style="border-bottom: 1px solid black"></td></tr></table>
+#+end_export
+
+*** Solução parsimoniosa
+
+#+begin_src R :results output html table
+MIN <- minimize(TT, include = "?")
+
+stargazerSol(MIN, type = "html", outcome = "DIFF", show.cases = TRUE)
+#+end_src
+
+#+RESULTS:
+#+begin_export html
+
+<table style="text-align:center"><tr><td colspan="6" style="border-bottom: 1px solid black"></td></tr><tr><td style="text-align:left"></td><td>inclS</td><td>PRI</td><td>covS</td><td>covU</td><td>cases</td></tr>
+<tr><td colspan="6" style="border-bottom: 1px solid black"></td></tr><tr><td style="text-align:left">V_EUR* V_AME</td><td>0.744</td><td>0.390</td><td>0.657</td><td>0</td><td>2,18</td></tr>
+<tr><td style="text-align:left">PC* DEC</td><td>0.941</td><td>0.883</td><td>0.256</td><td>0.109</td><td>8; 12</td></tr>
+<tr><td style="text-align:left">Solution</td><td>0.705</td><td>0.426</td><td>0.771</td><td></td><td></td></tr>
+<tr><td colspan="6" style="border-bottom: 1px solid black"></td></tr></table>
+#+end_export
+
+
+
+
+** Menor concentração (1989 - 1945 < 0)
+*** Tabela verdade
+
+#+begin_src R :results output html table
+df <- data.table::fread('./clean/calibrados.csv') %>% as.data.frame()
+
+df <- df %>%
+  set_names(
+    ~ str_to_upper(.) %>%
+                  str_replace_all("_CAL", "") %>%
+                  str_replace_all("VIOLENTOS", "V") %>%
+                  str_replace_all("AFRICA", "AFR") %>%
+                  str_replace_all("AMERICAS", "AME") %>%
+                  str_replace_all("EUROPA", "EUR") %>%
+                  str_replace_all("NAO", "N")
+  ) %>%
+  rename(DEC = DECENTRALIZED)
+
+conds <- df %>%  select(-c(DIFF, V, NV, ISO)) %>%
+  select(-c(starts_with("N"))) %>%
+  names() %>%
+  as.vector()
+
+TT <- truthTable(
+  data = df,
+  outcome = "~DIFF",
+  conditions = conds,
+  complete = TRUE,
+  show.cases = TRUE,
+  incl.cut = 0.8,
+  sort.by = "out, incl"
+)
+
+stargazerTT(TT, show.cases = TRUE, type = "html")
+#+end_src
+
+#+RESULTS:
+#+begin_export html
+
+<table style="text-align:center"><tr><td colspan="12" style="border-bottom: 1px solid black"></td></tr><tr><td style="text-align:left"></td><td>V_EUR</td><td>V_ASIA</td><td>V_AFR</td><td>V_AME</td><td>PC</td><td>DEC</td><td>OUT</td><td>n</td><td>incl</td><td>PRI</td><td>cases</td></tr>
+<tr><td colspan="12" style="border-bottom: 1px solid black"></td></tr><tr><td style="text-align:left">21</td><td>0</td><td>1</td><td>0</td><td>1</td><td>0</td><td>0</td><td>1</td><td>1</td><td>0.971</td><td>0.953</td><td>15</td></tr>
+<tr><td style="text-align:left">41</td><td>1</td><td>0</td><td>1</td><td>0</td><td>0</td><td>0</td><td>1</td><td>4</td><td>0.890</td><td>0.794</td><td>3,6,7,14</td></tr>
+<tr><td style="text-align:left">44</td><td>1</td><td>0</td><td>1</td><td>0</td><td>1</td><td>1</td><td>1</td><td>1</td><td>0.851</td><td>0.201</td><td>8</td></tr>
+<tr><td style="text-align:left">43</td><td>1</td><td>0</td><td>1</td><td>0</td><td>1</td><td>0</td><td>1</td><td>5</td><td>0.834</td><td>0.701</td><td>5,11,13,16,17</td></tr>
+<tr><td style="text-align:left">18</td><td>0</td><td>1</td><td>0</td><td>0</td><td>0</td><td>1</td><td>1</td><td>1</td><td>0.813</td><td>0.724</td><td>1</td></tr>
+<tr><td style="text-align:left">46</td><td>1</td><td>0</td><td>1</td><td>1</td><td>0</td><td>1</td><td>0</td><td>2</td><td>0.701</td><td>0.256</td><td>2,18</td></tr>
+<tr><td style="text-align:left">42</td><td>1</td><td>0</td><td>1</td><td>0</td><td>0</td><td>1</td><td>0</td><td>3</td><td>0.669</td><td>0.447</td><td>4,9,10</td></tr>
+<tr><td style="text-align:left">52</td><td>1</td><td>1</td><td>0</td><td>0</td><td>1</td><td>1</td><td>0</td><td>1</td><td>0.355</td><td>0</td><td>12</td></tr>
+<tr><td style="text-align:left">1</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>?</td><td>0</td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">2</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>1</td><td>?</td><td>0</td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">3</td><td>0</td><td>0</td><td>0</td><td>0</td><td>1</td><td>0</td><td>?</td><td>0</td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">4</td><td>0</td><td>0</td><td>0</td><td>0</td><td>1</td><td>1</td><td>?</td><td>0</td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">5</td><td>0</td><td>0</td><td>0</td><td>1</td><td>0</td><td>0</td><td>?</td><td>0</td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">6</td><td>0</td><td>0</td><td>0</td><td>1</td><td>0</td><td>1</td><td>?</td><td>0</td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">7</td><td>0</td><td>0</td><td>0</td><td>1</td><td>1</td><td>0</td><td>?</td><td>0</td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">8</td><td>0</td><td>0</td><td>0</td><td>1</td><td>1</td><td>1</td><td>?</td><td>0</td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">9</td><td>0</td><td>0</td><td>1</td><td>0</td><td>0</td><td>0</td><td>?</td><td>0</td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">10</td><td>0</td><td>0</td><td>1</td><td>0</td><td>0</td><td>1</td><td>?</td><td>0</td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">11</td><td>0</td><td>0</td><td>1</td><td>0</td><td>1</td><td>0</td><td>?</td><td>0</td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">12</td><td>0</td><td>0</td><td>1</td><td>0</td><td>1</td><td>1</td><td>?</td><td>0</td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">13</td><td>0</td><td>0</td><td>1</td><td>1</td><td>0</td><td>0</td><td>?</td><td>0</td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">14</td><td>0</td><td>0</td><td>1</td><td>1</td><td>0</td><td>1</td><td>?</td><td>0</td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">15</td><td>0</td><td>0</td><td>1</td><td>1</td><td>1</td><td>0</td><td>?</td><td>0</td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">16</td><td>0</td><td>0</td><td>1</td><td>1</td><td>1</td><td>1</td><td>?</td><td>0</td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">17</td><td>0</td><td>1</td><td>0</td><td>0</td><td>0</td><td>0</td><td>?</td><td>0</td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">19</td><td>0</td><td>1</td><td>0</td><td>0</td><td>1</td><td>0</td><td>?</td><td>0</td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">20</td><td>0</td><td>1</td><td>0</td><td>0</td><td>1</td><td>1</td><td>?</td><td>0</td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">22</td><td>0</td><td>1</td><td>0</td><td>1</td><td>0</td><td>1</td><td>?</td><td>0</td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">23</td><td>0</td><td>1</td><td>0</td><td>1</td><td>1</td><td>0</td><td>?</td><td>0</td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">24</td><td>0</td><td>1</td><td>0</td><td>1</td><td>1</td><td>1</td><td>?</td><td>0</td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">25</td><td>0</td><td>1</td><td>1</td><td>0</td><td>0</td><td>0</td><td>?</td><td>0</td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">26</td><td>0</td><td>1</td><td>1</td><td>0</td><td>0</td><td>1</td><td>?</td><td>0</td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">27</td><td>0</td><td>1</td><td>1</td><td>0</td><td>1</td><td>0</td><td>?</td><td>0</td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">28</td><td>0</td><td>1</td><td>1</td><td>0</td><td>1</td><td>1</td><td>?</td><td>0</td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">29</td><td>0</td><td>1</td><td>1</td><td>1</td><td>0</td><td>0</td><td>?</td><td>0</td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">30</td><td>0</td><td>1</td><td>1</td><td>1</td><td>0</td><td>1</td><td>?</td><td>0</td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">31</td><td>0</td><td>1</td><td>1</td><td>1</td><td>1</td><td>0</td><td>?</td><td>0</td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">32</td><td>0</td><td>1</td><td>1</td><td>1</td><td>1</td><td>1</td><td>?</td><td>0</td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">33</td><td>1</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>?</td><td>0</td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">34</td><td>1</td><td>0</td><td>0</td><td>0</td><td>0</td><td>1</td><td>?</td><td>0</td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">35</td><td>1</td><td>0</td><td>0</td><td>0</td><td>1</td><td>0</td><td>?</td><td>0</td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">36</td><td>1</td><td>0</td><td>0</td><td>0</td><td>1</td><td>1</td><td>?</td><td>0</td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">37</td><td>1</td><td>0</td><td>0</td><td>1</td><td>0</td><td>0</td><td>?</td><td>0</td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">38</td><td>1</td><td>0</td><td>0</td><td>1</td><td>0</td><td>1</td><td>?</td><td>0</td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">39</td><td>1</td><td>0</td><td>0</td><td>1</td><td>1</td><td>0</td><td>?</td><td>0</td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">40</td><td>1</td><td>0</td><td>0</td><td>1</td><td>1</td><td>1</td><td>?</td><td>0</td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">45</td><td>1</td><td>0</td><td>1</td><td>1</td><td>0</td><td>0</td><td>?</td><td>0</td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">47</td><td>1</td><td>0</td><td>1</td><td>1</td><td>1</td><td>0</td><td>?</td><td>0</td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">48</td><td>1</td><td>0</td><td>1</td><td>1</td><td>1</td><td>1</td><td>?</td><td>0</td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">49</td><td>1</td><td>1</td><td>0</td><td>0</td><td>0</td><td>0</td><td>?</td><td>0</td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">50</td><td>1</td><td>1</td><td>0</td><td>0</td><td>0</td><td>1</td><td>?</td><td>0</td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">51</td><td>1</td><td>1</td><td>0</td><td>0</td><td>1</td><td>0</td><td>?</td><td>0</td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">53</td><td>1</td><td>1</td><td>0</td><td>1</td><td>0</td><td>0</td><td>?</td><td>0</td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">54</td><td>1</td><td>1</td><td>0</td><td>1</td><td>0</td><td>1</td><td>?</td><td>0</td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">55</td><td>1</td><td>1</td><td>0</td><td>1</td><td>1</td><td>0</td><td>?</td><td>0</td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">56</td><td>1</td><td>1</td><td>0</td><td>1</td><td>1</td><td>1</td><td>?</td><td>0</td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">57</td><td>1</td><td>1</td><td>1</td><td>0</td><td>0</td><td>0</td><td>?</td><td>0</td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">58</td><td>1</td><td>1</td><td>1</td><td>0</td><td>0</td><td>1</td><td>?</td><td>0</td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">59</td><td>1</td><td>1</td><td>1</td><td>0</td><td>1</td><td>0</td><td>?</td><td>0</td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">60</td><td>1</td><td>1</td><td>1</td><td>0</td><td>1</td><td>1</td><td>?</td><td>0</td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">61</td><td>1</td><td>1</td><td>1</td><td>1</td><td>0</td><td>0</td><td>?</td><td>0</td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">62</td><td>1</td><td>1</td><td>1</td><td>1</td><td>0</td><td>1</td><td>?</td><td>0</td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">63</td><td>1</td><td>1</td><td>1</td><td>1</td><td>1</td><td>0</td><td>?</td><td>0</td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">64</td><td>1</td><td>1</td><td>1</td><td>1</td><td>1</td><td>1</td><td>?</td><td>0</td><td></td><td></td><td></td></tr>
+<tr><td colspan="12" style="border-bottom: 1px solid black"></td></tr></table>
+#+end_export
+
+*** Solução conservadora
+
+#+begin_src R :results output html table
+MIN <- minimize(TT)
+
+stargazerSol(MIN, type = "html", outcome = "~DIFF", show.cases = TRUE)
+#+end_src
+
+#+RESULTS:
+#+begin_export html
+
+<table style="text-align:center"><tr><td colspan="6" style="border-bottom: 1px solid black"></td></tr><tr><td style="text-align:left"></td><td>inclS</td><td>PRI</td><td>covS</td><td>covU</td><td>cases</td></tr>
+<tr><td colspan="6" style="border-bottom: 1px solid black"></td></tr><tr><td style="text-align:left">V_EUR* ~ V_ASIA* V_AFR* ~ V_AME* PC</td><td>0.820</td><td>0.674</td><td>0.353</td><td>0.017</td><td>5,11,13,16,17; 8</td></tr>
+<tr><td style="text-align:left">V_EUR* ~ V_ASIA* V_AFR* ~ V_AME* ~ DEC</td><td>0.850</td><td>0.748</td><td>0.551</td><td>0.215</td><td>3,6,7,14; 5,11,13,16,17</td></tr>
+<tr><td style="text-align:left">~ V_EUR* V_ASIA* ~ V_AFR* ~ V_AME* ~ PC* DEC</td><td>0.813</td><td>0.724</td><td>0.058</td><td>0.019</td><td>1</td></tr>
+<tr><td style="text-align:left">~ V_EUR* V_ASIA* ~ V_AFR* V_AME* ~ PC* ~ DEC</td><td>0.971</td><td>0.953</td><td>0.114</td><td>0.068</td><td>15</td></tr>
+<tr><td style="text-align:left">Solution</td><td>0.847</td><td>0.752</td><td>0.693</td><td></td><td></td></tr>
+<tr><td colspan="6" style="border-bottom: 1px solid black"></td></tr></table>
+#+end_export
+
+*** Solução parsimoniosa
+
+#+begin_src R :results output html table
+MIN <- minimize(TT, include = "?")
+
+stargazerSol(MIN, type = "html", outcome = "~DIFF", show.cases = TRUE)
+#+end_src
+
+#+RESULTS:
+#+begin_export html
+
+<table style="text-align:center"><tr><td colspan="6" style="border-bottom: 1px solid black"></td></tr><tr><td style="text-align:left"></td><td>inclS</td><td>PRI</td><td>covS</td><td>covU</td><td>cases</td></tr>
+<tr><td colspan="6" style="border-bottom: 1px solid black"></td></tr><tr><td style="text-align:left">~ V_EUR</td><td>0.846</td><td>0.742</td><td>0.198</td><td>0</td><td>1; 15</td></tr>
+<tr><td style="text-align:left">~ DEC</td><td>0.731</td><td>0.631</td><td>0.805</td><td>0.158</td><td>15; 3,6,7,14; 5,11,13,16,17</td></tr>
+<tr><td style="text-align:left">~ V_ASIA* PC</td><td>0.807</td><td>0.647</td><td>0.365</td><td>0</td><td>5,11,13,16,17; 8</td></tr>
+<tr><td style="text-align:left">Solution</td><td>0.702</td><td>0.586</td><td>0.939</td><td></td><td></td></tr>
+<tr><td colspan="6" style="border-bottom: 1px solid black"></td></tr></table>
+#+end_export
 
 * TODOs
 
 
 ** TODO Conferir NAs da base
 - [ ] Como preencher se forem faltantes
+
+** TODO Decidir se as medidas de centralidade são sempre as médias
