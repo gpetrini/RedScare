@@ -181,3 +181,16 @@ write.csv(consolidated, file ='~/Desktop/Monografia/dados/consolidated.csv')
 
 #rodando QCA
 QCA::runGUI()
+read.csv("~/Desktop/Monografia/dados/consolidated.csv")
+
+truthTable(dados, outcome = "outcome", conditions = "Violentos_Africa,
+  Violentos_Americas, Violentos_Asia, Violentos_Europa,
+  NaoViolentos_Africa, NaoViolentos_Americas, NaoViolentos_Asia,
+  NaoViolentos_Europa, pc, decentralized", incl.cut = 0.8, use.letters =
+             TRUE, show.cases = TRUE)
+
+minimize(dados, outcome = "outcome", conditions = "Violentos_Africa,
+  Violentos_Americas, Violentos_Asia, Violentos_Europa,
+  NaoViolentos_Africa, NaoViolentos_Americas, NaoViolentos_Asia,
+  NaoViolentos_Europa, pc, decentralized", use.letters = TRUE, incl.cut =
+           0.8, details = TRUE)
