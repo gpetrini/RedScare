@@ -135,14 +135,14 @@ for (i in 1:n) {
 
 #calibrar pc, decentralized e diff/anos 
 sem_eventos <- teste3 %>% 
-  filter(rownames(teste3)== c("Diff","pc", "decentralized")) %>% 
+  filter(rownames(teste3)== c("Diff","pc", "decentralized", "Inicio")) %>% 
   t() 
 
 sem_eventos <- as.data.frame(sem_eventos)
 sem_eventos$Diff <- as.numeric(sem_eventos[,1])
 
 sem_eventos2 <- sem_eventos %>% 
-  mutate(outcome = Diff/45) %>%
+  mutate(outcome = (Diff*Inicio)/45) %>%
   select(pc, decentralized, outcome)
 
 #calibragem dos dados - outcome, pc e decentralized
